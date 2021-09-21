@@ -28,9 +28,28 @@
 <body>
     <form id="form1" runat="server">
         <div>
+           <nav class="navbar navbar-expand-lg navbar-light">
+               <a class="navbar-brand" href="#">
+               <img src="Images/Books.png"  width="30" height="30"/>
+                   Web Library
+               </a>
+
+           </nav>
+        </div>
+
+        <%--Main ContentPlaceHolder1--%>
+        <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+        <%--Main ContentPlaceHolder1--%>
+
+
+        <%--here is footer tag--%>
+        <footer>
+            <p>&copy All rights Reserved. <a class="footerlinks" href="#" target="_blank"></a></p>
+        </footer>
+
     </form>
 </body>
 </html>
