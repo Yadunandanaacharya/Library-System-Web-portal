@@ -20,7 +20,8 @@
     <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
     <script src="bootstrap/js/popper.min.js"></script>
 
-
+    <%--from css folder customstylesheet--%>
+    <link href="css/CustomStyleSheet.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -28,9 +29,115 @@
 <body>
     <form id="form1" runat="server">
         <div>
+           <nav class="navbar navbar-expand-lg navbar-light">
+               <a class="navbar-brand" href="#">
+               <img src="Images/Books.jfif"  width="30" height="30"/>
+                   Web Library
+               </a>
+
+               <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                   data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                   aria-expanded="false" aria-label="Toggle navigation"> 
+                   <span class="navar-toggler-icon"></span>
+               </button>
+
+               <%--below code from bootstrap website littlebit  I have changed--%>
+               <%--https://getbootstrap.com/docs/5.1/components/navbar/--%>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                   <%--<ul class="navbar-nav mr-auto ">--%> 
+                   <%--this is in older bootstrap code me-auto in new--%>
+
+                   <ul class="navbar-nav me-auto  ">
+                       <li class="nav-item active">
+                           <a class="nav-link "  href="HomePage.aspx">Home</a>
+                       </li>
+                       <li class="nav-item active">
+                           <a class="nav-link" href="#">About us</a>
+                       </li>
+                       <li class="nav-item active">
+                           <a class="nav-link" href="#">Terms</a>
+                       </li>
+                     </ul>
+
+
+                   <ul class="navbar-nav ml-auto">
+                       <li class="nav-item active">
+                           <asp:LinkButton class="nav-link" ID="LinkButton4" runat="server" 
+                               >View Books</asp:LinkButton> 
+                       </li>
+                       <li class="nav-item active">
+                           <asp:LinkButton class="nav-link" ID="LinkButton1" runat="server" 
+                               >User Login</asp:LinkButton> 
+                       </li>
+                       <li class="nav-item active">
+                           <asp:LinkButton class="nav-link" ID="LinkButton2" runat="server" 
+                               >Sign Up</asp:LinkButton> 
+                       </li>
+                       <li class="nav-item active">
+                           <asp:LinkButton class="nav-link" ID="LinkButton3" runat="server" 
+                               >Log Out</asp:LinkButton> 
+                       </li>
+                       <li class="nav-item active">
+                           <asp:LinkButton class="nav-link" ID="LinkButton7" runat="server" 
+                               >Hello User</asp:LinkButton> 
+                       </li>
+
+                   </ul>
+                   
+               </div>
+
+           </nav>
+        </div>
+
+        <%--Main ContentPlaceHolder1--%>
+        <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+        <%--Main ContentPlaceHolder1--%>
+
+
+        <%--here is footer tag--%>
+        <footer>
+            <div id="footer1" class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12  col-sm-12 col-md-12 text-center">
+                        <p>
+                            <asp:LinkButton class="footerlinks" ID="LinkButton6" runat="server"  
+                                >Admin Login</asp:LinkButton>
+                            &nbsp;
+                            <asp:LinkButton class="footerlinks" ID="LinkButton11" runat="server"  
+                                >Author Mangement</asp:LinkButton>
+                            &nbsp;
+                            <asp:LinkButton class="footerlinks" ID="LinkButton12" runat="server"  
+                                >Publisher Mangement</asp:LinkButton>
+                            &nbsp;
+                            <asp:LinkButton class="footerlinks" ID="LinkButton8" runat="server"  
+                                >Book Inventory</asp:LinkButton>
+                            &nbsp;
+                            <asp:LinkButton class="footerlinks" ID="LinkButton9" runat="server"  
+                                >Book Issuing</asp:LinkButton>
+                            &nbsp;
+                            <asp:LinkButton class="footerlinks" ID="LinkButton10" runat="server"  
+                                >Member Management</asp:LinkButton>
+                            &nbsp;
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+                <div id="footer2" class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                            <p style="color:whitesmoke">&copy All right Reserved. 
+                                <a class="footerlinks" href="#" target="_blank">Acharya Creations</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+        </footer>
+
     </form>
 </body>
 </html>
