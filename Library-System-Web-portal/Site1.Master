@@ -23,8 +23,6 @@
     <%--from css folder customstylesheet--%>
     <link href="css/CustomStyleSheet.css" rel="stylesheet" />
 
-
-
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
