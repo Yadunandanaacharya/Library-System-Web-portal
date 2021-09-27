@@ -43,12 +43,14 @@
                                 </div>
                                 
                                     <div class="form-group">
-                                        <asp:Button ID="Button1" class="btn btn-primary w-100" runat="server" Text="Login" />
+                                        <asp:Button ID="Button1" class="btn btn-primary w-100 btn-lg" runat="server" Text="Login" />
                                     </div>
                                     
 
                                      <div class="form-group">
-                                        <input id="Button2" class="btn btn-info w-100" type="button" value="SignUp" />
+                                       <a href="UserSignUp.aspx"> 
+                                           <input id="Button2" class="btn btn-info w-100 btn-lg" type="button" value="SignUp" />
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -58,6 +60,9 @@
                     </div>
                 </div>
 
+                <a href="HomePage.aspx"><< Back to Home</a>
+                <br />
+                <br />
             </div>
         </div>
     </div>
