@@ -114,7 +114,7 @@
                             
                             <div class="col-6">
                                 <asp:Button CssClass="btn btn-danger w-100" ID="Button3" 
-                                    runat="server" Text="Delete" />
+                                    runat="server" Text="Return" />
                             </div>
                         </div>
                     </div>
