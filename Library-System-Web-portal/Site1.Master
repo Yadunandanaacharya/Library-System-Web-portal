@@ -13,7 +13,15 @@
     <link href="datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
 
     <%--awesomefont css--%>
-    <link href="fontawesome/css/all.css" rel="stylesheet" />
+    <%--this works--%>
+    <%--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />--%>  
+    
+    <%--this works--%>
+    <%--<link href="font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />--%>
+
+     <%--this works--%>
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
 
     <%--bootstrap js files--%>
     <script src="bootstrap/js/bootstrap.min.js"></script>
