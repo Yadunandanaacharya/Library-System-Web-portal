@@ -25,8 +25,9 @@
                          <div class="row">
                             <div class="col">
                                 <center>
-                                    <img width="90px" src="Images/Author.jpg"
+                                    <img width="90px" src="../Images/userlogin.jfif"
                                         />
+
                                 </center>
                             </div>
                         </div>
