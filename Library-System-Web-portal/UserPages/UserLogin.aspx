@@ -33,23 +33,23 @@
                                <div class="d-grid gap-2">
                                     <label>Member ID</label>
                                  <div class="form-group">
-                                    <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" placeholder="Member ID"></asp:TextBox>
+                                    <asp:TextBox ID="txtMemberID" CssClass="form-control" runat="server" placeholder="Member ID"></asp:TextBox>
                                 </div>
 
                                 <label>Password</label>
                                 <div class="form-group">
-                                    <asp:TextBox ID="TextBox2" CssClass="form-control" runat="server" placeholder="Password"
+                                    <asp:TextBox ID="txtPassword" CssClass="form-control" runat="server" placeholder="Password"
                                         TextMode="Password"></asp:TextBox>
                                 </div>
                                 
                                     <div class="form-group">
-                                        <asp:Button ID="Button1" class="btn btn-primary w-100 btn-lg" runat="server" Text="Login" />
+                                        <asp:Button ID="btnLogIn" class="btn btn-primary w-100 btn-lg" runat="server" Text="Login" />
                                     </div>
                                     
 
                                      <div class="form-group">
                                        <a href="UserSignUp.aspx"> 
-                                           <input id="Button2" class="btn btn-info w-100 btn-lg" type="button" value="SignUp" />
+                                           <input id="btnSignUp" class="btn btn-info w-100 btn-lg" type="button" value="SignUp" />
                                         </a>
                                     </div>
                                 </div>

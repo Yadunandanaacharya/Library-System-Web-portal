@@ -43,7 +43,7 @@
                             <div class="col-md-6">
                                 <label>Member ID</label>
                                  <div class="form-group">
-                                    <asp:TextBox ID="TextBox2333" CssClass="form-control" runat="server" placeholder="Member ID"
+                                    <asp:TextBox ID="txtMemberID" CssClass="form-control" runat="server" placeholder="Member ID"
                                        ></asp:TextBox>
                                 </div>
                             </div>
@@ -52,8 +52,8 @@
                                 <label>Book ID</label>
                                  <div class="form-group">
                                      <div class="input-group">
-                                        <asp:TextBox ID="TextBox13" CssClass="form-control" runat="server" placeholder="ID"></asp:TextBox>
-                                        <asp:Button ID="Button1234" CssClass="btn btn-primary" runat="server" Text="Go"></asp:Button>
+                                        <asp:TextBox ID="txtBookID" CssClass="form-control" runat="server" placeholder="ID"></asp:TextBox>
+                                        <asp:Button ID="btnBookID" CssClass="btn btn-primary" runat="server" Text="Go"></asp:Button>
                                      </div>
                                  </div>
                             </div>
@@ -65,7 +65,7 @@
                             <div class="col-md-6">
                                 <label>Member Name</label>
                                  <div class="form-group">
-                                    <asp:TextBox ID="TextBox2336" CssClass="form-control" runat="server" placeholder="Member Name"
+                                    <asp:TextBox ID="txtMemberName" CssClass="form-control" runat="server" placeholder="Member Name"
                                        ReadOnly="True"></asp:TextBox>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                                 <label>Book Name</label>
                                  <div class="form-group">
                                      <div class="input-group">
-                                        <asp:TextBox ID="TextBox1333" CssClass="form-control" runat="server" placeholder="Book Name" ReadOnly="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtBookName" CssClass="form-control" runat="server" placeholder="Book Name" ReadOnly="True"></asp:TextBox>
                                      </div>
                                  </div>
                             </div>
@@ -86,7 +86,7 @@
                             <div class="col-md-6">
                                 <label>Start Date</label>
                                  <div class="form-group">
-                                    <asp:TextBox ID="TextBox23368" CssClass="form-control" runat="server" placeholder="Start Date"
+                                    <asp:TextBox ID="txtStartDate" CssClass="form-control" runat="server" placeholder="Start Date"
                                      TextMode="Date"  ></asp:TextBox>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                 <label>End Date</label>
                                  <div class="form-group">
                                      <div class="input-group">
-                                        <asp:TextBox ID="TextBox13338" CssClass="form-control" runat="server" placeholder="End Date"
+                                        <asp:TextBox ID="txtEndDate" CssClass="form-control" runat="server" placeholder="End Date"
                                          TextMode="Date"   ></asp:TextBox>
                                      </div>
                                  </div>
@@ -108,12 +108,12 @@
                         <%--below is pill badge--%>
                         <div class="row">
                             <div class="col-6">
-                                <asp:Button CssClass="btn btn-primary w-100" ID="Button1" 
+                                <asp:Button CssClass="btn btn-primary w-100" ID="btnIssue" 
                                     runat="server" Text="Issue" />
                             </div>
                             
                             <div class="col-6">
-                                <asp:Button CssClass="btn btn-danger w-100" ID="Button3" 
+                                <asp:Button CssClass="btn btn-danger w-100" ID="btnReturn" 
                                     runat="server" Text="Return" />
                             </div>
                         </div>
@@ -147,7 +147,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server"></asp:GridView>
+                                    <asp:GridView class="table table-striped table-bordered" ID="gridViewAuthorList" runat="server"></asp:GridView>
                                 </div>
                             </div>
 

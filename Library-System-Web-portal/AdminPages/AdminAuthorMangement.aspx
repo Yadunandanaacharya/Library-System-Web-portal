@@ -45,8 +45,8 @@
                                 <label>Author ID</label>
                                  <div class="form-group">
                                      <div class="input-group">
-                                        <asp:TextBox ID="TextBox13" CssClass="form-control" runat="server" placeholder="ID"></asp:TextBox>
-                                        <asp:Button ID="Button1234" CssClass="btn btn-primary" runat="server" Text="Go"></asp:Button>
+                                        <asp:TextBox ID="txtAuthorID" CssClass="form-control" runat="server" placeholder="ID"></asp:TextBox>
+                                        <asp:Button ID="btnGo" CssClass="btn btn-primary" runat="server" Text="Go"></asp:Button>
                                      </div>
                                  </div>
                             </div>
@@ -54,7 +54,7 @@
                             <div class="col-md-9">
                                 <label>Author Name</label>
                                  <div class="form-group">
-                                    <asp:TextBox ID="TextBox2333" CssClass="form-control" runat="server" placeholder="Author Name"
+                                    <asp:TextBox ID="txtAuthorName" CssClass="form-control" runat="server" placeholder="Author Name"
                                        ></asp:TextBox>
                                 </div>
                             </div>
@@ -66,15 +66,15 @@
                         <%--below is pill badge--%>
                         <div class="row">
                             <div class="col-4">
-                                <asp:Button CssClass="btn btn-success w-100" ID="Button1" runat="server" Text="Add" />
+                                <asp:Button CssClass="btn btn-success w-100" ID="btnAdd" runat="server" Text="Add" />
                                 </div>
 
                             <div class="col-4">
-                                <asp:Button CssClass="btn btn-warning w-100" ID="Button2" runat="server" Text="Update" />
+                                <asp:Button CssClass="btn btn-warning w-100" ID="btnUpdate" runat="server" Text="Update" />
                             </div>
                             
                             <div class="col-4">
-                                <asp:Button CssClass="btn btn-danger w-100" ID="Button3" runat="server" Text="Delete" />
+                                <asp:Button CssClass="btn btn-danger w-100" ID="btnDelete" runat="server" Text="Delete" />
                             </div>
                         </div>
                     </div>
