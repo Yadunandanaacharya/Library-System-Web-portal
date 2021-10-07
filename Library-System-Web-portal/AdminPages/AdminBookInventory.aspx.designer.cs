@@ -22,174 +22,174 @@ namespace Library_System_Web_portal.AdminPages {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
-        /// TextBox13 control.
+        /// txtBookID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::System.Web.UI.WebControls.TextBox txtBookID;
         
         /// <summary>
-        /// LinkButton4 control.
+        /// lnkBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtn;
         
         /// <summary>
-        /// TextBox33 control.
+        /// txtFullName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox33;
+        protected global::System.Web.UI.WebControls.TextBox txtFullName;
         
         /// <summary>
-        /// DropDownList11 control.
+        /// dropDownListLanguage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList11;
+        protected global::System.Web.UI.WebControls.DropDownList dropDownListLanguage;
         
         /// <summary>
-        /// DropDownList1111 control.
+        /// dropDownListPublisherName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1111;
+        protected global::System.Web.UI.WebControls.DropDownList dropDownListPublisherName;
         
         /// <summary>
-        /// DropDownList111 control.
+        /// dropDownListAuthorName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList111;
+        protected global::System.Web.UI.WebControls.DropDownList dropDownListAuthorName;
         
         /// <summary>
-        /// TextBox4 control.
+        /// txtPublisherDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtPublisherDate;
         
         /// <summary>
-        /// ListBox1 control.
+        /// listBoxGenres control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBox1;
+        protected global::System.Web.UI.WebControls.ListBox listBoxGenres;
         
         /// <summary>
-        /// TextBox1a control.
+        /// txtEdition control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1a;
+        protected global::System.Web.UI.WebControls.TextBox txtEdition;
         
         /// <summary>
-        /// TextBox2s control.
+        /// txtBookCost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2s;
+        protected global::System.Web.UI.WebControls.TextBox txtBookCost;
         
         /// <summary>
-        /// TextBox3s control.
+        /// txtPages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3s;
+        protected global::System.Web.UI.WebControls.TextBox txtPages;
         
         /// <summary>
-        /// TextBox1ae control.
+        /// txtActualStock control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1ae;
+        protected global::System.Web.UI.WebControls.TextBox txtActualStock;
         
         /// <summary>
-        /// TextBox2ee control.
+        /// txtCurrentStock control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2ee;
+        protected global::System.Web.UI.WebControls.TextBox txtCurrentStock;
         
         /// <summary>
-        /// TextBox3e control.
+        /// txtIssuedBooks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3e;
+        protected global::System.Web.UI.WebControls.TextBox txtIssuedBooks;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtBookDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtBookDescription;
         
         /// <summary>
-        /// Button13 control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button13;
+        protected global::System.Web.UI.WebControls.Button btnAdd;
         
         /// <summary>
-        /// Button1s control.
+        /// btnUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1s;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
         
         /// <summary>
-        /// Button1ss control.
+        /// btnDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1ss;
+        protected global::System.Web.UI.WebControls.Button btnDelete;
         
         /// <summary>
-        /// GridView1 control.
+        /// gridViewBookInventory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView gridViewBookInventory;
     }
 }

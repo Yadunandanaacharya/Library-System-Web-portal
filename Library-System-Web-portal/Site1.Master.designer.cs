@@ -31,49 +31,49 @@ namespace Library_System_Web_portal {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// LinkButton4 control.
+        /// btnViewBooks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
+        protected global::System.Web.UI.WebControls.LinkButton btnViewBooks;
         
         /// <summary>
-        /// LinkButton1 control.
+        /// btnUserLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton btnUserLogin;
         
         /// <summary>
-        /// LinkButton2 control.
+        /// btnSignUp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        protected global::System.Web.UI.WebControls.LinkButton btnSignUp;
         
         /// <summary>
-        /// LinkButton3 control.
+        /// btnLogOut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
+        protected global::System.Web.UI.WebControls.LinkButton btnLogOut;
         
         /// <summary>
-        /// LinkButton7 control.
+        /// btnHelloUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton7;
+        protected global::System.Web.UI.WebControls.LinkButton btnHelloUser;
         
         /// <summary>
         /// ContentPlaceHolder1 control.
@@ -85,57 +85,57 @@ namespace Library_System_Web_portal {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
         
         /// <summary>
-        /// LinkButton6 control.
+        /// btnAdminLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton6;
+        protected global::System.Web.UI.WebControls.LinkButton btnAdminLogin;
         
         /// <summary>
-        /// LinkButton11 control.
+        /// btnAuthorManagement control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton11;
+        protected global::System.Web.UI.WebControls.LinkButton btnAuthorManagement;
         
         /// <summary>
-        /// LinkButton12 control.
+        /// btnPublisherManagement control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton12;
+        protected global::System.Web.UI.WebControls.LinkButton btnPublisherManagement;
         
         /// <summary>
-        /// LinkButton8 control.
+        /// btnBookInventory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton8;
+        protected global::System.Web.UI.WebControls.LinkButton btnBookInventory;
         
         /// <summary>
-        /// LinkButton9 control.
+        /// btnBookIssuing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton9;
+        protected global::System.Web.UI.WebControls.LinkButton btnBookIssuing;
         
         /// <summary>
-        /// LinkButton10 control.
+        /// btnMemberManagement control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton10;
+        protected global::System.Web.UI.WebControls.LinkButton btnMemberManagement;
     }
 }

@@ -13,102 +13,102 @@ namespace Library_System_Web_portal {
     public partial class UserSignUp {
         
         /// <summary>
-        /// TextBox13 control.
+        /// txtFullName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::System.Web.UI.WebControls.TextBox txtFullName;
         
         /// <summary>
-        /// TextBox2333 control.
+        /// txtDOB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2333;
+        protected global::System.Web.UI.WebControls.TextBox txtDOB;
         
         /// <summary>
-        /// TextBox133 control.
+        /// txtContactNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox133;
+        protected global::System.Web.UI.WebControls.TextBox txtContactNumber;
         
         /// <summary>
-        /// TextBox2332 control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2332;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// dropDownListState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList dropDownListState;
         
         /// <summary>
-        /// TextBox23632 control.
+        /// txtBoxCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox23632;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxCity;
         
         /// <summary>
-        /// TextBox236632 control.
+        /// txtBoxPinCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox236632;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxPinCode;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtBoxFullAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxFullAddress;
         
         /// <summary>
-        /// TextBox23535 control.
+        /// txtBoxUserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox23535;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxUserID;
         
         /// <summary>
-        /// TextBox3 control.
+        /// txtBoxPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxPassword;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtBoxSignUp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button TextBox2;
+        protected global::System.Web.UI.WebControls.Button txtBoxSignUp;
     }
 }

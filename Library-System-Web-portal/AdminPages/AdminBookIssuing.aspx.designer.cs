@@ -13,93 +13,93 @@ namespace Library_System_Web_portal {
     public partial class AdminBookIssuing {
         
         /// <summary>
-        /// TextBox2333 control.
+        /// txtMemberID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2333;
+        protected global::System.Web.UI.WebControls.TextBox txtMemberID;
         
         /// <summary>
-        /// TextBox13 control.
+        /// txtBookID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::System.Web.UI.WebControls.TextBox txtBookID;
         
         /// <summary>
-        /// Button1234 control.
+        /// btnBookID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1234;
+        protected global::System.Web.UI.WebControls.Button btnBookID;
         
         /// <summary>
-        /// TextBox2336 control.
+        /// txtMemberName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2336;
+        protected global::System.Web.UI.WebControls.TextBox txtMemberName;
         
         /// <summary>
-        /// TextBox1333 control.
+        /// txtBookName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1333;
+        protected global::System.Web.UI.WebControls.TextBox txtBookName;
         
         /// <summary>
-        /// TextBox23368 control.
+        /// txtStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox23368;
+        protected global::System.Web.UI.WebControls.TextBox txtStartDate;
         
         /// <summary>
-        /// TextBox13338 control.
+        /// txtEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13338;
+        protected global::System.Web.UI.WebControls.TextBox txtEndDate;
         
         /// <summary>
-        /// Button1 control.
+        /// btnIssue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnIssue;
         
         /// <summary>
-        /// Button3 control.
+        /// btnReturn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button btnReturn;
         
         /// <summary>
-        /// GridView1 control.
+        /// gridViewAuthorList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView gridViewAuthorList;
     }
 }
