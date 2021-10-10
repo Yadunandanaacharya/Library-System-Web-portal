@@ -1784,6 +1784,7 @@
     <Content Include="Images\signUp.jfif" />
     <Content Include="Images\userlogin.jfif" />
     <Content Include="Images\visitus.jfif" />
+    <Content Include="Scripts\Lib_SignUp.js" />
     <Content Include="UserPages\UserLogin.aspx" />
     <Content Include="UserPages\UserProfile.aspx" />
     <Content Include="UserPages\UserSignUp.aspx" />
@@ -1791,6 +1792,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="WebForm1.aspx" />
+    <Content Include="WebServices\Lib_LibraryService.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminPages\AdminAuthorMangement.aspx.cs">
@@ -1835,6 +1837,7 @@
     <Compile Include="AdminPages\AdminPublisherMangement.aspx.designer.cs">
       <DependentUpon>AdminPublisherMangement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BLL\Library.cs" />
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1877,6 +1880,10 @@
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\Lib_LibraryService.asmx.cs">
+      <DependentUpon>Lib_LibraryService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -1976,7 +1983,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -23,11 +23,24 @@ namespace Library_System_Web_portal_Service
                 Database db = DatabaseFactory.CreateDatabase("ConnectionStringSqlServer");
                 //SignUp signUp = null;
 
+
+                if(signUp.MemberID == 0)
+                {
+                    LibraryDAL.InsertUserSignUpDetails( db, signUp.MemberID, signUp.Password, signUp.FullName,
+                    signUp.DOB, signUp.ContactNo, signUp.EmailID, signUp.State, signUp.City, signUp.Pincode, signUp.FullAddress);
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new FaultException(ex.Message);
+            }
+
                 if(signUp.MemberID == "")
                 {
                     LibraryDAL.InsertUserSignUpDetails(db, signUp.MemberID, signUp.Password, );
                 }
             }
+
         } 
 
         
