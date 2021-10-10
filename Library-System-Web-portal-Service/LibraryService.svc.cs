@@ -17,7 +17,7 @@ namespace Library_System_Web_portal_Service
     {
         public void InsertUpdateUserDetails(SignUp signUp)
         {
-            //IDataReader dataReader = null;
+            IDataReader dataReader = null;
             try
             {
                 Database db = DatabaseFactory.CreateDatabase("ConnectionStringSqlServer");
