@@ -17,16 +17,21 @@ namespace Library_System_Web_portal_Service
     {
         public void InsertUpdateUserDetails(SignUp signUp)
         {
-            IDataReader dataReader = null;
+            //IDataReader dataReader = null;
             try
             {
                 Database db = DatabaseFactory.CreateDatabase("ConnectionStringSqlServer");
                 //SignUp signUp = null;
 
-                if(signUp.MemberID == "")
+                if(signUp.MemberID == 0)
                 {
-                    LibraryDAL.InsertUserSignUpDetails(db, signUp.MemberID, signUp.Password, );
+                    LibraryDAL.InsertUserSignUpDetails( db, signUp.MemberID, signUp.Password, signUp.FullName,
+                    signUp.DOB, signUp.ContactNo, signUp.EmailID, signUp.State, signUp.City, signUp.Pincode, signUp.FullAddress);
                 }
+            }
+            catch(Exception ex)
+            {
+                throw new FaultException(ex.Message);
             }
         } 
 

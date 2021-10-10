@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
+using Library_System_Web_portal_Service.Library;
+
+
 
 namespace Library_System_Web_portal_Service
 {
@@ -11,7 +15,14 @@ namespace Library_System_Web_portal_Service
     [ServiceContract]
     public interface ILibraryService
     {
+
+        #region library user sign up details
         [OperationContract]
-        void DoWork();
+        [WebInvoke(UriTemplate = "InsertUpdateUserDetails?signUp={signUp}", Method = "PUT", RequestFormat = WebMessageFormat.Xml)]
+        void InsertUpdateUserDetails(SignUp signUp);
+
+        #endregion
     }
+
+
 }

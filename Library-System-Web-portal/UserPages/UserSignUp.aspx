@@ -139,9 +139,9 @@
                         
                         <div class="row">
                             <div class="col-md-6">
-                                <label>User ID</label>
+                                <label>Member ID</label>
                                  <div class="form-group">
-                                    <asp:TextBox ID="txtBoxUserID" CssClass="form-control" runat="server" placeholder="User ID"></asp:TextBox>
+                                    <asp:TextBox ID="txtBoxMemberID" CssClass="form-control" runat="server" placeholder="Member ID"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">

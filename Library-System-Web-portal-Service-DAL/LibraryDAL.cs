@@ -13,7 +13,7 @@ namespace Library_System_Web_portal_Service_DAL
     public class LibraryDAL
     {
         #region User Details sign up
-        public static int InsertUserSignUpDetails(Database db,int memberID, string passWord, string account_status, string fullName,
+        public static int InsertUserSignUpDetails(Database db,int memberID, string passWord, string fullName,
             string dob, string contactNo, string email, string state, string city, string pinCode, string fullAddress)
         {
             StringBuilder sqlCmdBuilder = new StringBuilder();
@@ -28,7 +28,7 @@ namespace Library_System_Web_portal_Service_DAL
 
             db.AddInParameter(dbCmd, ":MEMBER_ID", DbType.Int32, memberID);
             db.AddInParameter(dbCmd, ":PASSWORD", DbType.String, passWord);
-            db.AddInParameter(dbCmd, ":ACCOUNT_STATUS", DbType.String, account_status);
+            db.AddInParameter(dbCmd, ":ACCOUNT_STATUS", DbType.String, "Pending");
             db.AddInParameter(dbCmd, ":FULL_NAME", DbType.String, fullName);
             db.AddInParameter(dbCmd, ":DOB", DbType.String, dob);
             db.AddInParameter(dbCmd, ":CONTACT_NO", DbType.String, contactNo);

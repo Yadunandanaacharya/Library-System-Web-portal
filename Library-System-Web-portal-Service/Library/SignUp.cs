@@ -19,7 +19,7 @@ namespace Library_System_Web_portal_Service.Library
         [DataMember] private string _city;
         [DataMember] private string _pincode;
         [DataMember] private string _fullAddress;
-        [DataMember] private string _memberID;
+        [DataMember] private int _memberID;
         [DataMember] private string _password;
         #endregion
 
@@ -32,7 +32,7 @@ namespace Library_System_Web_portal_Service.Library
         [DataMember] public string City;
         [DataMember] public string Pincode;
         [DataMember] public string FullAddress;
-        [DataMember] public string MemberID;
+        [DataMember] public int MemberID;
         [DataMember] public string Password;
         #endregion
     }
