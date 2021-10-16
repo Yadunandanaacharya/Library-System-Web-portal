@@ -64,13 +64,13 @@ namespace Library_System_Web_portal
             Response.Redirect("UserPages/UserSignUp.aspx");
         }
 
-       
+
         //protected void HelloUser(object sender, EventArgs e)
         //{
         //    Response.Redirect("UserPages/AdminLogin.aspx");
         //}
 
-        
+
 
     }
 }

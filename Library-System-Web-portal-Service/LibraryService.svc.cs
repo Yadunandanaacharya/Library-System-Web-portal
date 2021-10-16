@@ -4,10 +4,12 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using Microsoft.Practices.EnterpriseLibrary.Data;
+using MySql.Data.MySqlClient;
 using System.Data;
-using Library_System_Web_portal_Service.Library;
+//using Library_System_Web_portal_Service.Library;
 using Library_System_Web_portal_Service_DAL;
+using System.Configuration;
+using Library_System_Web_portal_Service.Library;
 
 namespace Library_System_Web_portal_Service
 {
@@ -15,21 +17,31 @@ namespace Library_System_Web_portal_Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select LibraryService.svc or LibraryService.svc.cs at the Solution Explorer and start debugging.
     public class LibraryService : ILibraryService
     {
-        public void InsertUpdateUserDetails(SignUp signUp)
+        public string InsertUpdateUserDetails(SignUpDetails signUp)
         {
             IDataReader dataReader = null;
             try
             {
-                Database db = DatabaseFactory.CreateDatabase("ConnectionStringSqlServer");
-                //SignUp signUp = null;
+                //Database db = DatabaseFactory.CreateDatabase("ConnectionStringMySQL");
 
-                if(signUp.MemberID == "")
+                //string connStr = "server=localhost;database=ELIBRARY_SYSTEM;uid=root;pwd=1234;";
+                //MySqlConnection conn = new MySqlConnection(connStr);
+
+                string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
+                MySqlConnection conn = new MySqlConnection(connectionString);
+                conn.Open();
+
+                if (signUp.MemberID == 0)
                 {
-                    LibraryDAL.InsertUserSignUpDetails(db, signUp.MemberID, signUp.Password, );
+                    signUp.MemberID = LibraryDAL.InsertUserSignUpDetails(conn, signUp.MemberID, signUp.Password, signUp.FullName,
+                    signUp.DOB, signUp.ContactNo, signUp.EmailID, signUp.State, signUp.City, signUp.Pincode, signUp.FullAddress);
                 }
+                return signUp.MemberID.ToString();
             }
-        } 
-
-        
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message);
+            }
+        }
     }
 }

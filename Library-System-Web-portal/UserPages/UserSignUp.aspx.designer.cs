@@ -85,13 +85,13 @@ namespace Library_System_Web_portal {
         protected global::System.Web.UI.WebControls.TextBox txtBoxFullAddress;
         
         /// <summary>
-        /// txtBoxUserID control.
+        /// txtBoxMemberID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBoxUserID;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxMemberID;
         
         /// <summary>
         /// txtBoxPassword control.
