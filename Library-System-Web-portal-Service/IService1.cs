@@ -2,10 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Web;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
 
-namespace Library_System_Web_portal_Service.Library
+namespace Library_System_Web_portal_Service
 {
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
+    [ServiceContract]
+    public interface IService1
+    {
+
+        [OperationContract]
+        //[WebInvoke(UriTemplate = "InsertUpdateUserDetails?signUp={signUp}", Method = "PUT", RequestFormat = WebMessageFormat.Xml)]
+        string InsertUpdateUserDetails(SignUp signUp);
+    }
+
     #region User sign up details
     [DataContract]
     public class SignUp
@@ -85,11 +97,8 @@ namespace Library_System_Web_portal_Service.Library
             set { _password = value; }
         }
         #endregion
-
     }
 
 
     #endregion
-
-
 }
