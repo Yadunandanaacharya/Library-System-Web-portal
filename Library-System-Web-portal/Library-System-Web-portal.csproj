@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DBD3CA71-9D33-42A6-83AF-27E17F4F1B9D}</ProjectGuid>
+    <ProjectGuid>{18788987-FA37-446A-A361-C7C53B418C91}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -43,49 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Data.Edm, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Data.Edm.5.7.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Data.OData.5.7.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Data.Services.Client.5.7.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Practices.EnterpriseLibrary.Common.dll.3.1.0\lib\2.0\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\EnterpriseLibrary.ExceptionHandling.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\EnterpriseLibrary.ExceptionHandling.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Practices.ObjectBuilder.dll.3.1.0\lib\2.0\Microsoft.Practices.ObjectBuilder.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAzure.Storage.8.0.1\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Rolosoft.Practices.EnterpriseLibrary, Version=1.0.7.0, Culture=neutral, PublicKeyToken=f3d79a9e3fd6c0ea, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rolosoft.Practices.EnterpriseLibrary.1.0.7\lib\net45\Rolosoft.Practices.EnterpriseLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -109,6 +69,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\LibraryService\LibraryService.disco" />
+    <None Include="Connected Services\LibraryService\configuration91.svcinfo" />
+    <None Include="Connected Services\LibraryService\configuration.svcinfo" />
+    <None Include="Connected Services\LibraryService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="AdminPages\AdminAuthorMangement.aspx" />
     <Content Include="AdminPages\AdminBookInventory.aspx" />
     <Content Include="AdminPages\AdminBookIssuing.aspx" />
@@ -1787,10 +1754,12 @@
     <Content Include="UserPages\UserLogin.aspx" />
     <Content Include="UserPages\UserProfile.aspx" />
     <Content Include="UserPages\UserSignUp.aspx" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="WebServices\LibraryWebService.asmx" />
+    <None Include="Connected Services\LibraryService\LibraryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminPages\AdminAuthorMangement.aspx.cs">
@@ -1835,6 +1804,12 @@
     <Compile Include="AdminPages\AdminPublisherMangement.aspx.designer.cs">
       <DependentUpon>AdminPublisherMangement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BLL\Library.cs" />
+    <Compile Include="Connected Services\LibraryService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1878,8 +1853,52 @@
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebServices\LibraryWebService.asmx.cs">
+      <DependentUpon>LibraryWebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\LibraryService\LibraryService.wsdl" />
+    <None Include="Connected Services\LibraryService\LibraryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LibraryService\LibraryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="font-awesome-4.7.0\less\animated.less" />
+    <Content Include="font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="font-awesome-4.7.0\less\core.less" />
+    <Content Include="font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="font-awesome-4.7.0\less\icons.less" />
+    <Content Include="font-awesome-4.7.0\less\larger.less" />
+    <Content Include="font-awesome-4.7.0\less\list.less" />
+    <Content Include="font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="font-awesome-4.7.0\less\path.less" />
+    <Content Include="font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="font-awesome-4.7.0\less\variables.less" />
+    <Content Include="font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="font-awesome-4.7.0\scss\_variables.scss" />
     <Content Include="fontawesome\less\brands.less" />
     <Content Include="fontawesome\less\fontawesome.less" />
     <Content Include="fontawesome\less\regular.less" />
@@ -1934,39 +1953,6 @@
     <Content Include="fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="fontawesome\webfonts\fa-solid-900.woff2" />
-    <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
-    <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
-    <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
-    <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
-    <Content Include="font-awesome-4.7.0\fonts\FontAwesome.otf" />
-    <Content Include="font-awesome-4.7.0\less\animated.less" />
-    <Content Include="font-awesome-4.7.0\less\bordered-pulled.less" />
-    <Content Include="font-awesome-4.7.0\less\core.less" />
-    <Content Include="font-awesome-4.7.0\less\fixed-width.less" />
-    <Content Include="font-awesome-4.7.0\less\font-awesome.less" />
-    <Content Include="font-awesome-4.7.0\less\icons.less" />
-    <Content Include="font-awesome-4.7.0\less\larger.less" />
-    <Content Include="font-awesome-4.7.0\less\list.less" />
-    <Content Include="font-awesome-4.7.0\less\mixins.less" />
-    <Content Include="font-awesome-4.7.0\less\path.less" />
-    <Content Include="font-awesome-4.7.0\less\rotated-flipped.less" />
-    <Content Include="font-awesome-4.7.0\less\screen-reader.less" />
-    <Content Include="font-awesome-4.7.0\less\stacked.less" />
-    <Content Include="font-awesome-4.7.0\less\variables.less" />
-    <Content Include="font-awesome-4.7.0\scss\font-awesome.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_animated.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_bordered-pulled.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_core.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_fixed-width.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_icons.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_larger.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_list.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_mixins.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_path.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_rotated-flipped.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_screen-reader.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_stacked.scss" />
-    <Content Include="font-awesome-4.7.0\scss\_variables.scss" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
@@ -1975,6 +1961,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\LibraryService\" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
@@ -1990,9 +1982,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4884</DevelopmentServerPort>
+          <DevelopmentServerPort>9672</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4884/</IISUrl>
+          <IISUrl>http://localhost:9672/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
