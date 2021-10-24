@@ -13,13 +13,13 @@ namespace Library_System_Web_portal_Service_DAL
     {
 
         #region User Details sign up
-        public static int InsertUserSignUpDetails(MySqlConnection conn, int memberID, string passWord, string fullName,
+        public static string InsertUserSignUpDetails(MySqlConnection conn, string memberID, string passWord, string fullName,
             string dob, string contactNo, string email, string state, string city, string pinCode, string fullAddress)
         {
             StringBuilder sqlCmdBuilder = new StringBuilder();
             sqlCmdBuilder.Append(" INSERT INTO LIB_MEMBER_MASTER (FMEMBER_ID,FPASSWORD,FACCOUNT_STATUS,FFULL_NAME,FDOB, ");
             sqlCmdBuilder.Append("  FCONTACT_NO, FEMAIL, FSTATE, FCITY, FPINCODE,FULL_ADDRESS) ");
-            sqlCmdBuilder.Append(" VALUES(0,@PASSWORD,@ACCOUNT_STATUS,@FULL_NAME,@DOB,@CONTACT_NO,@EMAIL,@STATE, ");
+            sqlCmdBuilder.Append(" VALUES(@MEMBER_ID,@PASSWORD,@ACCOUNT_STATUS,@FULL_NAME,@DOB,@CONTACT_NO,@EMAIL,@STATE, ");
             sqlCmdBuilder.Append(" @CITY,@PINCODE,@FULL_ADDRESS); ");
             sqlCmdBuilder.Append(" SELECT LAST_INSERT_ID(); ");
 
@@ -57,8 +57,22 @@ namespace Library_System_Web_portal_Service_DAL
             //db.ExecuteNonQuery(dbCmd);
 
             //return Convert.ToInt32(db.GetParameterValue(dbCmd, ":MEMBER_ID"));
-            return Convert.ToInt32(dbCmd.ExecuteScalar());
+            //return Convert.ToString(dbCmd.ExecuteScalar());
+            return dbCmd.ExecuteScalar().ToString();
         }
+
+        public IDataReader CheckUserExists(MySqlConnection conn, string memberID)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" SELECT * FROM LIB_MEMBER_MASTER WHERE FMEMBER_ID=@MEMBER_ID ");
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), conn);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@MEMBER_ID", memberID);
+            return dbCmd.ExecuteReader();
+        }
+
         #endregion
 
     }

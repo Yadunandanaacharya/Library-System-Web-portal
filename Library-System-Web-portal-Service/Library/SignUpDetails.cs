@@ -18,7 +18,7 @@ namespace Library_System_Web_portal_Service.Library
         public string _city;
         public string _pincode;
         public string _fullAddress;
-        public int _memberID;
+        public string _memberID;
         public string _password;
         #endregion
 
@@ -72,7 +72,7 @@ namespace Library_System_Web_portal_Service.Library
             set { _fullAddress = value; }
         }
         [DataMember]
-        public int MemberID
+        public string MemberID
         {
             get { return _memberID; }
             set { _memberID = value; }

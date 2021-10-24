@@ -69,6 +69,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminAuthorMangement.aspx" />
+    <Content Include="AdminBookInventory.aspx" />
+    <Content Include="AdminBookIssuing.aspx" />
+    <Content Include="AdminLogin.aspx" />
+    <Content Include="AdminMemberManagement.aspx" />
+    <Content Include="AdminPublisherMangement.aspx" />
     <None Include="Connected Services\LibraryService\LibraryService.disco" />
     <None Include="Connected Services\LibraryService\configuration91.svcinfo" />
     <None Include="Connected Services\LibraryService\configuration.svcinfo" />
@@ -1751,9 +1757,14 @@
     <Content Include="Images\signUp.jfif" />
     <Content Include="Images\userlogin.jfif" />
     <Content Include="Images\visitus.jfif" />
+    <Content Include="Scripts\jquery-2.2.2.min.js" />
+    <Content Include="Scripts\UserSignUpDetails.js" />
+    <Content Include="UserLogin.aspx" />
     <Content Include="UserPages\UserLogin.aspx" />
     <Content Include="UserPages\UserProfile.aspx" />
     <Content Include="UserPages\UserSignUp.aspx" />
+    <Content Include="UserProfile.aspx" />
+    <Content Include="UserSignUp.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WebServices\LibraryWebService.asmx" />
@@ -1762,6 +1773,41 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminAuthorMangement.aspx.cs">
+      <DependentUpon>AdminAuthorMangement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAuthorMangement.aspx.designer.cs">
+      <DependentUpon>AdminAuthorMangement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminBookInventory.aspx.cs">
+      <DependentUpon>AdminBookInventory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminBookInventory.aspx.designer.cs">
+      <DependentUpon>AdminBookInventory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminBookIssuing.aspx.cs">
+      <DependentUpon>AdminBookIssuing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminBookIssuing.aspx.designer.cs">
+      <DependentUpon>AdminBookIssuing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMemberManagement.aspx.cs">
+      <DependentUpon>AdminMemberManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMemberManagement.aspx.designer.cs">
+      <DependentUpon>AdminMemberManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPages\AdminAuthorMangement.aspx.cs">
       <DependentUpon>AdminAuthorMangement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1804,6 +1850,13 @@
     <Compile Include="AdminPages\AdminPublisherMangement.aspx.designer.cs">
       <DependentUpon>AdminPublisherMangement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminPublisherMangement.aspx.cs">
+      <DependentUpon>AdminPublisherMangement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPublisherMangement.aspx.designer.cs">
+      <DependentUpon>AdminPublisherMangement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BLL\Library.cs" />
     <Compile Include="Connected Services\LibraryService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -1825,6 +1878,13 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="UserLogin.aspx.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserLogin.aspx.designer.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\UserLogin.aspx.cs">
       <DependentUpon>UserLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1844,6 +1904,20 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\UserSignUp.aspx.designer.cs">
+      <DependentUpon>UserSignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserSignUp.aspx.cs">
+      <DependentUpon>UserSignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserSignUp.aspx.designer.cs">
       <DependentUpon>UserSignUp.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">

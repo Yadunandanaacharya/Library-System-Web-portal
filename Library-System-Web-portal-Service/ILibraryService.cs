@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 using Library_System_Web_portal_Service.Library;
 
@@ -13,9 +14,14 @@ namespace Library_System_Web_portal_Service
     public interface ILibraryService
     {
         [OperationContract]
-        //    //[WebInvoke(UriTemplate = "InsertUpdateUserDetails?signUp={signUp}", Method = "PUT", RequestFormat = WebMessageFormat.Xml)]
+        [WebInvoke(UriTemplate = "InsertUpdateUserDetails?signUp={signUp}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
         string InsertUpdateUserDetails(SignUpDetails signUp);
     }
+
+
+    //[OperationContract]
+    //[WebInvoke(UriTemplate = "InsertDepartment?departmentinfo={info}&basicParam={basicParam}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
+    //int InsertDepartment(Company.DepartmentInfo departmentinfo, BasicParam basicParam);
 
 
     //#region User sign up details

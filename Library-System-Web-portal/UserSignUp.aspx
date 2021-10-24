@@ -1,23 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="UserSignUp.aspx.cs" Inherits="Library_System_Web_portal.UserSignUp" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="UserSignUp.aspx.cs" Inherits="Library_System_Web_portal.UserSignUp1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptLocalization="true">
-        <Services>
-            <asp:ServiceReference Path="WebServices/LibraryWebService.asmx" />
-        </Services>
-    </asp:ScriptManager>--%>
-    <%--<asp:ScriptManager ID="ScriptManager1" runat="server" ScriptPath="../Scripts/UserSignUpDetails.js"></asp:ScriptManager>--%>
-   <%-- <asp:ScriptManager ID="ScriptManager1" runat="server" >
-        <Services>
-            <asp:ServiceReference Path="../WebServices/LibraryWebService.asmx" />
-        </Services>
-    </asp:ScriptManager>--%>
 
-
-    <script src="../Scripts/jquery-2.2.2.min.js"></script>
-    <script type="text/javascript" src="../Scripts/UserSignUpDetails.js" ></script>
    
+    
+    <script type="text/javascript" src="../Scripts/UserSignUpDetails.js"></script>
     
     <div class="container">
         <div class="row">
@@ -32,6 +20,7 @@
                                 </center>
                             </div>
                         </div>
+                        <button type="button"  class="btn btn-primary float-right" onclick="javascript:dataInsertSuccessModal();return false;">Add Object<i class=""></i></button>
 
                         <div class="row">
                             <div class="col">
@@ -60,7 +49,6 @@
                                 <label>Date of Birth</label>
                                  <div class="form-group">
                                      <input  type="date" id="txtDOB" class="form-control" placeholder="Date of Birth" >
-                                
                                      
                                   <%--  <asp:TextBox ID="txtDOB" CssClass="form-control" runat="server" placeholder="Date of Birth"
                                         TextMode="Date"></asp:TextBox>--%>
@@ -180,8 +168,8 @@
                             <div class="col-md-6">
                                 <label>Member ID</label>
                                  <div class="form-group">
-                                    <asp:TextBox ID="txtBoxMemberID" CssClass="form-control" runat="server" placeholder="Member ID"></asp:TextBox>
-                                </div>
+                                <input type="text" id="txtBoxMemberID" class="form-control"  placeholder="Member ID" >
+                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label>Password</label>
@@ -211,6 +199,46 @@
                             </div>
                         </div>
 
+                        <div class="modal fade" id="dataInserted" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal cust" id="divDataInsertedModal" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog modal-lg modal-top-custom">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <p class="modal-title" style="color: #4C96F9" id="formTitleForValuationClassModal">Data Inserted Successfully...
+
+
+                                        </p>
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span class="text" id="modalClose" onclick="Clear(); return false;">Close</span>&times;
+                                        </button>
+                                        <p style="color: #4C96F9"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
 
 
                     </div>
@@ -222,6 +250,4 @@
             </div>
         </div>
     </div>
-
-
 </asp:Content>

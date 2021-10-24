@@ -10,33 +10,33 @@
 namespace Library_System_Web_portal {
     
     
-    public partial class UserSignUp {
+    public partial class AdminLogin1 {
         
         /// <summary>
-        /// dropDownListState control.
+        /// txtAdminID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropDownListState;
+        protected global::System.Web.UI.WebControls.TextBox txtAdminID;
         
         /// <summary>
-        /// txtBoxMemberID control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBoxMemberID;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
-        /// btnSignUp control.
+        /// btnLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSignUp;
+        protected global::System.Web.UI.WebControls.Button btnLogin;
     }
 }
