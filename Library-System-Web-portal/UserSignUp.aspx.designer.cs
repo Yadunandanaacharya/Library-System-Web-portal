@@ -10,7 +10,7 @@
 namespace Library_System_Web_portal {
     
     
-    public partial class UserSignUp {
+    public partial class UserSignUp1 {
         
         /// <summary>
         /// dropDownListState control.
@@ -20,15 +20,6 @@ namespace Library_System_Web_portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dropDownListState;
-        
-        /// <summary>
-        /// txtBoxMemberID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBoxMemberID;
         
         /// <summary>
         /// btnSignUp control.

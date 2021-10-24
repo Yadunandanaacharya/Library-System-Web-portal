@@ -8,7 +8,7 @@
       <xs:element minOccurs="0" name="EmailID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FullAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="MemberID" type="xs:int" />
+      <xs:element minOccurs="0" name="MemberID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Pincode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />

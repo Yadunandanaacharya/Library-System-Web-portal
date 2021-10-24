@@ -31,12 +31,22 @@ namespace Library_System_Web_portal_Service
                 MySqlConnection conn = new MySqlConnection(connectionString);
                 conn.Open();
 
-                if (signUp.MemberID == 0)
+                LibraryDAL dAL = new LibraryDAL();
+                dataReader =  dAL.CheckUserExists(conn, signUp.MemberID);
+                if(dataReader.Read())
                 {
+                    dataReader.Close();
+                    conn.Close();
+                    
+
+                }
+                else
+                {
+                    dataReader.Close();
                     signUp.MemberID = LibraryDAL.InsertUserSignUpDetails(conn, signUp.MemberID, signUp.Password, signUp.FullName,
                     signUp.DOB, signUp.ContactNo, signUp.EmailID, signUp.State, signUp.City, signUp.Pincode, signUp.FullAddress);
                 }
-                return signUp.MemberID.ToString();
+                return signUp.MemberID;
             }
             catch (Exception ex)
             {

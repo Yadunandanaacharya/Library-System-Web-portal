@@ -42,7 +42,7 @@ namespace Library_System_Web_portal.LibraryService {
         private string FullNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int MemberIDField;
+        private string MemberIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
@@ -142,12 +142,12 @@ namespace Library_System_Web_portal.LibraryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int MemberID {
+        public string MemberID {
             get {
                 return this.MemberIDField;
             }
             set {
-                if ((this.MemberIDField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.MemberIDField, value) != true)) {
                     this.MemberIDField = value;
                     this.RaisePropertyChanged("MemberID");
                 }
