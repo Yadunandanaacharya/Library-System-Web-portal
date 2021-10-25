@@ -17,6 +17,7 @@ namespace Library_System_Web_portal_Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select LibraryService.svc or LibraryService.svc.cs at the Solution Explorer and start debugging.
     public class LibraryService : ILibraryService
     {
+        #region user sign up, login
         public string InsertUpdateUserDetails(SignUpDetails signUp)
         {
             IDataReader dataReader = null;
@@ -53,5 +54,32 @@ namespace Library_System_Web_portal_Service
                 throw new FaultException(ex.Message);
             }
         }
+
+        public string CheckUserExists(SignUpDetails signUp)
+        {
+            IDataReader dataReader = null;
+            bool exist;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
+
+            var memberID = signUp.MemberID;
+            LibraryDAL dAL = new LibraryDAL();
+            dataReader = dAL.CheckUserExists(conn, signUp.MemberID);
+            if (dataReader.Read())
+            {
+                exist = true;
+                memberID = signUp.MemberID;
+                dataReader.Close();
+            }
+            else
+            {
+                exist = false;
+                memberID = "";
+            }
+            return memberID;
+        }
+        #endregion
     }
 }

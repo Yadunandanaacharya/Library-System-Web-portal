@@ -16,6 +16,10 @@ namespace Library_System_Web_portal_Service
         [OperationContract]
         [WebInvoke(UriTemplate = "InsertUpdateUserDetails?signUp={signUp}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
         string InsertUpdateUserDetails(SignUpDetails signUp);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "CheckUserExists?signUp={signUp}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
+        string CheckUserExists(SignUpDetails signUp);
     }
 
 

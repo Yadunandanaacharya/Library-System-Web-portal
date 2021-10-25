@@ -212,6 +212,12 @@ namespace Library_System_Web_portal.LibraryService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/InsertUpdateUserDetails", ReplyAction="http://tempuri.org/ILibraryService/InsertUpdateUserDetailsResponse")]
         System.Threading.Tasks.Task<string> InsertUpdateUserDetailsAsync(Library_System_Web_portal.LibraryService.SignUpDetails signUp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/CheckUserExists", ReplyAction="http://tempuri.org/ILibraryService/CheckUserExistsResponse")]
+        string CheckUserExists(Library_System_Web_portal.LibraryService.SignUpDetails signUp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/CheckUserExists", ReplyAction="http://tempuri.org/ILibraryService/CheckUserExistsResponse")]
+        System.Threading.Tasks.Task<string> CheckUserExistsAsync(Library_System_Web_portal.LibraryService.SignUpDetails signUp);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -247,6 +253,14 @@ namespace Library_System_Web_portal.LibraryService {
         
         public System.Threading.Tasks.Task<string> InsertUpdateUserDetailsAsync(Library_System_Web_portal.LibraryService.SignUpDetails signUp) {
             return base.Channel.InsertUpdateUserDetailsAsync(signUp);
+        }
+        
+        public string CheckUserExists(Library_System_Web_portal.LibraryService.SignUpDetails signUp) {
+            return base.Channel.CheckUserExists(signUp);
+        }
+        
+        public System.Threading.Tasks.Task<string> CheckUserExistsAsync(Library_System_Web_portal.LibraryService.SignUpDetails signUp) {
+            return base.Channel.CheckUserExistsAsync(signUp);
         }
     }
 }

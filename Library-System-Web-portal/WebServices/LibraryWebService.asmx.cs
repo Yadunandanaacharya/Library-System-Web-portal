@@ -25,6 +25,12 @@ namespace Library_System_Web_portal.WebServices
             return BLL.Library.InsertUpdateUserDetails(signUp);
         }
 
+        [System.Web.Services.WebMethod(EnableSession =true)]
+        [System.Web.Script.Services.ScriptMethod(ResponseFormat =System.Web.Script.Services.ResponseFormat.Xml)]
+        public string CheckUserExists(SignUpDetails signUp)
+        {
+            return BLL.Library.CheckUserExists(signUp);
+        }
 
     }
 }
