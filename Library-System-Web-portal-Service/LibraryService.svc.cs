@@ -23,31 +23,32 @@ namespace Library_System_Web_portal_Service
             IDataReader dataReader = null;
             try
             {
+                string insert = "";
                 //Database db = DatabaseFactory.CreateDatabase("ConnectionStringMySQL");
 
                 //string connStr = "server=localhost;database=ELIBRARY_SYSTEM;uid=root;pwd=1234;";
                 //MySqlConnection conn = new MySqlConnection(connStr);
 
                 string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
-                MySqlConnection conn = new MySqlConnection(connectionString);
-                conn.Open();
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection.Open();
 
                 LibraryDAL dAL = new LibraryDAL();
-                dataReader =  dAL.CheckUserExists(conn, signUp.MemberID);
+                dataReader = LibraryDAL.CheckUserExists(connection, signUp.MemberID);
                 if(dataReader.Read())
                 {
                     dataReader.Close();
-                    conn.Close();
-                    
+                    connection.Close();
 
                 }
                 else
                 {
                     dataReader.Close();
-                    signUp.MemberID = LibraryDAL.InsertUserSignUpDetails(conn, signUp.MemberID, signUp.Password, signUp.FullName,
+                    signUp.MemberID = LibraryDAL.InsertUserSignUpDetails(connection, signUp.MemberID, signUp.Password, signUp.FullName,
                     signUp.DOB, signUp.ContactNo, signUp.EmailID, signUp.State, signUp.City, signUp.Pincode, signUp.FullAddress);
+                     insert = "true";
                 }
-                return signUp.MemberID;
+                return insert;
             }
             catch (Exception ex)
             {
@@ -55,30 +56,46 @@ namespace Library_System_Web_portal_Service
             }
         }
 
-        public string CheckUserExists(SignUpDetails signUp)
+        public SignUpDetailLists CheckUserExists(SignUpDetails signUp)
         {
             IDataReader dataReader = null;
-            bool exist;
-
-            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
-            MySqlConnection conn = new MySqlConnection(connectionString);
-            conn.Open();
-
-            var memberID = signUp.MemberID;
-            LibraryDAL dAL = new LibraryDAL();
-            dataReader = dAL.CheckUserExists(conn, signUp.MemberID);
-            if (dataReader.Read())
+            try
             {
-                exist = true;
-                memberID = signUp.MemberID;
+                SignUpDetailLists signUpDetailLists = new SignUpDetailLists();
+                List<SignUpDetails> signUpIs = new List<SignUpDetails>();
+                string exist;
+
+                string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection.Open();
+
+                var memberID = signUp.MemberID;
+                LibraryDAL dAL = new LibraryDAL();
+
+                //In admin table check whether user exists or not
+                dataReader = dAL.CheckUserExistsAdminTable(connection, signUp.MemberID, signUp.Password);
+                while (dataReader.Read())
+                {
+                    SignUpDetails signUpDetails = new SignUpDetails();
+                    signUpDetails.MemberID = dataReader.GetString(dataReader.GetOrdinal("FMEMBER_ID"));
+                    signUpDetailLists.SignUpDetails.Add(signUpDetails);
+
+                    #region Session variables
+                    #endregion
+                }
                 dataReader.Close();
+                return signUpDetailLists;
             }
-            else
+            catch(Exception ex)
             {
-                exist = false;
-                memberID = "";
+                throw ex;
             }
-            return memberID;
+            finally
+            {
+                if (dataReader != null && !dataReader.IsClosed)
+                    dataReader.Close();
+            }
+            
         }
         #endregion
     }

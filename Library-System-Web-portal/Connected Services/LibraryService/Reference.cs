@@ -203,6 +203,68 @@ namespace Library_System_Web_portal.LibraryService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SignUpDetailLists", Namespace="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class SignUpDetailLists : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Library_System_Web_portal.LibraryService.SignUpDetails[] SignUpDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalRecordsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Library_System_Web_portal.LibraryService.SignUpDetails[] SignUpDetails {
+            get {
+                return this.SignUpDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SignUpDetailsField, value) != true)) {
+                    this.SignUpDetailsField = value;
+                    this.RaisePropertyChanged("SignUpDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalRecords {
+            get {
+                return this.TotalRecordsField;
+            }
+            set {
+                if ((this.TotalRecordsField.Equals(value) != true)) {
+                    this.TotalRecordsField = value;
+                    this.RaisePropertyChanged("TotalRecords");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LibraryService.ILibraryService")]
     public interface ILibraryService {
@@ -214,10 +276,10 @@ namespace Library_System_Web_portal.LibraryService {
         System.Threading.Tasks.Task<string> InsertUpdateUserDetailsAsync(Library_System_Web_portal.LibraryService.SignUpDetails signUp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/CheckUserExists", ReplyAction="http://tempuri.org/ILibraryService/CheckUserExistsResponse")]
-        string CheckUserExists(Library_System_Web_portal.LibraryService.SignUpDetails signUp);
+        Library_System_Web_portal.LibraryService.SignUpDetailLists CheckUserExists(Library_System_Web_portal.LibraryService.SignUpDetails signUp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/CheckUserExists", ReplyAction="http://tempuri.org/ILibraryService/CheckUserExistsResponse")]
-        System.Threading.Tasks.Task<string> CheckUserExistsAsync(Library_System_Web_portal.LibraryService.SignUpDetails signUp);
+        System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.SignUpDetailLists> CheckUserExistsAsync(Library_System_Web_portal.LibraryService.SignUpDetails signUp);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -255,11 +317,11 @@ namespace Library_System_Web_portal.LibraryService {
             return base.Channel.InsertUpdateUserDetailsAsync(signUp);
         }
         
-        public string CheckUserExists(Library_System_Web_portal.LibraryService.SignUpDetails signUp) {
+        public Library_System_Web_portal.LibraryService.SignUpDetailLists CheckUserExists(Library_System_Web_portal.LibraryService.SignUpDetails signUp) {
             return base.Channel.CheckUserExists(signUp);
         }
         
-        public System.Threading.Tasks.Task<string> CheckUserExistsAsync(Library_System_Web_portal.LibraryService.SignUpDetails signUp) {
+        public System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.SignUpDetailLists> CheckUserExistsAsync(Library_System_Web_portal.LibraryService.SignUpDetails signUp) {
             return base.Channel.CheckUserExistsAsync(signUp);
         }
     }

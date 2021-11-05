@@ -51,6 +51,10 @@ function dataInsertSuccessModal() {
     jQuery("#divDataInsertedModal").modal("show");
 }
 
+
+
+
+
 //for login page check user exists or not
 function CheckUserExists() {
     var memberID = jQuery("#txtMemberID").val();
@@ -61,19 +65,24 @@ function CheckUserExists() {
 
     jQuery.ajax({
         type: "POST",
+        //url: "WebServices/LibraryWebService.asmx/InsertUpdateUserDetails",
         url: "WebServices/LibraryWebService.asmx/CheckUserExists",
         data: JSON.stringify({ signUp: signUp }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (json) {
-            if (json !== undefined && json !== undefined && json !== null) {
+            if (json != undefined && json.d != undefined && json != null) {
                 var returnBasicInfo = json;
-                dataInsertSuccessModal();
+                dataInsertSuccessModalUserLogin();
             }
         }
     });
 }
 
+function dataInsertSuccessModalUserLogin() {
+
+    jQuery("#divDataInsertedModalUserLogin").modal("show");
+}
 
 //#region for test
 function test() {

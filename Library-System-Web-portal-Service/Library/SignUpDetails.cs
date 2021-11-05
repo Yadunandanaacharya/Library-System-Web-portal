@@ -7,6 +7,13 @@ using System.Web;
 namespace Library_System_Web_portal_Service.Library
 {
     [DataContract]
+    public class SignUpDetailLists
+    {
+        [DataMember] public List<SignUpDetails> SignUpDetails { get; set; } = new List<SignUpDetails>();
+        [DataMember] public int TotalRecords { get; set; } = 0;
+    }
+
+    [DataContract]
     public class SignUpDetails
     {
         #region private fields

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Data.Common;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Library_System_Web_portal_Service_DAL
 {
     public class LibraryDAL
     {
-
         #region User Details sign up
         public static string InsertUserSignUpDetails(MySqlConnection conn, string memberID, string passWord, string fullName,
             string dob, string contactNo, string email, string state, string city, string pinCode, string fullAddress)
@@ -58,10 +59,13 @@ namespace Library_System_Web_portal_Service_DAL
 
             //return Convert.ToInt32(db.GetParameterValue(dbCmd, ":MEMBER_ID"));
             //return Convert.ToString(dbCmd.ExecuteScalar());
+            
             return dbCmd.ExecuteScalar().ToString();
+
         }
 
-        public IDataReader CheckUserExists(MySqlConnection conn, string memberID)
+        //checking in lib_admin_login table whether user exists
+        public static IDataReader CheckUserExists(MySqlConnection conn, string memberID)
         {
             StringBuilder sqlCmdBuilder = new StringBuilder();
             sqlCmdBuilder.Append(" SELECT * FROM LIB_MEMBER_MASTER WHERE FMEMBER_ID=@MEMBER_ID ");
@@ -73,6 +77,59 @@ namespace Library_System_Web_portal_Service_DAL
             return dbCmd.ExecuteReader();
         }
 
+        //checking in lib_admin_login table whether user exists
+        public IDataReader CheckUserExistsAdminTable(MySqlConnection conn, string memberID, string passWord)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" SELECT * FROM LIB_ADMIN_LOGIN WHERE FMEMBER_ID=@MEMBER_ID ");
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), conn);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@MEMBER_ID", memberID);
+            dbCmd.Parameters.AddWithValue("@PASSWORD", passWord);
+            return dbCmd.ExecuteReader();
+        }
+        #endregion
+
+        #region LoginInfo UserLogin and AdminLogin
+        public static IDataReader GetUserDetails(string memberID, string passWord)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" SELECT COUNT(*) as FTOTAL, ");
+            sqlCmdBuilder.Append(" IFNULL(FMEMBER_ID,'') AS FMEMBER_ID, IFNULL(FPASSWORD,'') AS FPASSWORD, IFNULL(FFULL_NAME,'') AS FFULL_NAME, IFNULL(FACCOUNT_STATUS,0) AS FACCOUNT_STATUS ");
+            sqlCmdBuilder.Append(" FROM LIB_MEMBER_MASTER WHERE FMEMBER_ID=@MEMBER_ID AND FPASSWORD=@PASSWORD ");
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@MEMBER_ID", memberID.Trim());
+            dbCmd.Parameters.AddWithValue("@PASSWORD", passWord.Trim());
+            return dbCmd.ExecuteReader();
+        }
+
+        public static IDataReader CheckUserAdmin(string memberID, string passWord)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" SELECT COUNT(*) as FTOTAL, ");
+            sqlCmdBuilder.Append(" IFNULL(FMEMBER_ID,'') AS FMEMBER_ID, IFNULL(FPASSWORD,'') AS FPASSWORD, IFNULL(FFULL_NAME,'') AS FFULL_NAME ");
+            sqlCmdBuilder.Append(" FROM LIB_ADMIN_LOGIN WHERE FMEMBER_ID=@MEMBER_ID AND FPASSWORD=@PASSWORD ");
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@MEMBER_ID", memberID);
+            dbCmd.Parameters.AddWithValue("@PASSWORD", passWord);
+            return dbCmd.ExecuteReader();
+        }
         #endregion
 
     }

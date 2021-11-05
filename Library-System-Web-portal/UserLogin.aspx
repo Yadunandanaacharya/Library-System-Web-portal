@@ -2,7 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <script src="Scripts/UserSignUpDetails.js"></script>
     <div class="container">
         <div class="row">
@@ -33,21 +32,29 @@
                                <div class="d-grid gap-2">
                                     <label>Member ID</label>
                                  <div class="form-group">
-                                    <input type="text" id="txtMemberID" class="form-control" placeholder="Full Name" >
+                                    <%--<input type="text" id="txtMemberID" class="form-control" placeholder="Full Name" >--%>
                                 
+                                     <asp:TextBox ID="txtMemberID"  CssClass="form-control" runat="server"
+                                          MaxLength="50" ToolTip="Please enter Member ID "></asp:TextBox>
+
                                  </div>
 
                                 <label>Password</label>
                                 <div class="form-group">
                                     
-                               <input type="text" id="txtPassword" class="form-control" placeholder="Password" >
+                               <%--<input type="text" id="txtPassword" class="form-control" placeholder="Password" >--%>
+
+                                    <asp:TextBox ID="txtPassword"  CssClass="form-control" runat="server"
+                                           MaxLength="50" ToolTip="Please enter Password "></asp:TextBox>
                                 
                                     </div>
                                 
-                                    <div class="form-group">
+                                   <%-- <div class="form-group">
                                         <input id="btnLogIn" class="btn btn-primary w-100 btn-lg" type="button" value="Login" onclick="CheckUserExists(); " />
-                                    </div>
+                                    </div>--%>
                                     
+                                   <asp:LinkButton ID="lnkBtnLogin" CssClass="btn btn-primary w-100 btn-lg" runat="server" Text="Login"
+                                       OnClick="btnLogin_Click"></asp:LinkButton>
 
                                      <div class="form-group">
                                        <a href="UserSignUp.aspx"> 
@@ -58,6 +65,24 @@
                             </div>
                         </div>
 
+
+                        <div class="modal cust" id="divDataInsertedModalUserLogin" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog modal-lg modal-top-custom">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <p class="modal-title" style="color: #4C96F9" id="formTitleForValuationClassModal">You have logged in Successfully!!
+
+
+                                        </p>
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span class="text" id="modalClose" onclick="Clear(); return false;">Close</span>&times;
+                                        </button>
+                                        <p style="color: #4C96F9"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

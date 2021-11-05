@@ -38,11 +38,16 @@
                                 <label>Password</label>
                                 <div class="form-group">
                                     <asp:TextBox ID="txtPassword" CssClass="form-control" runat="server" placeholder="Password"
-                                        TextMode="Password"></asp:TextBox>
+                                        TextMode="Password" OnClick="btnLogin_Click"></asp:TextBox>
+
                                 </div>
-                                
                                     <div class="form-group">
-                                        <asp:Button ID="btnLogin" class="btn btn-primary w-100 btn-lg" runat="server" Text="Login" />
+                                        <%--<asp:Button ID="btnLogin" class="btn btn-primary w-100 btn-lg" runat="server" Text="Login" />--%>
+                                      <%--  <asp:LinkButton ID="btnLogin" CssClass="btn btn-primary w-100 btn-lg" runat="server" Text="Login"
+                                       OnClick="btnLogin_Click"></asp:LinkButton>--%>
+
+                                   <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary w-100 btn-lg" runat="server" OnClick="btnLogin_Click">Login</asp:LinkButton>
+
                                     </div>
                                     
 

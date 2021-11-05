@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=8.0.26.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -78,6 +79,9 @@
     <None Include="Connected Services\LibraryService\LibraryService.disco" />
     <None Include="Connected Services\LibraryService\configuration91.svcinfo" />
     <None Include="Connected Services\LibraryService\configuration.svcinfo" />
+    <Content Include="Connected Services\LibraryService\Library_System_Web_portal.LibraryService.SignUpDetailLists.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\LibraryService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -2042,7 +2046,12 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\LibraryService\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Library-System-Web-portal-Service\Library-System-Web-portal-Service.csproj">
+      <Project>{e6ddf6c7-ca92-410b-8920-830462357f95}</Project>
+      <Name>Library-System-Web-portal-Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

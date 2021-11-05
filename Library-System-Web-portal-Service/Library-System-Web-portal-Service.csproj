@@ -80,7 +80,9 @@
     <Compile Include="LibraryService.svc.cs">
       <DependentUpon>LibraryService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Library\LoginInfo.cs" />
     <Compile Include="Library\SignUpDetails.cs" />
+    <Compile Include="LogInInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
