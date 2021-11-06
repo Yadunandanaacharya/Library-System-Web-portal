@@ -1763,6 +1763,7 @@
     <Content Include="Images\visitus.jfif" />
     <Content Include="Scripts\jquery-2.2.2.min.js" />
     <Content Include="Scripts\UserSignUpDetails.js" />
+    <Content Include="UserControls\Pager.ascx" />
     <Content Include="UserLogin.aspx" />
     <Content Include="UserPages\UserLogin.aspx" />
     <Content Include="UserPages\UserProfile.aspx" />
@@ -1881,6 +1882,13 @@
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Pager.ascx.cs">
+      <DependentUpon>Pager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Pager.ascx.designer.cs">
+      <DependentUpon>Pager.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserLogin.aspx.cs">
       <DependentUpon>UserLogin.aspx</DependentUpon>
@@ -2052,6 +2060,7 @@
       <Name>Library-System-Web-portal-Service</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

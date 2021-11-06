@@ -14,11 +14,8 @@
         </Services>
     </asp:ScriptManager>--%>
 
-
-    <script src="../Scripts/jquery-2.2.2.min.js"></script>
     <script type="text/javascript" src="../Scripts/UserSignUpDetails.js" ></script>
    
-    
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
@@ -180,7 +177,8 @@
                             <div class="col-md-6">
                                 <label>Member ID</label>
                                  <div class="form-group">
-                                    <asp:TextBox ID="txtBoxMemberID" CssClass="form-control" runat="server" placeholder="Member ID"></asp:TextBox>
+                                    <%--<asp:TextBox ID="txtBoxMemberID" CssClass="form-control" runat="server" placeholder="Member ID"></asp:TextBox>--%>
+                                     <input type="text" id="txtBoxMemberID" class="form-control"  placeholder="Member ID" >
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -211,6 +209,23 @@
                             </div>
                         </div>
 
+                        <div class="modal cust" id="divDataInsertedModal" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog modal-lg modal-top-custom">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <p class="modal-title" style="color: #4C96F9" id="formTitleForValuationClassModal">Data Inserted Successfully...
+
+
+                                        </p>
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span class="text" id="modalClose" onclick="Clear(); return false;">Close</span>&times;
+                                        </button>
+                                        <p style="color: #4C96F9"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
                     </div>
