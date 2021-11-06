@@ -1,9 +1,8 @@
 ﻿//jQuery.UserSignUpDetails.ServicePath = "";
 
-
-
 var singUp = document.getElementById("btnSignUp");
 
+//insert user details 
 function InsertUserSignUpDetails() {
     
     var name = jQuery("#txtFullName").val();
@@ -46,11 +45,44 @@ function InsertUserSignUpDetails() {
     });
 }
 
+//popup modal on sucessful insertion
 function dataInsertSuccessModal() {
     
     jQuery("#divDataInsertedModal").modal("show");
 }
 
+
+
+
+
+//for login page check user exists or not
+function CheckUserExists() {
+    var memberID = jQuery("#txtMemberID").val();
+    var passWord = jQuery("#txtPassword").val();
+    var signUp = {};
+    signUp.MemberID = memberID;
+    signUp.Password = passWord;
+
+    jQuery.ajax({
+        type: "POST",
+        //url: "WebServices/LibraryWebService.asmx/InsertUpdateUserDetails",
+        url: "WebServices/LibraryWebService.asmx/CheckUserExists",
+        data: JSON.stringify({ signUp: signUp }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (json) {
+            if (json != undefined && json.d != undefined && json != null) {
+                var returnBasicInfo = json;
+                dataInsertSuccessModalUserLogin();
+            }
+        }
+    });
+}
+
+function dataInsertSuccessModalUserLogin() {
+
+    jQuery("#divDataInsertedModalUserLogin").modal("show");
+}
 
 //#region for test
 function test() {

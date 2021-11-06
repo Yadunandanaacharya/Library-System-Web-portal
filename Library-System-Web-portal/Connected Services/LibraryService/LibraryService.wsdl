@@ -13,16 +13,35 @@
   <wsdl:message name="ILibraryService_InsertUpdateUserDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertUpdateUserDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="ILibraryService_CheckUserExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserExists" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_CheckUserExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserExistsResponse" />
+  </wsdl:message>
   <wsdl:portType name="ILibraryService">
     <wsdl:operation name="InsertUpdateUserDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/InsertUpdateUserDetails" message="tns:ILibraryService_InsertUpdateUserDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/InsertUpdateUserDetailsResponse" message="tns:ILibraryService_InsertUpdateUserDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/CheckUserExists" message="tns:ILibraryService_CheckUserExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/CheckUserExistsResponse" message="tns:ILibraryService_CheckUserExists_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ILibraryService" type="tns:ILibraryService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="InsertUpdateUserDetails">
       <soap:operation soapAction="http://tempuri.org/ILibraryService/InsertUpdateUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserExists">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/CheckUserExists" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

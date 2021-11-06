@@ -15,4 +15,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SignUpDetails" nillable="true" type="tns:SignUpDetails" />
+  <xs:complexType name="SignUpDetailLists">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SignUpDetails" nillable="true" type="tns:ArrayOfSignUpDetails" />
+      <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SignUpDetailLists" nillable="true" type="tns:SignUpDetailLists" />
+  <xs:complexType name="ArrayOfSignUpDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SignUpDetails" nillable="true" type="tns:SignUpDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSignUpDetails" nillable="true" type="tns:ArrayOfSignUpDetails" />
 </xs:schema>

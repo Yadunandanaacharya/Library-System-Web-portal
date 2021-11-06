@@ -15,4 +15,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CheckUserExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="signUp" nillable="true" type="q2:SignUpDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckUserExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="CheckUserExistsResult" nillable="true" type="q3:SignUpDetailLists" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

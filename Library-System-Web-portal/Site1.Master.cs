@@ -11,6 +11,62 @@ namespace Library_System_Web_portal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if(Session["Role"] == null)
+                {
+                    btnUserLogin.Visible = true;
+                    btnSignUp.Visible = true;
+
+                    btnLogOut.Visible = false;
+                    btnHelloUser.Visible = false;
+
+                    btnAdminLogin.Visible = true;
+                    btnAuthorManagement.Visible = false;
+                    btnPublisherManagement.Visible = false;
+                    btnBookInventory.Visible = false;
+                    btnBookIssuing.Visible = false;
+                    btnMemberManagement.Visible = false;
+                }
+                else if(Session["Role"].ToString() == "User")
+                {
+                    btnUserLogin.Visible = false;
+                    btnSignUp.Visible = false;
+
+                    btnLogOut.Visible = true;
+                    btnHelloUser.Visible = true;
+                    btnHelloUser.Text = "Hello " + Session["FullName"];
+
+                    btnAdminLogin.Visible = true;
+                    btnAuthorManagement.Visible = false;
+                    btnPublisherManagement.Visible = false;
+                    btnBookInventory.Visible = false;
+                    btnBookIssuing.Visible = false;
+                    btnMemberManagement.Visible = false;
+                }
+                else if(Session["Role"].ToString() == "Admin")
+                {
+                    btnUserLogin.Visible = false;
+                    btnSignUp.Visible = false;
+
+                    btnLogOut.Visible = true;
+                    btnHelloUser.Visible = true;
+                    btnHelloUser.Text = "Hello Admin";
+
+                    btnAdminLogin.Visible = false;
+                    btnAuthorManagement.Visible = true;
+                    btnPublisherManagement.Visible = true;
+                    btnBookInventory.Visible = true;
+                    btnBookIssuing.Visible = true;
+                    btnMemberManagement.Visible = true;
+                }
+
+
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
 
         }
 
@@ -56,12 +112,39 @@ namespace Library_System_Web_portal
 
         protected void UserLogin(object sender, EventArgs e)
         {
-            Response.Redirect("UserPages/UserLogin.aspx");
+            //Response.Redirect("UserPages/UserLogin.aspx");
+            Response.Redirect("UserLogin.aspx");
         }
 
         protected void SignUp(object sender, EventArgs e)
         {
-            Response.Redirect("UserPages/UserSignUp.aspx");
+            //Response.Redirect("UserPages/UserSignUp.aspx");
+            Response.Redirect("UserSignUp.aspx");
+        }
+
+        //on pressin logout button in all pages since site1.master visible in all pages wherever it's linked
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            //making session vars empty when pressed on logout in userlogin and adminlogin page
+            Session["FullName"] = "";
+            Session["MemberID"] = "";
+            Session["Password"] = "";
+            Session["Role"] = "";
+            Session["Status"] = "";
+
+            //setting to default view that is in above if condition when role == "".
+            btnUserLogin.Visible = true;
+            btnSignUp.Visible = true;
+
+            btnLogOut.Visible = false;
+            btnHelloUser.Visible = false;
+
+            btnAdminLogin.Visible = true;
+            btnAuthorManagement.Visible = false;
+            btnPublisherManagement.Visible = false;
+            btnBookInventory.Visible = false;
+            btnBookIssuing.Visible = false;
+            btnMemberManagement.Visible = false;
         }
 
 

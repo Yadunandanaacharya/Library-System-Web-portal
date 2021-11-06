@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Services;
 using System.Web.Services;
 using Library_System_Web_portal.LibraryService;
 
@@ -25,6 +26,25 @@ namespace Library_System_Web_portal.WebServices
             return BLL.Library.InsertUpdateUserDetails(signUp);
         }
 
+        //[System.Web.Services.WebMethod(EnableSession =true)]
+        //[System.Web.Script.Services.ScriptMethod(ResponseFormat =System.Web.Script.Services.ResponseFormat.Xml)]
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public SignUpDetailListsInfo CheckUserExists(SignUpDetails signUp)
+        {
+            SignUpDetailListsInfo signUpDetailListsInfo = new SignUpDetailListsInfo();
+            SignUpDetailLists signUpDetailLists =  BLL.Library.CheckUserExists(signUp);
+
+            signUpDetailListsInfo.SignUpDetails = signUpDetailLists.SignUpDetails;
+
+            return signUpDetailListsInfo;
+        }
+
+        public class SignUpDetailListsInfo
+        {
+            public SignUpDetails[] SignUpDetails { get; set; }
+            public int TotalRecord { get; set; } = 0;
+        }
 
     }
 }
