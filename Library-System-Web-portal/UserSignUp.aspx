@@ -3,9 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    
     <script type="text/javascript" src="../Scripts/UserSignUpDetails.js"></script>
     
     <div class="container">

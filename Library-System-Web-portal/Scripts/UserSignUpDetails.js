@@ -1,6 +1,9 @@
-﻿//jQuery.UserSignUpDetails.ServicePath = "";
+﻿jQuery.UserSignUpDetails = jQuery.UserSignUpDetails || {};
+jQuery.UserSignUpDetails.PagerData = jQuery.UserSignUpDetails.PagerData || {};
 
-var singUp = document.getElementById("btnSignUp");
+function InitialLoadMethod(pagerData) {
+    jQuery.UserSignUpDetails.PagerData = pagerData;
+}
 
 //insert user details 
 function InsertUserSignUpDetails() {
@@ -32,7 +35,9 @@ function InsertUserSignUpDetails() {
 
     jQuery.ajax({
         type: "POST",
-        url:  "WebServices/LibraryWebService.asmx/InsertUpdateUserDetails",
+        //url:  "WebServices/LibraryWebService.asmx/InsertUpdateUserDetails",
+        //below dynamicpath to avoid ajax not hitting asmx file error used like below.
+        url: jQuery.UserSignUpDetails.PagerData.ServicePath + "/LibraryWebService.asmx/InsertUpdateUserDetails",
         data: JSON.stringify({ signUp: signUp }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
