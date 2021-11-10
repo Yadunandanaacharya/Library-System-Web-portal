@@ -16,7 +16,7 @@ namespace Library_System_Web_portal.BLL
 
         }
 
-        public static SignUpDetailLists CheckUserExists(SignUpDetails signUp)
+        public static SignUpDetailLists CheckUserExists(SignUpDetail signUp)
         {
             LibraryServiceClient client = new LibraryServiceClient();
             SignUpDetailLists output = client.CheckUserExists(signUp);

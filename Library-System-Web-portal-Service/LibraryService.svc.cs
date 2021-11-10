@@ -56,13 +56,13 @@ namespace Library_System_Web_portal_Service
             }
         }
 
-        public SignUpDetailLists CheckUserExists(SignUpDetails signUp)
+        public SignUpDetailLists CheckUserExists(SignUpDetail signUp)
         {
             IDataReader dataReader = null;
             try
             {
                 SignUpDetailLists signUpDetailLists = new SignUpDetailLists();
-                List<SignUpDetails> signUpIs = new List<SignUpDetails>();
+                List<SignUpDetail> signUpIs = new List<SignUpDetail>();
                 string exist;
 
                 string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
@@ -76,9 +76,9 @@ namespace Library_System_Web_portal_Service
                 dataReader = dAL.CheckUserExistsAdminTable(connection, signUp.MemberID, signUp.Password);
                 while (dataReader.Read())
                 {
-                    SignUpDetails signUpDetails = new SignUpDetails();
+                    SignUpDetail signUpDetails = new SignUpDetail();
                     signUpDetails.MemberID = dataReader.GetString(dataReader.GetOrdinal("FMEMBER_ID"));
-                    signUpDetailLists.SignUpDetails.Add(signUpDetails);
+                    signUpDetailLists.SignUpDetail.Add(signUpDetails);
 
                     #region Session variables
                     #endregion
