@@ -132,5 +132,22 @@ namespace Library_System_Web_portal_Service_DAL
         }
         #endregion
 
+        #region Author Infos
+        public static IDataReader CheckAuthorExist(MySqlConnection connection, string authorID)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" SELECT COUNT(*) as FTOTAL, ");
+            sqlCmdBuilder.Append(" IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID ");
+            sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER WHERE FAUTHOR_ID=@AUTHOR_ID ");
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+            return dbCmd.ExecuteReader();
+        }
+
+
+        #endregion
     }
 }

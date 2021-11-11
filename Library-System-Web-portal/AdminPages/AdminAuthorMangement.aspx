@@ -66,15 +66,24 @@
                         <%--below is pill badge--%>
                         <div class="row">
                             <div class="col-4">
-                                <asp:Button CssClass="btn btn-success w-100" ID="btnAdd" runat="server" Text="Add" />
+                                <%--<input type="button" class="btn btn-success w-100" id="btnAdd" runat="server" text="Add" />--%>
+                                <button id="btnAdd" class="btn btn-success w-100" runat="server" placeholder="Add" Text="Add"
+                                         onclick="InsertAuthorDetails(); return false;" enableviewstate="false">
+                                         Add</button>
                                 </div>
 
                             <div class="col-4">
-                                <asp:Button CssClass="btn btn-warning w-100" ID="btnUpdate" runat="server" Text="Update" />
+                                <%--<asp:Button CssClass="btn btn-warning w-100" ID="btnUpdate" runat="server" Text="Update" />--%>
+                                <button id="btnUpdate" class="btn btn-warning w-100" runat="server" placeholder="Add" Text="Add"
+                                         onclick="UpdateAuthor(); return false;" enableviewstate="false">
+                                         Update</button>
                             </div>
                             
                             <div class="col-4">
-                                <asp:Button CssClass="btn btn-danger w-100" ID="btnDelete" runat="server" Text="Delete" />
+                                <%--<asp:Button CssClass="btn btn-danger w-100" ID="btnDelete" runat="server" Text="Delete" />--%>
+                                <button id="btnDelete" class="btn btn-danger w-100" runat="server" placeholder="Add" Text="Add"
+                                         onclick="DeleteAuthor(); return false;" enableviewstate="false">
+                                         Delete</button>
                             </div>
                         </div>
                     </div>

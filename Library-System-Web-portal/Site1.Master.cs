@@ -112,14 +112,15 @@ namespace Library_System_Web_portal
 
         protected void UserLogin(object sender, EventArgs e)
         {
-            //Response.Redirect("UserPages/UserLogin.aspx");
-            Response.Redirect("UserLogin.aspx");
+            Response.Redirect("UserPages/UserLogin.aspx");
+            //Response.Redirect("UserLogin.aspx");
         }
 
         protected void SignUp(object sender, EventArgs e)
         {
-            //Response.Redirect("UserPages/UserSignUp.aspx");
-            Response.Redirect("UserSignUp.aspx");
+            Response.Redirect("UserPages/UserSignUp.aspx");
+
+
         }
 
         //on pressin logout button in all pages since site1.master visible in all pages wherever it's linked

@@ -73,9 +73,6 @@
     <None Include="Connected Services\LibraryService\LibraryService.disco" />
     <None Include="Connected Services\LibraryService\configuration91.svcinfo" />
     <None Include="Connected Services\LibraryService\configuration.svcinfo" />
-    <Content Include="Connected Services\LibraryService\Library_System_Web_portal.LibraryService.SignUpDetailLists.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Connected Services\LibraryService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -1755,6 +1752,7 @@
     <Content Include="Images\signUp.jfif" />
     <Content Include="Images\userlogin.jfif" />
     <Content Include="Images\visitus.jfif" />
+    <Content Include="Scripts\AdminAuthorManage.js" />
     <Content Include="Scripts\jquery-2.2.2.min.js" />
     <Content Include="Scripts\UserSignUpDetails.js" />
     <Content Include="UserControls\Pager.ascx" />
@@ -1969,6 +1967,7 @@
     <Content Include="fontawesome\webfonts\fa-solid-900.woff2" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
+    <Content Include="Properties\DataSources\Library_System_Web_portal_Service.Library.SignUpDetailLists.datasource" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

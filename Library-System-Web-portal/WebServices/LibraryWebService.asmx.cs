@@ -46,5 +46,9 @@ namespace Library_System_Web_portal.WebServices
             public int TotalRecord { get; set; } = 0;
         }
 
+        #region author infos
+
+        #endregion
+
     }
 }

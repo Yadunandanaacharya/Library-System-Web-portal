@@ -19,6 +19,12 @@
   <wsdl:message name="ILibraryService_CheckUserExists_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckUserExistsResponse" />
   </wsdl:message>
+  <wsdl:message name="ILibraryService_CheckAuthorExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAuthorExists" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_CheckAuthorExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAuthorExistsResponse" />
+  </wsdl:message>
   <wsdl:portType name="ILibraryService">
     <wsdl:operation name="InsertUpdateUserDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/InsertUpdateUserDetails" message="tns:ILibraryService_InsertUpdateUserDetails_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="CheckUserExists">
       <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/CheckUserExists" message="tns:ILibraryService_CheckUserExists_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/CheckUserExistsResponse" message="tns:ILibraryService_CheckUserExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckAuthorExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/CheckAuthorExists" message="tns:ILibraryService_CheckAuthorExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/CheckAuthorExistsResponse" message="tns:ILibraryService_CheckAuthorExists_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ILibraryService" type="tns:ILibraryService">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="CheckUserExists">
       <soap:operation soapAction="http://tempuri.org/ILibraryService/CheckUserExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAuthorExists">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/CheckAuthorExists" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
