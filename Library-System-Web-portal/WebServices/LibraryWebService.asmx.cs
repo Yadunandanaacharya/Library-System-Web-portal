@@ -48,6 +48,63 @@ namespace Library_System_Web_portal.WebServices
 
         #region author infos
 
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public AuthorManageListInfo CheckAuthor(string authorID)
+        {
+            AuthorManageListInfo authorManageListInfo = new AuthorManageListInfo();
+            AuthorManage authorDetails = BLL.Library.CheckAuthor(authorID);
+
+            authorManageListInfo.AuthorDetails = authorDetails.AuthorDetails;
+            authorManageListInfo.TotalRecord = authorDetails.TotalRecords;
+            return authorManageListInfo;
+        }
+
+        public class AuthorManageListInfo
+        {
+            public AuthorDetails[] AuthorDetails { get; set; }
+            public int TotalRecord { get; set; } = 0;
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public GetAuthorDetailsListInfo GetAuthorDetails()
+        {
+            GetAuthorDetailsListInfo getAuthorDetailsListInfo = new GetAuthorDetailsListInfo();
+            AuthorDetails[] authorDetails = BLL.Library.GetAuthorDetails();
+            getAuthorDetailsListInfo.AuthorDetails = authorDetails;
+            getAuthorDetailsListInfo.TotalRecord = authorDetails.Length;
+            return getAuthorDetailsListInfo;
+        }
+
+        public class GetAuthorDetailsListInfo
+        {
+            public AuthorDetails[] AuthorDetails { get; set; }
+            public int TotalRecord { get; set; } = 0;
+        }
+
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool InsertAuthor(AuthorDetails authorDetails)
+        {
+            return BLL.Library.InsertAuthor(authorDetails);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool UpdateAuthor(AuthorDetails authorDetails)
+        {
+            return BLL.Library.UpdateAuthor(authorDetails);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool DeleteAuthor(string authorID)
+        {
+            return BLL.Library.DeleteAuthor(authorID);
+        }
+
         #endregion
 
     }
