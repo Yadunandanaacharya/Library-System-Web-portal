@@ -22,5 +22,48 @@ namespace Library_System_Web_portal.BLL
             SignUpDetailLists output = client.CheckUserExists(signUp);
             return output;
         }
+
+        #region Author Infos
+        public static AuthorManage CheckAuthor(string authorID)
+        {
+            LibraryServiceClient client = new LibraryServiceClient();
+            AuthorManage output = client.CheckAuthor(authorID);
+            return output;
+        }
+
+        public static AuthorDetails[] GetAuthorDetails()
+        {
+            LibraryServiceClient client = new LibraryServiceClient();
+            AuthorDetails[] output = client.GetAuthorDetails();
+            return output;
+
+        }
+
+        public static bool InsertAuthor(AuthorDetails authorDetails)
+        {
+            LibraryServiceClient client = new LibraryServiceClient();
+            bool output = client.InsertAuthor(authorDetails);
+            return output;
+
+        }
+
+        public static bool UpdateAuthor(AuthorDetails authorDetails)
+        {
+            LibraryServiceClient client = new LibraryServiceClient();
+            bool output = client.UpdateAuthor(authorDetails);
+            return output;
+
+        }
+
+        public static bool DeleteAuthor(string authorID)
+        {
+            LibraryServiceClient client = new LibraryServiceClient();
+            bool output = client.DeleteAuthor(authorID);
+            return output;
+
+        }
+
+
+        #endregion
     }
 }

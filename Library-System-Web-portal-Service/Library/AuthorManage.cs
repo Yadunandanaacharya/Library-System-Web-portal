@@ -35,7 +35,6 @@ namespace Library_System_Web_portal_Service.Library
             get { return _authorName; }
             set { _authorName = value; }
         }
-        
 
         #endregion
     }
