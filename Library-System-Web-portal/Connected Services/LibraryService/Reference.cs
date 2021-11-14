@@ -455,6 +455,130 @@ namespace Library_System_Web_portal.LibraryService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AuthorManage", Namespace="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class AuthorManage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Library_System_Web_portal.LibraryService.AuthorDetails[] AuthorDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalRecordsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Library_System_Web_portal.LibraryService.AuthorDetails[] AuthorDetails {
+            get {
+                return this.AuthorDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AuthorDetailsField, value) != true)) {
+                    this.AuthorDetailsField = value;
+                    this.RaisePropertyChanged("AuthorDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalRecords {
+            get {
+                return this.TotalRecordsField;
+            }
+            set {
+                if ((this.TotalRecordsField.Equals(value) != true)) {
+                    this.TotalRecordsField = value;
+                    this.RaisePropertyChanged("TotalRecords");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AuthorDetails", Namespace="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class AuthorDetails : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AuthorIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AuthorNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AuthorID {
+            get {
+                return this.AuthorIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AuthorIDField, value) != true)) {
+                    this.AuthorIDField = value;
+                    this.RaisePropertyChanged("AuthorID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AuthorName {
+            get {
+                return this.AuthorNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AuthorNameField, value) != true)) {
+                    this.AuthorNameField = value;
+                    this.RaisePropertyChanged("AuthorName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LibraryService.ILibraryService")]
     public interface ILibraryService {
@@ -470,6 +594,36 @@ namespace Library_System_Web_portal.LibraryService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/CheckUserExists", ReplyAction="http://tempuri.org/ILibraryService/CheckUserExistsResponse")]
         System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.SignUpDetailLists> CheckUserExistsAsync(Library_System_Web_portal.LibraryService.SignUpDetail signUp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/CheckAuthor", ReplyAction="http://tempuri.org/ILibraryService/CheckAuthorResponse")]
+        Library_System_Web_portal.LibraryService.AuthorManage CheckAuthor(string authorID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/CheckAuthor", ReplyAction="http://tempuri.org/ILibraryService/CheckAuthorResponse")]
+        System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.AuthorManage> CheckAuthorAsync(string authorID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/GetAuthorDetails", ReplyAction="http://tempuri.org/ILibraryService/GetAuthorDetailsResponse")]
+        Library_System_Web_portal.LibraryService.AuthorDetails[] GetAuthorDetails();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/GetAuthorDetails", ReplyAction="http://tempuri.org/ILibraryService/GetAuthorDetailsResponse")]
+        System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.AuthorDetails[]> GetAuthorDetailsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/InsertAuthor", ReplyAction="http://tempuri.org/ILibraryService/InsertAuthorResponse")]
+        bool InsertAuthor(Library_System_Web_portal.LibraryService.AuthorDetails authorDetails);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/InsertAuthor", ReplyAction="http://tempuri.org/ILibraryService/InsertAuthorResponse")]
+        System.Threading.Tasks.Task<bool> InsertAuthorAsync(Library_System_Web_portal.LibraryService.AuthorDetails authorDetails);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/UpdateAuthor", ReplyAction="http://tempuri.org/ILibraryService/UpdateAuthorResponse")]
+        bool UpdateAuthor(Library_System_Web_portal.LibraryService.AuthorDetails authorDetails);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/UpdateAuthor", ReplyAction="http://tempuri.org/ILibraryService/UpdateAuthorResponse")]
+        System.Threading.Tasks.Task<bool> UpdateAuthorAsync(Library_System_Web_portal.LibraryService.AuthorDetails authorDetails);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/DeleteAuthor", ReplyAction="http://tempuri.org/ILibraryService/DeleteAuthorResponse")]
+        bool DeleteAuthor(string authorID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/DeleteAuthor", ReplyAction="http://tempuri.org/ILibraryService/DeleteAuthorResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAuthorAsync(string authorID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -513,6 +667,46 @@ namespace Library_System_Web_portal.LibraryService {
         
         public System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.SignUpDetailLists> CheckUserExistsAsync(Library_System_Web_portal.LibraryService.SignUpDetail signUp) {
             return base.Channel.CheckUserExistsAsync(signUp);
+        }
+        
+        public Library_System_Web_portal.LibraryService.AuthorManage CheckAuthor(string authorID) {
+            return base.Channel.CheckAuthor(authorID);
+        }
+        
+        public System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.AuthorManage> CheckAuthorAsync(string authorID) {
+            return base.Channel.CheckAuthorAsync(authorID);
+        }
+        
+        public Library_System_Web_portal.LibraryService.AuthorDetails[] GetAuthorDetails() {
+            return base.Channel.GetAuthorDetails();
+        }
+        
+        public System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.AuthorDetails[]> GetAuthorDetailsAsync() {
+            return base.Channel.GetAuthorDetailsAsync();
+        }
+        
+        public bool InsertAuthor(Library_System_Web_portal.LibraryService.AuthorDetails authorDetails) {
+            return base.Channel.InsertAuthor(authorDetails);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertAuthorAsync(Library_System_Web_portal.LibraryService.AuthorDetails authorDetails) {
+            return base.Channel.InsertAuthorAsync(authorDetails);
+        }
+        
+        public bool UpdateAuthor(Library_System_Web_portal.LibraryService.AuthorDetails authorDetails) {
+            return base.Channel.UpdateAuthor(authorDetails);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateAuthorAsync(Library_System_Web_portal.LibraryService.AuthorDetails authorDetails) {
+            return base.Channel.UpdateAuthorAsync(authorDetails);
+        }
+        
+        public bool DeleteAuthor(string authorID) {
+            return base.Channel.DeleteAuthor(authorID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteAuthorAsync(string authorID) {
+            return base.Channel.DeleteAuthorAsync(authorID);
         }
     }
 }

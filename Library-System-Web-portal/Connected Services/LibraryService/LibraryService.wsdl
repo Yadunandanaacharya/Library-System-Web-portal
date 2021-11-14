@@ -19,11 +19,35 @@
   <wsdl:message name="ILibraryService_CheckUserExists_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckUserExistsResponse" />
   </wsdl:message>
-  <wsdl:message name="ILibraryService_CheckAuthorExists_InputMessage">
-    <wsdl:part name="parameters" element="tns:CheckAuthorExists" />
+  <wsdl:message name="ILibraryService_CheckAuthor_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAuthor" />
   </wsdl:message>
-  <wsdl:message name="ILibraryService_CheckAuthorExists_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CheckAuthorExistsResponse" />
+  <wsdl:message name="ILibraryService_CheckAuthor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAuthorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetAuthorDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAuthorDetails" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetAuthorDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAuthorDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_InsertAuthor_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAuthor" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_InsertAuthor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAuthorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_UpdateAuthor_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAuthor" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_UpdateAuthor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAuthorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteAuthor_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAuthor" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteAuthor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAuthorResponse" />
   </wsdl:message>
   <wsdl:portType name="ILibraryService">
     <wsdl:operation name="InsertUpdateUserDetails">
@@ -34,9 +58,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/CheckUserExists" message="tns:ILibraryService_CheckUserExists_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/CheckUserExistsResponse" message="tns:ILibraryService_CheckUserExists_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CheckAuthorExists">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/CheckAuthorExists" message="tns:ILibraryService_CheckAuthorExists_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/CheckAuthorExistsResponse" message="tns:ILibraryService_CheckAuthorExists_OutputMessage" />
+    <wsdl:operation name="CheckAuthor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/CheckAuthor" message="tns:ILibraryService_CheckAuthor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/CheckAuthorResponse" message="tns:ILibraryService_CheckAuthor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthorDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetAuthorDetails" message="tns:ILibraryService_GetAuthorDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetAuthorDetailsResponse" message="tns:ILibraryService_GetAuthorDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAuthor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/InsertAuthor" message="tns:ILibraryService_InsertAuthor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/InsertAuthorResponse" message="tns:ILibraryService_InsertAuthor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAuthor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/UpdateAuthor" message="tns:ILibraryService_UpdateAuthor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/UpdateAuthorResponse" message="tns:ILibraryService_UpdateAuthor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAuthor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/DeleteAuthor" message="tns:ILibraryService_DeleteAuthor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/DeleteAuthorResponse" message="tns:ILibraryService_DeleteAuthor_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ILibraryService" type="tns:ILibraryService">
@@ -59,8 +99,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CheckAuthorExists">
-      <soap:operation soapAction="http://tempuri.org/ILibraryService/CheckAuthorExists" style="document" />
+    <wsdl:operation name="CheckAuthor">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/CheckAuthor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthorDetails">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetAuthorDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAuthor">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/InsertAuthor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAuthor">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/UpdateAuthor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAuthor">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/DeleteAuthor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

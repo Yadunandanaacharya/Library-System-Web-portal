@@ -13,31 +13,13 @@ namespace Library_System_Web_portal {
     public partial class AdminAuthorMangement {
         
         /// <summary>
-        /// txtAuthorID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAuthorID;
-        
-        /// <summary>
         /// btnGo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGo;
-        
-        /// <summary>
-        /// txtAuthorName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAuthorName;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnGo;
         
         /// <summary>
         /// btnAdd control.
@@ -65,14 +47,5 @@ namespace Library_System_Web_portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnDelete;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

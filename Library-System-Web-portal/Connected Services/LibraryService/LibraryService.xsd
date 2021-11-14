@@ -43,4 +43,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSignUpDetail" nillable="true" type="tns:ArrayOfSignUpDetail" />
+  <xs:complexType name="AuthorManage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthorDetails" nillable="true" type="tns:ArrayOfAuthorDetails" />
+      <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthorManage" nillable="true" type="tns:AuthorManage" />
+  <xs:complexType name="ArrayOfAuthorDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AuthorDetails" nillable="true" type="tns:AuthorDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuthorDetails" nillable="true" type="tns:ArrayOfAuthorDetails" />
+  <xs:complexType name="AuthorDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthorID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthorName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthorDetails" nillable="true" type="tns:AuthorDetails" />
 </xs:schema>
