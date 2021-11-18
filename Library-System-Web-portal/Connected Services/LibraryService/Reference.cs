@@ -579,6 +579,52 @@ namespace Library_System_Web_portal.LibraryService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BasicFilter", Namespace="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class BasicFilter : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AuthorIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AuthorID {
+            get {
+                return this.AuthorIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AuthorIDField, value) != true)) {
+                    this.AuthorIDField = value;
+                    this.RaisePropertyChanged("AuthorID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LibraryService.ILibraryService")]
     public interface ILibraryService {
@@ -602,10 +648,10 @@ namespace Library_System_Web_portal.LibraryService {
         System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.AuthorManage> CheckAuthorAsync(string authorID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/GetAuthorDetails", ReplyAction="http://tempuri.org/ILibraryService/GetAuthorDetailsResponse")]
-        Library_System_Web_portal.LibraryService.AuthorDetails[] GetAuthorDetails();
+        Library_System_Web_portal.LibraryService.AuthorDetails[] GetAuthorDetails(Library_System_Web_portal.LibraryService.BasicFilter basicFilter);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/GetAuthorDetails", ReplyAction="http://tempuri.org/ILibraryService/GetAuthorDetailsResponse")]
-        System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.AuthorDetails[]> GetAuthorDetailsAsync();
+        System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.AuthorDetails[]> GetAuthorDetailsAsync(Library_System_Web_portal.LibraryService.BasicFilter basicFilter);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/InsertAuthor", ReplyAction="http://tempuri.org/ILibraryService/InsertAuthorResponse")]
         bool InsertAuthor(Library_System_Web_portal.LibraryService.AuthorDetails authorDetails);
@@ -677,12 +723,12 @@ namespace Library_System_Web_portal.LibraryService {
             return base.Channel.CheckAuthorAsync(authorID);
         }
         
-        public Library_System_Web_portal.LibraryService.AuthorDetails[] GetAuthorDetails() {
-            return base.Channel.GetAuthorDetails();
+        public Library_System_Web_portal.LibraryService.AuthorDetails[] GetAuthorDetails(Library_System_Web_portal.LibraryService.BasicFilter basicFilter) {
+            return base.Channel.GetAuthorDetails(basicFilter);
         }
         
-        public System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.AuthorDetails[]> GetAuthorDetailsAsync() {
-            return base.Channel.GetAuthorDetailsAsync();
+        public System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.AuthorDetails[]> GetAuthorDetailsAsync(Library_System_Web_portal.LibraryService.BasicFilter basicFilter) {
+            return base.Channel.GetAuthorDetailsAsync(basicFilter);
         }
         
         public bool InsertAuthor(Library_System_Web_portal.LibraryService.AuthorDetails authorDetails) {

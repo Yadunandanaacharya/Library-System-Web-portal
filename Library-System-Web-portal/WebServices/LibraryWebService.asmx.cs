@@ -68,10 +68,10 @@ namespace Library_System_Web_portal.WebServices
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public GetAuthorDetailsListInfo GetAuthorDetails()
+        public GetAuthorDetailsListInfo GetAuthorDetails(BasicFilter basicFilter)
         {
             GetAuthorDetailsListInfo getAuthorDetailsListInfo = new GetAuthorDetailsListInfo();
-            AuthorDetails[] authorDetails = BLL.Library.GetAuthorDetails();
+            AuthorDetails[] authorDetails = BLL.Library.GetAuthorDetails(basicFilter);
             getAuthorDetailsListInfo.AuthorDetails = authorDetails;
             getAuthorDetailsListInfo.TotalRecord = authorDetails.Length;
             return getAuthorDetailsListInfo;

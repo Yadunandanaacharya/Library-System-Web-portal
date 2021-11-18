@@ -1,33 +1,54 @@
 ﻿jQuery.AuthorManagement = jQuery.AuthorManagement || {};
 jQuery.AuthorManagement.PagerData = jQuery.AuthorManagement.PagerData || {};
 
+var AuthorInfos = {};
+
 function InitialLoadMethod(pagerData) {
     jQuery.AuthorManagement.PagerData = pagerData;
-    GetAuthorDetails();
+    var basicFilter = {};
+    basicFilter.AuthorID = "";
+    GetAuthorDetails(basicFilter);
 }
 
-function GetAuthorDetails() {
+function SearchAuthor() {
+    var authorID = jQuery("#txtSearch").val();
+    var basicFilter = {};
+    basicFilter.AuthorID = authorID;
+    GetAuthorDetails(basicFilter);
+}
 
-    $('#dataTable').dataTable({
-        ajax: {
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            url: jQuery.AuthorManagement.PagerData.ServicePath + "/LibraryWebService.asmx/GetAuthorDetails",
-            dataSrc: function (json) {
-                if (json !== undefined &&  json !== null) {
-                   var dataIs = (json.d);
-                    for (var i = 0; i < dataIs.AuthorDetails.length; i++) {
-                        $('#tBody').append("<tr><td>" + dataIs.AuthorDetails[i].AuthorID + "</td><td>" + dataIs.AuthorDetails[i].AuthorName + "</td></tr></table>");
-                    }
+function ShowAllData() {
+    jQuery("#txtSearch").val('');
+    var authorID = "";
+    var basicFilter = {};
+    basicFilter.AuthorID = authorID;
+    GetAuthorDetails(basicFilter);
+}
+
+function GetAuthorDetails(basicFilter) {
+    var basicFilter = {};
+   
+    basicFilter.AuthorID = jQuery("#txtSearch").val();
+
+    jQuery.ajax({
+        type: "POST",
+        url: jQuery.AuthorManagement.PagerData.ServicePath + "/LibraryWebService.asmx/GetAuthorDetails",
+        data: JSON.stringify({
+            basicFilter: basicFilter
+        }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(json) {
+            if (json !== undefined && json !== null) {
+                var dataIs = (json.d);
+                for (var i = 0; i < dataIs.AuthorDetails.length; i++) {
+                    $('#tBody').append("<tr><td>" + dataIs.AuthorDetails[i].AuthorID + "</td><td>" + dataIs.AuthorDetails[i].AuthorName + "</td></tr></table>");
                 }
             }
         },
-
-        //below is required to remove loading message from first row of the table
-            language: {
-                emptyTable: "Loading",
-                loadingRecords: "" //if you don't keep this empty then loading message will appear at first row
-            },
+        beforeSend: function () {
+            jQuery("#tBody").empty();
+        }
     });
 }
 
@@ -51,6 +72,7 @@ function InsertAuthorDetails() {
                 var data = json.d;
                 if (data == true) {
                     alert("Author Inserted Successfully")
+                    GetAuthorDetails();
                 }
                 else if (data == false) {
                     alert("Author already there")
@@ -79,7 +101,8 @@ function UpdateAuthor() {
             if (json !== undefined && json !== undefined && json !== null) {
                 var data = json.d;
                 if (data == true) {
-                    alert("Author Updated Successfully")
+                    alert("Author Updated Successfully");
+                    GetAuthorDetails();
                 }
                 else if (data == false) {
                     alert("New Author Inserted")
@@ -103,7 +126,8 @@ function DeleteAuthor() {
             if (json !== undefined && json !== undefined && json !== null) {
                 var data = json.d;
                 if (data == true) {
-                    alert("Author Deleted Successfully")
+                    alert("Author Deleted Successfully");
+                    GetAuthorDetails();
                 }
                 else if (data == false) {
                     alert("AuthorID doesn't exist")

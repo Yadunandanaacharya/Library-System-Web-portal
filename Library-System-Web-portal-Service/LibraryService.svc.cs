@@ -130,7 +130,7 @@ namespace Library_System_Web_portal_Service
             }
         }
 
-        public List<AuthorDetails> GetAuthorDetails()
+        public List<AuthorDetails> GetAuthorDetails(BasicFilter basicFilter)
         {
             IDataReader dataReader = null;
             try
@@ -143,7 +143,7 @@ namespace Library_System_Web_portal_Service
                 connection.Open();
 
                 //In admin table check whether user exists or not
-                dataReader = LibraryDAL.GetAuthorData(connection);
+                dataReader = LibraryDAL.GetAuthorData(connection, basicFilter.AuthorID,basicFilter.PageStart,basicFilter.PageEnd);
                
                 while (dataReader.Read())
                 {

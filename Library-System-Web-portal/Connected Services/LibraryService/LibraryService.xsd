@@ -63,4 +63,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="AuthorDetails" nillable="true" type="tns:AuthorDetails" />
+  <xs:complexType name="BasicFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthorID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BasicFilter" nillable="true" type="tns:BasicFilter" />
 </xs:schema>

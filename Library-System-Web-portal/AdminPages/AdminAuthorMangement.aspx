@@ -5,15 +5,17 @@
 
     <%--some time jquery is not loaded error i'll get so put all these 3 if you only put jquery then you get bootstrap--%> 
 
-    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
---%>
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
+
+   <%-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>--%>
+
 
     <%--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
   
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>--%>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
      <script type="text/javascript" src="../Scripts/AdminAuthorManage.js" ></script>
 
@@ -33,6 +35,10 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+
+
+       
+
     </style>
 
     <div class="container">
@@ -90,7 +96,7 @@
                                    <%-- <asp:TextBox ID="txtAuthorName" CssClass="form-control" runat="server" placeholder="Author Name"
                                        ></asp:TextBox>--%>
                                      <input type="text" id="txtAuthorName" class="form-control"   placeholder="Author Name" >
-                                
+                                           
                                 </div>
                             </div>
 
@@ -143,9 +149,20 @@
                                 </center>
                             </div>
 
+                           
+
                             <div class="row">
-                                <div class="col">
-                                    <hr />
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" id="txtSearch" class="form-control" placeholder="Search">
+                                            <button id="btnSearch" onclick="SearchAuthor(); return false;" class="btn btn-primary" runat="server">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <button id="btnShowAll"  onclick="ShowAllData(); return false;" class="btn btn-primary" runat="server">Show All</button>
+
                                 </div>
                             </div>
 
@@ -153,29 +170,37 @@
                                 <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>--%>
                                 <div class="col">
                                     <table id="dataTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                                        
                                         <thead>
                                             <tr>
                                                 <th>Author ID</th>
                                                 <th>Author Name</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tBody">
+                                        <tbody id="tBody" data-bind="foreach: FeatureObjectList" class="tbodypositionfixed">
                                             <%--here tbody i'm using in jquery code to render data into it table's body--%>
-                                            <%--<tr>
+                                            <tr>
                                                 <td>l2</td>
                                                 <td>Sham</td>
-                                            </tr> --%>
+                                            </tr> 
                                         </tbody>
                                     </table>
 
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                        </ul>
+                                    </nav>
 
                                 </div>
 
 
-
-                                <%--<gridview class="table table-striped table-bordered" id="GridView2"
-                                        ></gridview>--%>
-                                    <%--<asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server"></asp:GridView>--%>
+                           
+                              
                                 </div>
                             </div>
 
@@ -185,7 +210,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
+    
 </asp:Content>

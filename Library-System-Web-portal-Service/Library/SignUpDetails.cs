@@ -175,4 +175,26 @@ namespace Library_System_Web_portal_Service.Library
         #endregion
 
     }
+
+    [DataContract]
+    public class BasicFilter
+    {
+        #region private fields
+        private string _authorID;
+        
+        #endregion
+
+        #region public fields
+        [DataMember]
+        public string AuthorID
+        {
+            get { return _authorID; }
+            set { _authorID = value; }
+        }
+
+        public int PageStart { get; set; } = 0;
+        public int PageEnd { get; set; } = 0;
+        #endregion
+
+    }
 }

@@ -148,16 +148,22 @@ namespace Library_System_Web_portal_Service_DAL
             return dbCmd.ExecuteReader();
         }
 
-        public static IDataReader GetAuthorData(MySqlConnection connection)
+        public static IDataReader GetAuthorData(MySqlConnection connection,string authorID, int pageStart, int pageEnd)
         {
             StringBuilder sqlCmdBuilder = new StringBuilder();
             sqlCmdBuilder.Append(" SELECT  "); //if you use ftotal here it will return coutn 3 but only one row from db
             sqlCmdBuilder.Append(" IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
             sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER ");
 
+            if (authorID != "")
+                sqlCmdBuilder.Append(" WHERE FAUTHOR_ID=@AUTHOR_ID ");
+
             MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
             dbCmd.CommandType = CommandType.Text;
 
+            dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+            dbCmd.Parameters.AddWithValue("@PAGE_S", authorID);
+            dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
             return dbCmd.ExecuteReader();
         }
 

@@ -1770,6 +1770,7 @@
     <Content Include="Images\digitalBookInventory.jfif" />
     <Content Include="Images\Home.bg.png" />
     <Content Include="Images\Pulisher.png" />
+    <Content Include="Images\search.png" />
     <Content Include="Images\signUp.jfif" />
     <Content Include="Images\userlogin.jfif" />
     <Content Include="Images\visitus.jfif" />
@@ -1989,7 +1990,6 @@
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <Content Include="Properties\DataSources\Library_System_Web_portal_Service.Library.SignUpDetailLists.datasource" />
-    <Content Include="Scripts\data.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

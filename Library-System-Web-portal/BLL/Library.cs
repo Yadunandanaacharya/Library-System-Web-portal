@@ -31,10 +31,10 @@ namespace Library_System_Web_portal.BLL
             return output;
         }
 
-        public static AuthorDetails[] GetAuthorDetails()
+        public static AuthorDetails[] GetAuthorDetails(BasicFilter basicFilter)
         {
             LibraryServiceClient client = new LibraryServiceClient();
-            AuthorDetails[] output = client.GetAuthorDetails();
+            AuthorDetails[] output = client.GetAuthorDetails(basicFilter);
             return output;
 
         }
