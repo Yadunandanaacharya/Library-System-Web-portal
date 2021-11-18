@@ -151,18 +151,26 @@ namespace Library_System_Web_portal_Service_DAL
         public static IDataReader GetAuthorData(MySqlConnection connection,string authorID, int pageStart, int pageEnd)
         {
             StringBuilder sqlCmdBuilder = new StringBuilder();
-            sqlCmdBuilder.Append(" SELECT  "); //if you use ftotal here it will return coutn 3 but only one row from db
-            sqlCmdBuilder.Append(" IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
+            //if you use ftotal here it will return coutn 3 but only one row from db
+            sqlCmdBuilder.Append(" SET @ROW_NUMBER=0;  "); //if you use ftotal here it will return coutn 3 but only one row from db
+            sqlCmdBuilder.Append(" SELECT IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
+            sqlCmdBuilder.Append(" ,(@ROW_NUMBER := @ROW_NUMBER +1) as ROWNUM ");
             sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER ");
 
             if (authorID != "")
                 sqlCmdBuilder.Append(" WHERE FAUTHOR_ID=@AUTHOR_ID ");
 
+            if (pageStart >= 0)
+            {
+                sqlCmdBuilder.Append(" ORDER BY ROWNUM  LIMIT @PAGE_START,@PAGE_END; ");
+            }
+
             MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
             dbCmd.CommandType = CommandType.Text;
 
             dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
-            dbCmd.Parameters.AddWithValue("@PAGE_S", authorID);
+            dbCmd.Parameters.AddWithValue("@PAGE_START", pageStart);
+            dbCmd.Parameters.AddWithValue("@PAGE_END", pageEnd);
             dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
             return dbCmd.ExecuteReader();
         }

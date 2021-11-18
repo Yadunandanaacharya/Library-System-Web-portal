@@ -15,7 +15,6 @@
   
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>--%>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
      <script type="text/javascript" src="../Scripts/AdminAuthorManage.js" ></script>
 
