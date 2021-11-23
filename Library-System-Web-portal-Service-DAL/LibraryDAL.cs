@@ -154,24 +154,32 @@ namespace Library_System_Web_portal_Service_DAL
             //if you use ftotal here it will return coutn 3 but only one row from db
             sqlCmdBuilder.Append(" SET @ROW_NUMBER=0;  "); //if you use ftotal here it will return coutn 3 but only one row from db
             sqlCmdBuilder.Append(" SELECT IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
-            sqlCmdBuilder.Append(" ,(@ROW_NUMBER := @ROW_NUMBER +1) as ROWNUM ");
+            sqlCmdBuilder.Append(" ,(@ROW_NUMBER := @ROW_NUMBER +1) as ROWNUM,(SELECT COUNT(*) FROM LIB_AUTHOR_MASTER) AS FTOTAL ");
             sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER ");
 
-            if (authorID != "")
+            if (authorID != "" && authorID != null)
                 sqlCmdBuilder.Append(" WHERE FAUTHOR_ID=@AUTHOR_ID ");
 
-            if (pageStart >= 0)
+            //below query ORDER BY LENGTH(FAUTHOR_ID) is very important because of that if l1,l10,l11,l2 displayed as l1,l2,l10,l11
+            //for more understanding you can run this query in database.
+            if (pageStart >= 0 )
             {
-                sqlCmdBuilder.Append(" ORDER BY ROWNUM  LIMIT @PAGE_START,@PAGE_END; ");
+                sqlCmdBuilder.Append(" ORDER BY LENGTH(FAUTHOR_ID), ROWNUM  LIMIT @PAGE_START,@PAGE_END ");
             }
 
             MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
             dbCmd.CommandType = CommandType.Text;
 
-            dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
-            dbCmd.Parameters.AddWithValue("@PAGE_START", pageStart);
-            dbCmd.Parameters.AddWithValue("@PAGE_END", pageEnd);
-            dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+            //for @AUTHOR_ID I have to use if condition if it's not empty then only I need to use it or else, your output becomes wrong with
+            //addparameter
+            if (authorID != "" && authorID!= null)
+                dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+            if (pageStart >= 0)
+            {
+                dbCmd.Parameters.AddWithValue("@PAGE_START", pageStart);
+                dbCmd.Parameters.AddWithValue("@PAGE_END", pageEnd);
+            }
+                
             return dbCmd.ExecuteReader();
         }
 
@@ -230,7 +238,7 @@ namespace Library_System_Web_portal_Service_DAL
         public static IDataReader UpdateAuthor(MySqlConnection connection, string authorID, String authorName)
         {
             StringBuilder sqlCmdBuilder = new StringBuilder();
-            sqlCmdBuilder.Append(" UPDATE LIB_AUTHOR_MASTER SET FAUTHOR_NAME=@AUTHOR_NAME ");
+            sqlCmdBuilder.Append(" UPDATE LIB_AUTHOR_MASTER SET FAUTHOR_NAME=@AUTHOR_NAME,FAUTHOR_ID=@AUTHOR_ID ");
             sqlCmdBuilder.Append(" WHERE FAUTHOR_ID=@AUTHOR_ID ");
 
             MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);

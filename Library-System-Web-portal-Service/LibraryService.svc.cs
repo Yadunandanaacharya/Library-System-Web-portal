@@ -130,7 +130,7 @@ namespace Library_System_Web_portal_Service
             }
         }
 
-        public List<AuthorDetails> GetAuthorDetails(BasicFilter basicFilter)
+        public AuthorManage GetAuthorDetails(BasicFilter basicFilter)
         {
             IDataReader dataReader = null;
             try
@@ -143,7 +143,7 @@ namespace Library_System_Web_portal_Service
                 connection.Open();
 
                 //In admin table check whether user exists or not
-                dataReader = LibraryDAL.GetAuthorData(connection, basicFilter.AuthorID,basicFilter.PageStart,basicFilter.PageEnd);
+                dataReader = LibraryDAL.GetAuthorData(connection, basicFilter.AuthorID,basicFilter.PageStart,basicFilter.RecordsPerPage);
                
                 while (dataReader.Read())
                 {
@@ -153,9 +153,12 @@ namespace Library_System_Web_portal_Service
                     authorDetails.Add(authors);
                     authorManage.AuthorDetails.Add(authors);
                    
+                    if(authorManage.TotalRecords == 0)
+                        authorManage.TotalRecords = dataReader.GetInt16(dataReader.GetOrdinal("FTOTAL"));
+                    authorManage.PageStart = basicFilter.PageStart;
                 }
                 dataReader.Close();
-                return authorDetails;
+                return authorManage;
             }
             catch (Exception ex)
             {

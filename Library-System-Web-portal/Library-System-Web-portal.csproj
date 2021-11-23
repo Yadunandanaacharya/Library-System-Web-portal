@@ -91,9 +91,6 @@
     <Content Include="Connected Services\LibraryService\Library_System_Web_portal.LibraryService.AuthorManage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\LibraryService\Library_System_Web_portal.LibraryService.AuthorDetails.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Connected Services\LibraryService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

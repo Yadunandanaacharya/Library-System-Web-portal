@@ -71,16 +71,18 @@ namespace Library_System_Web_portal.WebServices
         public GetAuthorDetailsListInfo GetAuthorDetails(BasicFilter basicFilter)
         {
             GetAuthorDetailsListInfo getAuthorDetailsListInfo = new GetAuthorDetailsListInfo();
-            AuthorDetails[] authorDetails = BLL.Library.GetAuthorDetails(basicFilter);
-            getAuthorDetailsListInfo.AuthorDetails = authorDetails;
-            getAuthorDetailsListInfo.TotalRecord = authorDetails.Length;
+            AuthorManage authorManage = BLL.Library.GetAuthorDetails(basicFilter);
+            getAuthorDetailsListInfo.AuthorManage = authorManage;
+            getAuthorDetailsListInfo.TotalRecord = authorManage.TotalRecords;
+            getAuthorDetailsListInfo.PageStart = authorManage.PageStart;
             return getAuthorDetailsListInfo;
         }
 
         public class GetAuthorDetailsListInfo
         {
-            public AuthorDetails[] AuthorDetails { get; set; }
+            public AuthorManage AuthorManage { get; set; }
             public int TotalRecord { get; set; } = 0;
+            public int PageStart { get; set; } = 0;
         }
 
 

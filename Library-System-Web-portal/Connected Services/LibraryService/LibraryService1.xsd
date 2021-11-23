@@ -53,7 +53,7 @@
   <xs:element name="GetAuthorDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="GetAuthorDetailsResult" nillable="true" type="q6:ArrayOfAuthorDetails" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="GetAuthorDetailsResult" nillable="true" type="q6:AuthorManage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

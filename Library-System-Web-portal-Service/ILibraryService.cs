@@ -27,7 +27,7 @@ namespace Library_System_Web_portal_Service
 
          [OperationContract]
         [WebInvoke(UriTemplate = "GetAuthorDetails?basicFilter={basicFilter}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
-        List<AuthorDetails> GetAuthorDetails(BasicFilter basicFilter);
+        AuthorManage GetAuthorDetails(BasicFilter basicFilter);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "InsertAuthor?authorDetails={authorDetails}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]

@@ -185,13 +185,20 @@
                                         </tbody>
                                     </table>
 
+                                    <%--for pagination--%>
+
+                                    <%--<div id="listingTable"></div>
+                                    <a href="javascript:prevPage()" id="btn_prev">Prev</a>
+                                    <a href="javascript:nextPage()" id="btn_next">Next</a>
+                                    page: <span id="page"></span>--%>
+
                                     <nav aria-label="Page navigation example">
                                         <ul class="pagination">
-                                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript:PrevPageIs()" id="btn_prev">Previous</a></li>
+                                           <%-- <li class="page-item"><a class="page-link" href="#">1</a></li>
                                             <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+                                            <li class="page-item"><a class="page-link" href="javascript:NextPageIs()" id="btn_next">Next</a></li>
                                         </ul>
                                     </nav>
 
