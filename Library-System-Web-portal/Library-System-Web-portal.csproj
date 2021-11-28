@@ -1771,6 +1771,7 @@
     <Content Include="Images\signUp.jfif" />
     <Content Include="Images\userlogin.jfif" />
     <Content Include="Images\visitus.jfif" />
+    <Content Include="knockoutExample.aspx" />
     <Content Include="Scripts\AdminAuthorManage.js" />
     <Content Include="Scripts\jquery-2.2.2.min.js" />
     <Content Include="Scripts\UserSignUpDetails.js" />
@@ -1840,6 +1841,13 @@
     </Compile>
     <Compile Include="HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="knockoutExample.aspx.cs">
+      <DependentUpon>knockoutExample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="knockoutExample.aspx.designer.cs">
+      <DependentUpon>knockoutExample.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">

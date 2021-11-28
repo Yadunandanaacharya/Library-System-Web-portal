@@ -20,6 +20,8 @@ function SearchAuthor() {
     var authorID = jQuery("#txtSearch").val();
     var basicFilter = {};
     basicFilter.AuthorID = authorID;
+    basicFilter.PageStart = 0;
+    basicFilter.RecordsPerPage = 4;
     GetAuthorDetails(basicFilter);
 }
 
@@ -28,6 +30,8 @@ function ShowAllData() {
     var authorID = "";
     var basicFilter = {};
     basicFilter.AuthorID = authorID;
+    basicFilter.PageStart = 0;
+    basicFilter.RecordsPerPage = 4;
     GetAuthorDetails(basicFilter);
 }
 
@@ -266,7 +270,6 @@ function NextPageIs() {
     basicParam.PageStart = pageStart;
     basicParam.RecordsPerPage = 4;
     GetAuthorDetails(basicParam);
-   
 }
 
 function PrevPageIs() {
@@ -282,7 +285,6 @@ function PrevPageIs() {
     basicParam.PageStart = pageStart;
     basicParam.RecordsPerPage = 4;
     GetAuthorDetails(basicParam);
-
 }
 
 
