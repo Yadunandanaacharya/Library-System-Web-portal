@@ -261,8 +261,118 @@ namespace Library_System_Web_portal_Service_DAL
             dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
             return dbCmd.ExecuteReader();
         }
+        #endregion
 
+        #region Publisher Management details
+        public static IDataReader CheckPublisherExist(MySqlConnection connection, string publisherID)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" SELECT COUNT(*) as FTOTAL, ");
+            sqlCmdBuilder.Append(" IFNULL(FPUBLISHER_ID,'') AS FPUBLISHER_ID, IFNULL(FPUBLISHER_NAME,'') AS FPUBLISHER_NAME ");
+            sqlCmdBuilder.Append(" FROM LIB_PUBLISHER_MASTER WHERE FPUBLISHER_ID=@PUBLISHER_ID ");
 
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@PUBLISHER_ID", publisherID);
+            return dbCmd.ExecuteReader();
+        }
+
+        public static IDataReader GetPublisherData(MySqlConnection connection, string publisherID, int pageStart, int pageEnd)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            //if you use ftotal here it will return coutn 3 but only one row from db
+            sqlCmdBuilder.Append(" SET @ROW_NUMBER=0;  "); //if you use ftotal here it will return coutn 3 but only one row from db
+            sqlCmdBuilder.Append(" SELECT IFNULL(FPUBLISHER_ID,'') AS FPUBLISHER_ID, IFNULL(FPUBLISHER_NAME,'') AS FPUBLISHER_NAME ");
+            sqlCmdBuilder.Append(" ,(@ROW_NUMBER := @ROW_NUMBER +1) as ROWNUM,(SELECT COUNT(*) FROM LIB_PUBLISHER_MASTER) AS FTOTAL ");
+            sqlCmdBuilder.Append(" FROM LIB_PUBLISHER_MASTER ");
+
+            if (publisherID != "" && publisherID != null)
+                sqlCmdBuilder.Append(" WHERE FPUBLISHER_ID=@PUBLISHER_ID ");
+
+            //below query ORDER BY LENGTH(FAUTHOR_ID) is very important because of that if l1,l10,l11,l2 displayed as l1,l2,l10,l11
+            //for more understanding you can run this query in database.
+            if (pageStart >= 0)
+            {
+                sqlCmdBuilder.Append(" ORDER BY LENGTH(FPUBLISHER_ID), ROWNUM  LIMIT @PAGE_START,@PAGE_END ");
+            }
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            //for @AUTHOR_ID I have to use if condition if it's not empty then only I need to use it or else, your output becomes wrong with
+            //addparameter
+            if (publisherID != "" && publisherID != null)
+                dbCmd.Parameters.AddWithValue("@PUBLISHER_ID", publisherID);
+            if (pageStart >= 0)
+            {
+                dbCmd.Parameters.AddWithValue("@PAGE_START", pageStart);
+                dbCmd.Parameters.AddWithValue("@PAGE_END", pageEnd);
+            }
+
+            return dbCmd.ExecuteReader();
+        }
+
+        public static DataTable CheckPublisherTable(Database db, string authorID)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" SELECT COUNT(*) as FTOTAL, ");
+            sqlCmdBuilder.Append(" IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
+            sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER WHERE FAUTHOR_ID=@AUTHOR_ID ");
+
+            DbCommand dbCmd = db.GetSqlStringCommand(sqlCmdBuilder.ToString());
+            dbCmd.CommandType = CommandType.Text;
+
+            //MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), db);
+            //dbCmd.CommandType = CommandType.Text;
+
+            //dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+            db.AddInParameter(dbCmd, "@AUTHOR_ID", DbType.AnsiString, authorID);
+            return db.ExecuteDataSet(dbCmd).Tables[0];
+
+        }
+
+        public static bool InsertPublisher(MySqlConnection connection, string publisherID, String publisherName)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" INSERT INTO LIB_PUBLISHER_MASTER (FPUBLISHER_ID, FPUBLISHER_NAME)  ");
+            sqlCmdBuilder.Append(" VALUES (@PUBLISHER_ID,@PUBLISHER_NAME) ");
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@PUBLISHER_ID", publisherID);
+            dbCmd.Parameters.AddWithValue("@PUBLISHER_NAME", publisherName);
+            dbCmd.ExecuteNonQuery();
+            return true;
+        }
+
+        public static IDataReader UpdatePublisher(MySqlConnection connection, string publisherID, String publisherName)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" UPDATE LIB_PUBLISHER_MASTER SET FPUBLISHER_ID=@PUBLISHER_ID,FPUBLISHER_NAME=@PUBLISHER_NAME ");
+            sqlCmdBuilder.Append(" WHERE FPUBLISHER_ID=@PUBLISHER_ID ");
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@PUBLISHER_ID", publisherID);
+            dbCmd.Parameters.AddWithValue("@PUBLISHER_NAME", publisherName);
+            return dbCmd.ExecuteReader();
+        }
+
+        public static IDataReader DeletePublisher(MySqlConnection connection, string publisherID)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" DELETE FROM LIB_PUBLISHER_MASTER ");
+            sqlCmdBuilder.Append(" WHERE FPUBLISHER_ID=@PUBLISHER_ID ");
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@PUBLISHER_ID", publisherID);
+            return dbCmd.ExecuteReader();
+        }
         #endregion
     }
 }
