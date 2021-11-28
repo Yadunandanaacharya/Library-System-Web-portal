@@ -18,7 +18,7 @@
   <xs:element name="CheckUserExists">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="signUp" nillable="true" type="q2:SignUpDetails" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="signUp" nillable="true" type="q2:SignUpDetail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -26,6 +26,76 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="CheckUserExistsResult" nillable="true" type="q3:SignUpDetailLists" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckAuthor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="authorID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckAuthorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="CheckAuthorResult" nillable="true" type="q4:AuthorManage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAuthorDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="basicFilter" nillable="true" type="q5:BasicFilter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAuthorDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="GetAuthorDetailsResult" nillable="true" type="q6:AuthorManage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertAuthor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="authorDetails" nillable="true" type="q7:AuthorDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertAuthorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertAuthorResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAuthor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="authorDetails" nillable="true" type="q8:AuthorDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAuthorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateAuthorResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAuthor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="authorID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAuthorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteAuthorResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

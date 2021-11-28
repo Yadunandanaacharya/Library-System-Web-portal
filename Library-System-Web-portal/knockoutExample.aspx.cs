@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Library_System_Web_portal
 {
-    public partial class AdminAuthorMangement1 : System.Web.UI.Page
+    public partial class knockoutExample : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

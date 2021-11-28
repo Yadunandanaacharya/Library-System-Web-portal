@@ -15,17 +15,64 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SignUpDetails" nillable="true" type="tns:SignUpDetails" />
+  <xs:complexType name="SignUpDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DOB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MemberID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pincode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SignUpDetail" nillable="true" type="tns:SignUpDetail" />
   <xs:complexType name="SignUpDetailLists">
     <xs:sequence>
-      <xs:element minOccurs="0" name="SignUpDetails" nillable="true" type="tns:ArrayOfSignUpDetails" />
+      <xs:element minOccurs="0" name="SignUpDetail" nillable="true" type="tns:ArrayOfSignUpDetail" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SignUpDetailLists" nillable="true" type="tns:SignUpDetailLists" />
-  <xs:complexType name="ArrayOfSignUpDetails">
+  <xs:complexType name="ArrayOfSignUpDetail">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="SignUpDetails" nillable="true" type="tns:SignUpDetails" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SignUpDetail" nillable="true" type="tns:SignUpDetail" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfSignUpDetails" nillable="true" type="tns:ArrayOfSignUpDetails" />
+  <xs:element name="ArrayOfSignUpDetail" nillable="true" type="tns:ArrayOfSignUpDetail" />
+  <xs:complexType name="AuthorManage">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BasicFilter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AuthorDetails" nillable="true" type="tns:ArrayOfAuthorDetails" />
+          <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AuthorManage" nillable="true" type="tns:AuthorManage" />
+  <xs:complexType name="BasicFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthorID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageStart" type="xs:int" />
+      <xs:element minOccurs="0" name="RecordsPerPage" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BasicFilter" nillable="true" type="tns:BasicFilter" />
+  <xs:complexType name="ArrayOfAuthorDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AuthorDetails" nillable="true" type="tns:AuthorDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuthorDetails" nillable="true" type="tns:ArrayOfAuthorDetails" />
+  <xs:complexType name="AuthorDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthorID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthorName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthorDetails" nillable="true" type="tns:AuthorDetails" />
 </xs:schema>

@@ -44,7 +44,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.0.26.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Quintsys.Practices.EnterpriseLibrary.Data, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quintsys.Practices.EnterpriseLibrary.Data.1.0.5.0\lib\net452\Quintsys.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Quintsys.System, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quintsys.System.1.0.5.0\lib\net452\Quintsys.System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -70,16 +82,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdminAuthorMangement.aspx" />
-    <Content Include="AdminBookInventory.aspx" />
-    <Content Include="AdminBookIssuing.aspx" />
-    <Content Include="AdminLogin.aspx" />
-    <Content Include="AdminMemberManagement.aspx" />
-    <Content Include="AdminPublisherMangement.aspx" />
     <None Include="Connected Services\LibraryService\LibraryService.disco" />
     <None Include="Connected Services\LibraryService\configuration91.svcinfo" />
     <None Include="Connected Services\LibraryService\configuration.svcinfo" />
     <Content Include="Connected Services\LibraryService\Library_System_Web_portal.LibraryService.SignUpDetailLists.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\LibraryService\Library_System_Web_portal.LibraryService.AuthorManage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\LibraryService\Reference.svcmap">
@@ -1758,18 +1767,18 @@
     <Content Include="Images\digitalBookInventory.jfif" />
     <Content Include="Images\Home.bg.png" />
     <Content Include="Images\Pulisher.png" />
+    <Content Include="Images\search.png" />
     <Content Include="Images\signUp.jfif" />
     <Content Include="Images\userlogin.jfif" />
     <Content Include="Images\visitus.jfif" />
+    <Content Include="knockoutExample.aspx" />
+    <Content Include="Scripts\AdminAuthorManage.js" />
     <Content Include="Scripts\jquery-2.2.2.min.js" />
     <Content Include="Scripts\UserSignUpDetails.js" />
     <Content Include="UserControls\Pager.ascx" />
-    <Content Include="UserLogin.aspx" />
     <Content Include="UserPages\UserLogin.aspx" />
     <Content Include="UserPages\UserProfile.aspx" />
     <Content Include="UserPages\UserSignUp.aspx" />
-    <Content Include="UserProfile.aspx" />
-    <Content Include="UserSignUp.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WebServices\LibraryWebService.asmx" />
@@ -1778,41 +1787,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminAuthorMangement.aspx.cs">
-      <DependentUpon>AdminAuthorMangement.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminAuthorMangement.aspx.designer.cs">
-      <DependentUpon>AdminAuthorMangement.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdminBookInventory.aspx.cs">
-      <DependentUpon>AdminBookInventory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminBookInventory.aspx.designer.cs">
-      <DependentUpon>AdminBookInventory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdminBookIssuing.aspx.cs">
-      <DependentUpon>AdminBookIssuing.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminBookIssuing.aspx.designer.cs">
-      <DependentUpon>AdminBookIssuing.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdminLogin.aspx.cs">
-      <DependentUpon>AdminLogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminLogin.aspx.designer.cs">
-      <DependentUpon>AdminLogin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdminMemberManagement.aspx.cs">
-      <DependentUpon>AdminMemberManagement.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminMemberManagement.aspx.designer.cs">
-      <DependentUpon>AdminMemberManagement.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AdminPages\AdminAuthorMangement.aspx.cs">
       <DependentUpon>AdminAuthorMangement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1855,13 +1829,6 @@
     <Compile Include="AdminPages\AdminPublisherMangement.aspx.designer.cs">
       <DependentUpon>AdminPublisherMangement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminPublisherMangement.aspx.cs">
-      <DependentUpon>AdminPublisherMangement.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminPublisherMangement.aspx.designer.cs">
-      <DependentUpon>AdminPublisherMangement.aspx</DependentUpon>
-    </Compile>
     <Compile Include="BLL\Library.cs" />
     <Compile Include="Connected Services\LibraryService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -1874,6 +1841,13 @@
     </Compile>
     <Compile Include="HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="knockoutExample.aspx.cs">
+      <DependentUpon>knockoutExample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="knockoutExample.aspx.designer.cs">
+      <DependentUpon>knockoutExample.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
@@ -1889,13 +1863,6 @@
     </Compile>
     <Compile Include="UserControls\Pager.ascx.designer.cs">
       <DependentUpon>Pager.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="UserLogin.aspx.cs">
-      <DependentUpon>UserLogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserLogin.aspx.designer.cs">
-      <DependentUpon>UserLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\UserLogin.aspx.cs">
       <DependentUpon>UserLogin.aspx</DependentUpon>
@@ -1916,20 +1883,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\UserSignUp.aspx.designer.cs">
-      <DependentUpon>UserSignUp.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UserProfile.aspx.cs">
-      <DependentUpon>UserProfile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserProfile.aspx.designer.cs">
-      <DependentUpon>UserProfile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UserSignUp.aspx.cs">
-      <DependentUpon>UserSignUp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserSignUp.aspx.designer.cs">
       <DependentUpon>UserSignUp.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
@@ -2041,6 +1994,7 @@
     <Content Include="fontawesome\webfonts\fa-solid-900.woff2" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
+    <Content Include="Properties\DataSources\Library_System_Web_portal_Service.Library.SignUpDetailLists.datasource" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

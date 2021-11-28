@@ -30,21 +30,84 @@ namespace Library_System_Web_portal.WebServices
         //[System.Web.Script.Services.ScriptMethod(ResponseFormat =System.Web.Script.Services.ResponseFormat.Xml)]
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public SignUpDetailListsInfo CheckUserExists(SignUpDetails signUp)
+        public SignUpDetailListsInfo CheckUserExists(SignUpDetail signUp)
         {
             SignUpDetailListsInfo signUpDetailListsInfo = new SignUpDetailListsInfo();
             SignUpDetailLists signUpDetailLists =  BLL.Library.CheckUserExists(signUp);
 
-            signUpDetailListsInfo.SignUpDetails = signUpDetailLists.SignUpDetails;
+            signUpDetailListsInfo.SignUpDetail = signUpDetailLists.SignUpDetail;
 
-            return signUpDetailListsInfo;
+            return signUpDetailListsInfo; 
         }
 
         public class SignUpDetailListsInfo
         {
-            public SignUpDetails[] SignUpDetails { get; set; }
+            public SignUpDetail[] SignUpDetail { get; set; }
             public int TotalRecord { get; set; } = 0;
         }
+
+        #region author infos
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public AuthorManageListInfo CheckAuthor(string authorID)
+        {
+            AuthorManageListInfo authorManageListInfo = new AuthorManageListInfo();
+            AuthorManage authorDetails = BLL.Library.CheckAuthor(authorID);
+
+            authorManageListInfo.AuthorDetails = authorDetails.AuthorDetails;
+            authorManageListInfo.TotalRecord = authorDetails.TotalRecords;
+            return authorManageListInfo;
+        }
+
+        public class AuthorManageListInfo
+        {
+            public AuthorDetails[] AuthorDetails { get; set; }
+            public int TotalRecord { get; set; } = 0;
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public GetAuthorDetailsListInfo GetAuthorDetails(BasicFilter basicFilter)
+        {
+            GetAuthorDetailsListInfo getAuthorDetailsListInfo = new GetAuthorDetailsListInfo();
+            AuthorManage authorManage = BLL.Library.GetAuthorDetails(basicFilter);
+            getAuthorDetailsListInfo.AuthorManage = authorManage;
+            getAuthorDetailsListInfo.TotalRecord = authorManage.TotalRecords;
+            getAuthorDetailsListInfo.PageStart = authorManage.PageStart;
+            return getAuthorDetailsListInfo;
+        }
+
+        public class GetAuthorDetailsListInfo
+        {
+            public AuthorManage AuthorManage { get; set; }
+            public int TotalRecord { get; set; } = 0;
+            public int PageStart { get; set; } = 0;
+        }
+
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool InsertAuthor(AuthorDetails authorDetails)
+        {
+            return BLL.Library.InsertAuthor(authorDetails);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool UpdateAuthor(AuthorDetails authorDetails)
+        {
+            return BLL.Library.UpdateAuthor(authorDetails);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool DeleteAuthor(string authorID)
+        {
+            return BLL.Library.DeleteAuthor(authorID);
+        }
+
+        #endregion
 
     }
 }

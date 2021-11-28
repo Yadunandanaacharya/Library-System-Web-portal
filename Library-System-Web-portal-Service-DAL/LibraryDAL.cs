@@ -8,6 +8,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 using System.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 
 namespace Library_System_Web_portal_Service_DAL
 {
@@ -78,7 +79,7 @@ namespace Library_System_Web_portal_Service_DAL
         }
 
         //checking in lib_admin_login table whether user exists
-        public IDataReader CheckUserExistsAdminTable(MySqlConnection conn, string memberID, string passWord)
+        public static IDataReader CheckUserExistsAdminTable(MySqlConnection conn, string memberID, string passWord)
         {
             StringBuilder sqlCmdBuilder = new StringBuilder();
             sqlCmdBuilder.Append(" SELECT * FROM LIB_ADMIN_LOGIN WHERE FMEMBER_ID=@MEMBER_ID ");
@@ -132,5 +133,136 @@ namespace Library_System_Web_portal_Service_DAL
         }
         #endregion
 
+        #region Author Infos
+        public static IDataReader CheckAuthorExist(MySqlConnection connection, string authorID)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" SELECT COUNT(*) as FTOTAL, ");
+            sqlCmdBuilder.Append(" IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
+            sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER WHERE FAUTHOR_ID=@AUTHOR_ID ");
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+            return dbCmd.ExecuteReader();
+        }
+
+        public static IDataReader GetAuthorData(MySqlConnection connection,string authorID, int pageStart, int pageEnd)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            //if you use ftotal here it will return coutn 3 but only one row from db
+            sqlCmdBuilder.Append(" SET @ROW_NUMBER=0;  "); //if you use ftotal here it will return coutn 3 but only one row from db
+            sqlCmdBuilder.Append(" SELECT IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
+            sqlCmdBuilder.Append(" ,(@ROW_NUMBER := @ROW_NUMBER +1) as ROWNUM,(SELECT COUNT(*) FROM LIB_AUTHOR_MASTER) AS FTOTAL ");
+            sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER ");
+
+            if (authorID != "" && authorID != null)
+                sqlCmdBuilder.Append(" WHERE FAUTHOR_ID=@AUTHOR_ID ");
+
+            //below query ORDER BY LENGTH(FAUTHOR_ID) is very important because of that if l1,l10,l11,l2 displayed as l1,l2,l10,l11
+            //for more understanding you can run this query in database.
+            if (pageStart >= 0 )
+            {
+                sqlCmdBuilder.Append(" ORDER BY LENGTH(FAUTHOR_ID), ROWNUM  LIMIT @PAGE_START,@PAGE_END ");
+            }
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            //for @AUTHOR_ID I have to use if condition if it's not empty then only I need to use it or else, your output becomes wrong with
+            //addparameter
+            if (authorID != "" && authorID!= null)
+                dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+            if (pageStart >= 0)
+            {
+                dbCmd.Parameters.AddWithValue("@PAGE_START", pageStart);
+                dbCmd.Parameters.AddWithValue("@PAGE_END", pageEnd);
+            }
+                
+            return dbCmd.ExecuteReader();
+        }
+
+        public static DataTable CheckAuthorExistTable(Database db, string authorID)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" SELECT COUNT(*) as FTOTAL, ");
+            sqlCmdBuilder.Append(" IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
+            sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER WHERE FAUTHOR_ID=@AUTHOR_ID ");
+
+            DbCommand dbCmd = db.GetSqlStringCommand(sqlCmdBuilder.ToString());
+            dbCmd.CommandType = CommandType.Text;
+
+            //MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), db);
+            //dbCmd.CommandType = CommandType.Text;
+
+            //dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+            db.AddInParameter(dbCmd, "@AUTHOR_ID", DbType.AnsiString, authorID);
+            return db.ExecuteDataSet(dbCmd).Tables[0];
+            
+        }
+
+        //public static DataTable CheckAuthorExistTables(MySqlConnection connection, string authorID)
+        //{
+        //    StringBuilder sqlCmdBuilder = new StringBuilder();
+        //    sqlCmdBuilder.Append(" SELECT COUNT(*) as FTOTAL, ");
+        //    sqlCmdBuilder.Append(" IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
+        //    sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER WHERE FAUTHOR_ID=@AUTHOR_ID ");
+
+        //    MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+        //    dbCmd.CommandType = CommandType.Text;
+
+        //    dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+        //    DataTable dataTable = new DataTable();
+        //    dataTable.Load(dbCmd.ExecuteReader());
+        //    dbCmd.ExecuteScalar();
+        //    //connection.execut
+        //    return dataTable;
+        //}
+
+        public static bool InsertAuthor(MySqlConnection connection, string authorID, String authorName)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" INSERT INTO LIB_AUTHOR_MASTER (FAUTHOR_ID, FAUTHOR_NAME)  ");
+            sqlCmdBuilder.Append(" VALUES (@AUTHOR_ID,@AUTHOR_NAME) ");
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+            dbCmd.Parameters.AddWithValue("@AUTHOR_NAME", authorName);
+            dbCmd.ExecuteNonQuery();
+            return true;
+        }
+
+        public static IDataReader UpdateAuthor(MySqlConnection connection, string authorID, String authorName)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" UPDATE LIB_AUTHOR_MASTER SET FAUTHOR_NAME=@AUTHOR_NAME,FAUTHOR_ID=@AUTHOR_ID ");
+            sqlCmdBuilder.Append(" WHERE FAUTHOR_ID=@AUTHOR_ID ");
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+            dbCmd.Parameters.AddWithValue("@AUTHOR_NAME", authorName);
+            return dbCmd.ExecuteReader();
+        }
+
+        public static IDataReader DeleteAuthor(MySqlConnection connection, string authorID)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" DELETE FROM LIB_AUTHOR_MASTER ");
+            sqlCmdBuilder.Append(" WHERE FAUTHOR_ID=@AUTHOR_ID ");
+
+            MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
+            dbCmd.CommandType = CommandType.Text;
+
+            dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
+            return dbCmd.ExecuteReader();
+        }
+
+
+        #endregion
     }
 }
