@@ -13,15 +13,6 @@ namespace Library_System_Web_portal.AdminPages {
     public partial class AdminMemberManagement {
         
         /// <summary>
-        /// txtMemberID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMemberID;
-        
-        /// <summary>
         /// lnkButtonRight control.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,15 @@ namespace Library_System_Web_portal.AdminPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkButtonRight;
+        
+        /// <summary>
+        /// btnGo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnGo;
         
         /// <summary>
         /// txtFullName control.

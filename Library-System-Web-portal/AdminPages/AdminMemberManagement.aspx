@@ -44,10 +44,14 @@
                                 <label>Member ID</label>
                                  <div class="form-group">
                                      <div class="input-group">
-                                        <asp:TextBox ID="txtMemberID" CssClass="form-control" runat="server" placeholder="ID"></asp:TextBox>
+                                        <%--<asp:TextBox ID="txtMemberID" CssClass="form-control" runat="server" placeholder="ID"></asp:TextBox>--%>
                                         <asp:LinkButton ID="lnkButtonRight" Class="btn btn-primary" runat="server" Text="s">
                                              <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                          </asp:LinkButton>
+
+                                         <input type="text" id="txtMemberID" class="form-control"   placeholder="ID" >
+                                
+                                         <button id="btnGo" onclick="CheckPublisher(); return false;"  Class="btn btn-primary" runat="server" >Go</button>
                                      </div>
                                  </div>
                             </div>
