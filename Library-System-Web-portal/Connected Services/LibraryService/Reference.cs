@@ -460,6 +460,7 @@ namespace Library_System_Web_portal.LibraryService {
     [System.Runtime.Serialization.DataContractAttribute(Name="BasicFilter", Namespace="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" +
         "")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Library_System_Web_portal.LibraryService.PublisherManage))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Library_System_Web_portal.LibraryService.AuthorManage))]
     public partial class BasicFilter : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -471,6 +472,9 @@ namespace Library_System_Web_portal.LibraryService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PageStartField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PublisherIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int RecordsPerPageField;
@@ -512,6 +516,19 @@ namespace Library_System_Web_portal.LibraryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PublisherID {
+            get {
+                return this.PublisherIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PublisherIDField, value) != true)) {
+                    this.PublisherIDField = value;
+                    this.RaisePropertyChanged("PublisherID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int RecordsPerPage {
             get {
                 return this.RecordsPerPageField;
@@ -530,6 +547,46 @@ namespace Library_System_Web_portal.LibraryService {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PublisherManage", Namespace="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class PublisherManage : Library_System_Web_portal.LibraryService.BasicFilter {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Library_System_Web_portal.LibraryService.PublisherDetails[] PublisherDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalRecordsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Library_System_Web_portal.LibraryService.PublisherDetails[] PublisherDetails {
+            get {
+                return this.PublisherDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PublisherDetailsField, value) != true)) {
+                    this.PublisherDetailsField = value;
+                    this.RaisePropertyChanged("PublisherDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalRecords {
+            get {
+                return this.TotalRecordsField;
+            }
+            set {
+                if ((this.TotalRecordsField.Equals(value) != true)) {
+                    this.TotalRecordsField = value;
+                    this.RaisePropertyChanged("TotalRecords");
+                }
             }
         }
     }
@@ -636,6 +693,68 @@ namespace Library_System_Web_portal.LibraryService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PublisherDetails", Namespace="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class PublisherDetails : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PublisherIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PublisherNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PublisherID {
+            get {
+                return this.PublisherIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PublisherIDField, value) != true)) {
+                    this.PublisherIDField = value;
+                    this.RaisePropertyChanged("PublisherID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PublisherName {
+            get {
+                return this.PublisherNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PublisherNameField, value) != true)) {
+                    this.PublisherNameField = value;
+                    this.RaisePropertyChanged("PublisherName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LibraryService.ILibraryService")]
     public interface ILibraryService {
@@ -681,6 +800,36 @@ namespace Library_System_Web_portal.LibraryService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/DeleteAuthor", ReplyAction="http://tempuri.org/ILibraryService/DeleteAuthorResponse")]
         System.Threading.Tasks.Task<bool> DeleteAuthorAsync(string authorID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/CheckPublisher", ReplyAction="http://tempuri.org/ILibraryService/CheckPublisherResponse")]
+        Library_System_Web_portal.LibraryService.PublisherManage CheckPublisher(string publisherID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/CheckPublisher", ReplyAction="http://tempuri.org/ILibraryService/CheckPublisherResponse")]
+        System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.PublisherManage> CheckPublisherAsync(string publisherID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/GetPublisherDetails", ReplyAction="http://tempuri.org/ILibraryService/GetPublisherDetailsResponse")]
+        Library_System_Web_portal.LibraryService.PublisherManage GetPublisherDetails(Library_System_Web_portal.LibraryService.BasicFilter basicFilter);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/GetPublisherDetails", ReplyAction="http://tempuri.org/ILibraryService/GetPublisherDetailsResponse")]
+        System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.PublisherManage> GetPublisherDetailsAsync(Library_System_Web_portal.LibraryService.BasicFilter basicFilter);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/InsertPublisher", ReplyAction="http://tempuri.org/ILibraryService/InsertPublisherResponse")]
+        bool InsertPublisher(Library_System_Web_portal.LibraryService.PublisherDetails publisherDetail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/InsertPublisher", ReplyAction="http://tempuri.org/ILibraryService/InsertPublisherResponse")]
+        System.Threading.Tasks.Task<bool> InsertPublisherAsync(Library_System_Web_portal.LibraryService.PublisherDetails publisherDetail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/UpdatePublisher", ReplyAction="http://tempuri.org/ILibraryService/UpdatePublisherResponse")]
+        bool UpdatePublisher(Library_System_Web_portal.LibraryService.PublisherDetails publisherDetail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/UpdatePublisher", ReplyAction="http://tempuri.org/ILibraryService/UpdatePublisherResponse")]
+        System.Threading.Tasks.Task<bool> UpdatePublisherAsync(Library_System_Web_portal.LibraryService.PublisherDetails publisherDetail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/DeletePublisher", ReplyAction="http://tempuri.org/ILibraryService/DeletePublisherResponse")]
+        bool DeletePublisher(string publisherID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/DeletePublisher", ReplyAction="http://tempuri.org/ILibraryService/DeletePublisherResponse")]
+        System.Threading.Tasks.Task<bool> DeletePublisherAsync(string publisherID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -764,6 +913,46 @@ namespace Library_System_Web_portal.LibraryService {
         
         public System.Threading.Tasks.Task<bool> DeleteAuthorAsync(string authorID) {
             return base.Channel.DeleteAuthorAsync(authorID);
+        }
+        
+        public Library_System_Web_portal.LibraryService.PublisherManage CheckPublisher(string publisherID) {
+            return base.Channel.CheckPublisher(publisherID);
+        }
+        
+        public System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.PublisherManage> CheckPublisherAsync(string publisherID) {
+            return base.Channel.CheckPublisherAsync(publisherID);
+        }
+        
+        public Library_System_Web_portal.LibraryService.PublisherManage GetPublisherDetails(Library_System_Web_portal.LibraryService.BasicFilter basicFilter) {
+            return base.Channel.GetPublisherDetails(basicFilter);
+        }
+        
+        public System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.PublisherManage> GetPublisherDetailsAsync(Library_System_Web_portal.LibraryService.BasicFilter basicFilter) {
+            return base.Channel.GetPublisherDetailsAsync(basicFilter);
+        }
+        
+        public bool InsertPublisher(Library_System_Web_portal.LibraryService.PublisherDetails publisherDetail) {
+            return base.Channel.InsertPublisher(publisherDetail);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertPublisherAsync(Library_System_Web_portal.LibraryService.PublisherDetails publisherDetail) {
+            return base.Channel.InsertPublisherAsync(publisherDetail);
+        }
+        
+        public bool UpdatePublisher(Library_System_Web_portal.LibraryService.PublisherDetails publisherDetail) {
+            return base.Channel.UpdatePublisher(publisherDetail);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdatePublisherAsync(Library_System_Web_portal.LibraryService.PublisherDetails publisherDetail) {
+            return base.Channel.UpdatePublisherAsync(publisherDetail);
+        }
+        
+        public bool DeletePublisher(string publisherID) {
+            return base.Channel.DeletePublisher(publisherID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeletePublisherAsync(string publisherID) {
+            return base.Channel.DeletePublisherAsync(publisherID);
         }
     }
 }

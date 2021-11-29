@@ -7,20 +7,21 @@ using System.Web;
 namespace Library_System_Web_portal_Service.Library
 {
     //don't change below class name, it's attached with file name once it's been created
-    public class AllOtherInputVariables : BasicFilter
+    //i'm leaving below class since this file meant to mainatain different all inputs
+    public class AllOtherInputVariables
     {
         
     }
 
     [DataContract]
-    public class AuthorPublisher
+    public class PublisherManage : BasicFilter
     {
-        [DataMember] public List<AuthorPublisherDetails> AuthorPublisherDetails { get; set; } = new List<AuthorPublisherDetails>();
+        [DataMember] public List<PublisherDetails> PublisherDetails { get; set; } = new List<PublisherDetails>();
         [DataMember] public int TotalRecords { get; set; } = 0;
     }
 
     [DataContract]
-    public class AuthorPublisherDetails
+    public class PublisherDetails
     {
         #region private fields
         public string _publisherID;

@@ -58,6 +58,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="AuthorID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PageStart" type="xs:int" />
+      <xs:element minOccurs="0" name="PublisherID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RecordsPerPage" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
@@ -75,4 +76,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="AuthorDetails" nillable="true" type="tns:AuthorDetails" />
+  <xs:complexType name="PublisherManage">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BasicFilter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PublisherDetails" nillable="true" type="tns:ArrayOfPublisherDetails" />
+          <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PublisherManage" nillable="true" type="tns:PublisherManage" />
+  <xs:complexType name="ArrayOfPublisherDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PublisherDetails" nillable="true" type="tns:PublisherDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPublisherDetails" nillable="true" type="tns:ArrayOfPublisherDetails" />
+  <xs:complexType name="PublisherDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PublisherID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PublisherName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PublisherDetails" nillable="true" type="tns:PublisherDetails" />
 </xs:schema>
