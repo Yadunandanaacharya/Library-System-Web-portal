@@ -21,11 +21,12 @@ namespace Library_System_Web_portal_Service
         [WebInvoke(UriTemplate = "CheckUserExists?signUp={signUp}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
         SignUpDetailLists CheckUserExists(SignUpDetail signUp);
 
+        #region Author details
         [OperationContract]
         [WebInvoke(UriTemplate = "CheckAuthor?authorID={authorID}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
         AuthorManage CheckAuthor(string authorID);
 
-         [OperationContract]
+        [OperationContract]
         [WebInvoke(UriTemplate = "GetAuthorDetails?basicFilter={basicFilter}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
         AuthorManage GetAuthorDetails(BasicFilter basicFilter);
 
@@ -40,7 +41,30 @@ namespace Library_System_Web_portal_Service
         [OperationContract]
         [WebInvoke(UriTemplate = "DeleteAuthor?authorID={authorID}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
         bool DeleteAuthor(string authorID);
+        #endregion
 
+        #region member management
+        [OperationContract]
+        [WebInvoke(UriTemplate = "CheckPublisher?publisherID={publisherID}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
+        PublisherManage CheckPublisher(string publisherID);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "GetPublisherDetails?basicFilter={basicFilter}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
+        PublisherManage GetPublisherDetails(BasicFilter basicFilter);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "InsertPublisher?publisherDetail={publisherDetail}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
+        bool InsertPublisher(PublisherDetails publisherDetail);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "UpdatePublisher?publisherDetail={publisherDetail}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
+        bool UpdatePublisher(PublisherDetails publisherDetail);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "DeletePublisher?publisherID={publisherID}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
+        bool DeletePublisher(string publisherID);
+
+        #endregion
     }
 
 }

@@ -4,9 +4,6 @@ jQuery.AuthorManagement.BasicParam = {};
 jQuery.AuthorManagement.TotalRecord = 0;
 jQuery.AuthorManagement.PageStart = 0;
 
-
-var AuthorInfos = {};
-
 function InitialLoadMethod(pagerData) {
     jQuery.AuthorManagement.PagerData = pagerData;
     var basicFilter = {};
@@ -63,8 +60,6 @@ function GetAuthorDetails(basicFilter) {
             jQuery("#tBody").empty();
         }
         //error handling is very very important in that reponsetext you can easily get errormessage which helps lot
-
-
     });
 }
 
@@ -182,7 +177,7 @@ function LoadAuthorName(authorDetails) {
     }
 }
 
-//#region pagination logics
+//#region pagination logics from stackoverflow
 
 //var current_page = 1;
 //var records_per_page = 2;
@@ -251,7 +246,7 @@ function LoadAuthorName(authorDetails) {
 //window.onload = function () {
 //    changePage(1);
 //};
-
+//#endregion
 
 //by me
 function NextPageIs() {
@@ -288,4 +283,4 @@ function PrevPageIs() {
 }
 
 
-//#endregion
+

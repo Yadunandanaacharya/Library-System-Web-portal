@@ -18,7 +18,7 @@ namespace Library_System_Web_portal.WebServices
     [System.Web.Script.Services.ScriptService]
     public class LibraryWebService : System.Web.Services.WebService
     {
-
+        #region User details
         [System.Web.Services.WebMethod(EnableSession = true)]
         [System.Web.Script.Services.ScriptMethod(ResponseFormat = System.Web.Script.Services.ResponseFormat.Xml)]
         public string InsertUpdateUserDetails(SignUpDetails signUp)
@@ -45,9 +45,9 @@ namespace Library_System_Web_portal.WebServices
             public SignUpDetail[] SignUpDetail { get; set; }
             public int TotalRecord { get; set; } = 0;
         }
+        #endregion
 
         #region author infos
-
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public AuthorManageListInfo CheckAuthor(string authorID)
@@ -109,5 +109,65 @@ namespace Library_System_Web_portal.WebServices
 
         #endregion
 
+        #region Member management
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public PublisherManageListInfo CheckPublisher(string publisherID)
+        {
+            PublisherManageListInfo publisherManageListInfo = new PublisherManageListInfo();
+            PublisherManage publisherDetails = BLL.Library.CheckPublisher(publisherID);
+
+            publisherManageListInfo.PublisherDetails = publisherDetails.PublisherDetails;
+            publisherManageListInfo.TotalRecord = publisherDetails.TotalRecords;
+            return publisherManageListInfo;
+        }
+
+        public class PublisherManageListInfo
+        {
+            public PublisherDetails[] PublisherDetails { get; set; }
+            public int TotalRecord { get; set; } = 0;
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public GetPublisherDetailsListInfo GetPublisherDetails(BasicFilter basicFilter)
+        {
+            GetPublisherDetailsListInfo getPublisherDetailsListInfo = new GetPublisherDetailsListInfo();
+            PublisherManage publishManage = BLL.Library.GetPublisherDetails(basicFilter);
+            getPublisherDetailsListInfo.PublisherManage = publishManage;
+            getPublisherDetailsListInfo.TotalRecord = publishManage.TotalRecords;
+            getPublisherDetailsListInfo.PageStart = publishManage.PageStart;
+            return getPublisherDetailsListInfo;
+        }
+
+        public class GetPublisherDetailsListInfo
+        {
+            public PublisherManage PublisherManage { get; set; }
+            public int TotalRecord { get; set; } = 0;
+            public int PageStart { get; set; } = 0;
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool InsertPublisher(PublisherDetails publisherDetail)
+        {
+            return BLL.Library.InsertPublisher(publisherDetail);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool UpdatePublisher(PublisherDetails publisherDetail)
+        {
+            return BLL.Library.UpdatePublisher(publisherDetail);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool DeletePublisher(string publisherID)
+        {
+            return BLL.Library.DeletePublisher(publisherID);
+        }
+
+        #endregion
     }
 }

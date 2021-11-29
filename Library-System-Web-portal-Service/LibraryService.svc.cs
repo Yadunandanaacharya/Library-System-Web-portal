@@ -12,7 +12,6 @@ using System.Configuration;
 using Library_System_Web_portal_Service.Library;
 using Quintsys.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data;
-using 
 
 namespace Library_System_Web_portal_Service
 {
@@ -324,33 +323,33 @@ namespace Library_System_Web_portal_Service
         }
 
         #endregion
-        #region Publisher Management details
-        public AuthorPublisher CheckPublisher(string authorID)
+
+        #region Publisher Management details, don't add author at front of publisher author is different publisher is different
+        public PublisherManage CheckPublisher(string publisherID)
         {
             IDataReader dataReader = null;
             try
             {
-                AuthorPublisher authorManage = new AuthorPublisher();
-                List<AuthorPublisherDetails> authorDetails = new List<AuthorPublisherDetails>();
+                PublisherManage publisherManage = new PublisherManage();
 
                 string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
                 MySqlConnection connection = new MySqlConnection(connectionString);
                 connection.Open();
 
                 //In admin table check whether user exists or not
-                dataReader = LibraryDAL.CheckAuthorExist(connection, authorID);
+                dataReader = LibraryDAL.CheckPublisherExist(connection, publisherID);
                 while (dataReader.Read())
                 {
-                    AuthorPublisherDetails publisherDetailIs = new AuthorPublisherDetails();
-                    publisherDetailIs.AuthorID = dataReader.GetString(dataReader.GetOrdinal("FAUTHOR_ID"));
-                    publisherDetailIs.AuthorName = dataReader.GetString(dataReader.GetOrdinal("FAUTHOR_NAME"));
-                    authorManage.AuthorDetails.Add(publisherDetailIs);
+                    PublisherDetails publisherDetailIs = new PublisherDetails();
+                    publisherDetailIs.PublisherID = dataReader.GetString(dataReader.GetOrdinal("FPUBLISHER_ID"));
+                    publisherDetailIs.PublisherName = dataReader.GetString(dataReader.GetOrdinal("FPUBLISHER_NAME"));
+                    publisherManage.PublisherDetails.Add(publisherDetailIs);
 
-                    if (authorManage.TotalRecords == 0)
-                        authorManage.TotalRecords = dataReader.GetInt32(dataReader.GetOrdinal("FTOTAL"));
+                    if (publisherManage.TotalRecords == 0)
+                        publisherManage.TotalRecords = dataReader.GetInt32(dataReader.GetOrdinal("FTOTAL"));
                 }
                 dataReader.Close();
-                return authorManage;
+                return publisherManage;
             }
             catch (Exception ex)
             {
@@ -363,35 +362,34 @@ namespace Library_System_Web_portal_Service
             }
         }
 
-        public AuthorManage GetPublisherDetails(BasicFilter basicFilter)
+        public PublisherManage GetPublisherDetails(BasicFilter basicFilter)
         {
             IDataReader dataReader = null;
             try
             {
-                AuthorManage authorManage = new AuthorManage();
-                List<AuthorDetails> authorDetails = new List<AuthorDetails>();
+                PublisherManage publisherManage = new PublisherManage();
 
                 string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
                 MySqlConnection connection = new MySqlConnection(connectionString);
                 connection.Open();
 
                 //In admin table check whether user exists or not
-                dataReader = LibraryDAL.GetAuthorData(connection, basicFilter.AuthorID, basicFilter.PageStart, basicFilter.RecordsPerPage);
+                dataReader = LibraryDAL.GetPublisherData(connection, basicFilter.PublisherID, basicFilter.PageStart, basicFilter.RecordsPerPage);
 
                 while (dataReader.Read())
                 {
-                    AuthorDetails authors = new AuthorDetails();
-                    authors.AuthorID = dataReader.GetString(dataReader.GetOrdinal("FAUTHOR_ID"));
-                    authors.AuthorName = dataReader.GetString(dataReader.GetOrdinal("FAUTHOR_NAME"));
-                    authorDetails.Add(authors);
-                    authorManage.AuthorDetails.Add(authors);
+                    PublisherDetails publisherDetailIs = new PublisherDetails();
+                    publisherDetailIs.PublisherID = dataReader.GetString(dataReader.GetOrdinal("FPUBLISHER_ID"));
+                    publisherDetailIs.PublisherName = dataReader.GetString(dataReader.GetOrdinal("FPUBLISHER_NAME"));
+                    //authorDetails.Add(publisherDetailIs);
+                    publisherManage.PublisherDetails.Add(publisherDetailIs);
 
-                    if (authorManage.TotalRecords == 0)
-                        authorManage.TotalRecords = dataReader.GetInt16(dataReader.GetOrdinal("FTOTAL"));
-                    authorManage.PageStart = basicFilter.PageStart;
+                    if (publisherManage.TotalRecords == 0)
+                        publisherManage.TotalRecords = dataReader.GetInt16(dataReader.GetOrdinal("FTOTAL"));
+                    publisherManage.PageStart = basicFilter.PageStart;
                 }
                 dataReader.Close();
-                return authorManage;
+                return publisherManage;
             }
             catch (Exception ex)
             {
@@ -404,17 +402,20 @@ namespace Library_System_Web_portal_Service
             }
         }
 
-        public bool InsertPublisher(AuthorDetails authorDetails)
+        public bool InsertPublisher(PublisherDetails publisherDetail)
         {
             IDataReader dataReader = null;
             try
             {
-                AuthorManage authorManage = new AuthorManage();
-                DatabaseProviderFactory factory = new DatabaseProviderFactory();
-                var db = factory.Create("ConnectionStringMySQL");
-                //Database db = DatabaseFactory.CreateDatabase("ConnectionStringMySQL");
+                PublisherManage publisherManage = new PublisherManage();
 
-                bool authorAlreadyInserted = false;//here =false is needed if not throws error in !authorInserted if condition
+                //DatabaseProviderFactory factory = new DatabaseProviderFactory();
+                //var db = factory.Create("ConnectionStringMySQL");
+
+                //using Microsoft.Practices.EnterpriseLibrary.Data; 
+                //Database dbMicrosoftEnter = DatabaseFactory.CreateDatabase("ConnectionStringMySQL");
+
+                bool publisherAlreadyInserted = false;//here =false is needed if not throws error in !authorInserted if condition
                 //unassigned variables
 
                 string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
@@ -423,10 +424,10 @@ namespace Library_System_Web_portal_Service
 
                 #region tried to use datatable but not returning any row
                 //In admin table check whether user exists or not
-                //DataTable dataTable = LibraryDAL.CheckAuthorExistTable(db, authorDetails.AuthorID);
+                //DataTable dataTable = LibraryDAL.CheckPublisherTable(dbMicrosoftEnter, publisherDetail.PublisherID);
                 //if (dataTable.Rows.Count > 0)
                 //{
-                //    authorAlreadyInserted = true;
+                //    publisherAlreadyInserted = true;
                 //}
 
                 //if (!authorAlreadyInserted)
@@ -435,19 +436,19 @@ namespace Library_System_Web_portal_Service
                 //}
                 #endregion
 
-                dataReader = LibraryDAL.CheckAuthorExist(connection, authorDetails.AuthorID);
+                dataReader = LibraryDAL.CheckPublisherExist(connection, publisherDetail.PublisherID);
                 if (dataReader.Read())
                 {
-                    authorManage.TotalRecords = dataReader.GetInt32(dataReader.GetOrdinal("FTOTAL"));
+                    publisherManage.TotalRecords = dataReader.GetInt32(dataReader.GetOrdinal("FTOTAL"));
                 }
                 dataReader.Close();
-                if (authorManage.TotalRecords == 0)
+                if (publisherManage.TotalRecords == 0)
                 {
-                    LibraryDAL.InsertAuthor(connection, authorDetails.AuthorID, authorDetails.AuthorName);
-                    authorAlreadyInserted = true; //when true means author inserted to db. If false means author already there
+                    LibraryDAL.InsertPublisher(connection, publisherDetail.PublisherID, publisherDetail.PublisherName);
+                    publisherAlreadyInserted = true; //when true means author inserted to db. If false means author already there
                 }
 
-                return authorAlreadyInserted;
+                return publisherAlreadyInserted;
             }
             catch (Exception ex)
             {
@@ -460,52 +461,37 @@ namespace Library_System_Web_portal_Service
             }
         }
 
-        public bool UpdatePublisher(AuthorDetails authorDetails)
+        public bool UpdatePublisher(PublisherDetails publisherDetail)
         {
             IDataReader dataReader = null;
             try
             {
-                bool authorExist = false;
+                bool publisherExist = false;
 
                 string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
                 MySqlConnection connection = new MySqlConnection(connectionString);
                 connection.Open();
 
-                //In admin table check whether user exists or not
-                //DataTable dataTable = LibraryDAL.CheckAuthorExistTable(db, authorDetails.AuthorID);
-                //if (dataTable.Rows.Count > 0)
-                //{
-                //    authorExist = true;
-                //}
-                //if (authorExist)
-                //{
-                //    LibraryDAL.UpdateAuthor(connection, authorDetails.AuthorID, authorDetails.AuthorName);
-                //}
-                //else if (!authorExist)
-                //{
-                //    LibraryDAL.InsertAuthor(connection, authorDetails.AuthorID, authorDetails.AuthorName);
-                //    authorExist = true;
-                //}
-
-                AuthorManage authorManage = new AuthorManage();
-                dataReader = LibraryDAL.CheckAuthorExist(connection, authorDetails.AuthorID);
+                PublisherManage publisherManage = new PublisherManage();
+                dataReader = LibraryDAL.CheckPublisherExist
+                    (connection, publisherDetail.PublisherID);
                 if (dataReader.Read())
                 {
-                    authorManage.TotalRecords = dataReader.GetInt32(dataReader.GetOrdinal("FTOTAL"));
+                    publisherManage.TotalRecords = dataReader.GetInt32(dataReader.GetOrdinal("FTOTAL"));
                 }
                 dataReader.Close();
-                if (authorManage.TotalRecords > 0)
+                if (publisherManage.TotalRecords > 0)
                 {
-                    LibraryDAL.UpdateAuthor(connection, authorDetails.AuthorID, authorDetails.AuthorName);
-                    authorExist = true; //if true author existed and updated
+                    LibraryDAL.UpdatePublisher(connection, publisherDetail.PublisherID, publisherDetail.PublisherName);
+                    publisherExist = true; //if true author existed and updated
                 }
-                else if (authorManage.TotalRecords == 0)
+                else if (publisherManage.TotalRecords == 0)
                 {
-                    LibraryDAL.InsertAuthor(connection, authorDetails.AuthorID, authorDetails.AuthorName);
-                    authorExist = false; //if false author doesn't exist so it inserted
+                    LibraryDAL.InsertPublisher(connection, publisherDetail.PublisherID, publisherDetail.PublisherName);
+                    publisherExist = false; //if false author doesn't exist so it inserted
                 }
 
-                return authorExist;
+                return publisherExist;
             }
             catch (Exception ex)
             {
@@ -518,7 +504,7 @@ namespace Library_System_Web_portal_Service
             }
         }
 
-        public bool DeletePublisher(string authorID)
+        public bool DeletePublisher(string publisherID)
         {
             IDataReader dataReader = null;
             try
@@ -530,7 +516,7 @@ namespace Library_System_Web_portal_Service
                 connection.Open();
 
                 AuthorManage authorManage = new AuthorManage();
-                dataReader = LibraryDAL.CheckAuthorExist(connection, authorID);
+                dataReader = LibraryDAL.CheckPublisherExist(connection, publisherID);
                 if (dataReader.Read())
                 {
                     authorManage.TotalRecords = dataReader.GetInt32(dataReader.GetOrdinal("FTOTAL"));
@@ -538,7 +524,7 @@ namespace Library_System_Web_portal_Service
                 dataReader.Close();
                 if (authorManage.TotalRecords > 0)
                 {
-                    LibraryDAL.DeleteAuthor(connection, authorID);
+                    LibraryDAL.DeletePublisher(connection, publisherID);
                     authorExist = true; //if true means author deleted, if false means author doesn't exist
                 }
 

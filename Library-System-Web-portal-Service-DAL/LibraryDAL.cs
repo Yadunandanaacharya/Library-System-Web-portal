@@ -313,12 +313,12 @@ namespace Library_System_Web_portal_Service_DAL
             return dbCmd.ExecuteReader();
         }
 
-        public static DataTable CheckPublisherTable(Database db, string authorID)
+        public static DataTable CheckPublisherTable(Database db, string publisherID)
         {
             StringBuilder sqlCmdBuilder = new StringBuilder();
             sqlCmdBuilder.Append(" SELECT COUNT(*) as FTOTAL, ");
-            sqlCmdBuilder.Append(" IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
-            sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER WHERE FAUTHOR_ID=@AUTHOR_ID ");
+            sqlCmdBuilder.Append(" IFNULL(FPUBLISHER_ID,'') AS FPUBLISHER_ID, IFNULL(FPUBLISHER_NAME,'') AS FPUBLISHER_NAME ");
+            sqlCmdBuilder.Append(" FROM LIB_PUBLISHER_MASTER WHERE FPUBLISHER_ID=@PUBLISHER_ID ");
 
             DbCommand dbCmd = db.GetSqlStringCommand(sqlCmdBuilder.ToString());
             dbCmd.CommandType = CommandType.Text;
@@ -327,7 +327,7 @@ namespace Library_System_Web_portal_Service_DAL
             //dbCmd.CommandType = CommandType.Text;
 
             //dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
-            db.AddInParameter(dbCmd, "@AUTHOR_ID", DbType.AnsiString, authorID);
+            db.AddInParameter(dbCmd, "@PUBLISHER_ID", DbType.AnsiString, publisherID);
             return db.ExecuteDataSet(dbCmd).Tables[0];
 
         }

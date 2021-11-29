@@ -91,6 +91,9 @@
     <Content Include="Connected Services\LibraryService\Library_System_Web_portal.LibraryService.AuthorManage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\LibraryService\Library_System_Web_portal.LibraryService.PublisherManage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\LibraryService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -1774,6 +1777,7 @@
     <Content Include="knockoutExample.aspx" />
     <Content Include="Scripts\AdminAuthorManage.js" />
     <Content Include="Scripts\jquery-2.2.2.min.js" />
+    <Content Include="Scripts\PublisherManage.js" />
     <Content Include="Scripts\UserSignUpDetails.js" />
     <Content Include="UserControls\Pager.ascx" />
     <Content Include="UserPages\UserLogin.aspx" />
