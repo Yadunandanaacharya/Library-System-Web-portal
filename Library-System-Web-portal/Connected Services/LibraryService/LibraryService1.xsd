@@ -169,4 +169,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="LoadMemberDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="basicFilter" nillable="true" type="q14:BasicFilter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoadMemberDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="LoadMemberDetailsResult" nillable="true" type="q15:MemberManage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAccountStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" minOccurs="0" name="basicFilter" nillable="true" type="q16:BasicFilter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAccountStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateAccountStatusResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -79,6 +79,18 @@
   <wsdl:message name="ILibraryService_DeletePublisher_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeletePublisherResponse" />
   </wsdl:message>
+  <wsdl:message name="ILibraryService_LoadMemberDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadMemberDetails" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_LoadMemberDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadMemberDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_UpdateAccountStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccountStatus" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_UpdateAccountStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccountStatusResponse" />
+  </wsdl:message>
   <wsdl:portType name="ILibraryService">
     <wsdl:operation name="InsertUpdateUserDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/InsertUpdateUserDetails" message="tns:ILibraryService_InsertUpdateUserDetails_InputMessage" />
@@ -127,6 +139,14 @@
     <wsdl:operation name="DeletePublisher">
       <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/DeletePublisher" message="tns:ILibraryService_DeletePublisher_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/DeletePublisherResponse" message="tns:ILibraryService_DeletePublisher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadMemberDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/LoadMemberDetails" message="tns:ILibraryService_LoadMemberDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/LoadMemberDetailsResponse" message="tns:ILibraryService_LoadMemberDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccountStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/UpdateAccountStatus" message="tns:ILibraryService_UpdateAccountStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/UpdateAccountStatusResponse" message="tns:ILibraryService_UpdateAccountStatus_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ILibraryService" type="tns:ILibraryService">
@@ -232,6 +252,24 @@
     </wsdl:operation>
     <wsdl:operation name="DeletePublisher">
       <soap:operation soapAction="http://tempuri.org/ILibraryService/DeletePublisher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadMemberDetails">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/LoadMemberDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccountStatus">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/UpdateAccountStatus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
