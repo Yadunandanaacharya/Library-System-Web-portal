@@ -64,8 +64,6 @@ namespace Library_System_Web_portal.BLL
             return output;
 
         }
-
-
         #endregion
 
         #region Member management
@@ -109,6 +107,22 @@ namespace Library_System_Web_portal.BLL
         }
         #endregion
 
+        #region member manage
+        public static MemberManage LoadMemberDetails(BasicFilter basicFilter)
+        {
+            LibraryServiceClient client = new LibraryServiceClient();
+            MemberManage output = client.LoadMemberDetails(basicFilter);
+            return output;
+        }
+
+        public static bool UpdateAccountStatus(BasicFilter basicFilter)
+        {
+            LibraryServiceClient client = new LibraryServiceClient();
+            bool output = client.UpdateAccountStatus(basicFilter);
+            return output;
+        }
+
+        #endregion
 
     }
 }

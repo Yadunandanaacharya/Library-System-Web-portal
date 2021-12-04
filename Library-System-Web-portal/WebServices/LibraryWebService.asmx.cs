@@ -167,6 +167,35 @@ namespace Library_System_Web_portal.WebServices
         {
             return BLL.Library.DeletePublisher(publisherID);
         }
+        #endregion
+
+        #region Member management 
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public MemberManageListInfo LoadMemberDetails(BasicFilter basicFilter)
+        {
+            MemberManageListInfo memberManageListInfo = new MemberManageListInfo();
+            MemberManage memberManage = BLL.Library.LoadMemberDetails(basicFilter);
+
+            memberManageListInfo.MemberDetails = memberManage.MemberDetails;
+            memberManageListInfo.TotalRecord = memberManage.TotalRecords;
+            memberManageListInfo.PageStart = memberManage.PageStart;
+            return memberManageListInfo;
+        }
+
+        public class MemberManageListInfo
+        {
+            public MemberDetails[] MemberDetails { get; set; }
+            public int TotalRecord { get; set; } = 0;
+            public int PageStart { get; set; } = 0;
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public bool UpdateAccountStatus(BasicFilter basicFilter)
+        {
+            return BLL.Library.UpdateAccountStatus(basicFilter);
+        }
 
         #endregion
     }

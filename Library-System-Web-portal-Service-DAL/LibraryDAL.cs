@@ -44,7 +44,7 @@ namespace Library_System_Web_portal_Service_DAL
 
             dbCmd.Parameters.AddWithValue("@MEMBER_ID", memberID);
             dbCmd.Parameters.AddWithValue("@PASSWORD", passWord);
-            dbCmd.Parameters.AddWithValue("@ACCOUNT_STATUS", "Pending");
+            dbCmd.Parameters.AddWithValue("@ACCOUNT_STATUS", "I");
             dbCmd.Parameters.AddWithValue("@FULL_NAME", fullName);
             dbCmd.Parameters.AddWithValue("@DOB", dob);
             dbCmd.Parameters.AddWithValue("@CONTACT_NO", contactNo);
@@ -186,8 +186,8 @@ namespace Library_System_Web_portal_Service_DAL
         public static DataTable CheckAuthorExistTable(Database db, string authorID)
         {
             StringBuilder sqlCmdBuilder = new StringBuilder();
-            sqlCmdBuilder.Append(" SELECT COUNT(*) as FTOTAL, ");
-            sqlCmdBuilder.Append(" IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
+            sqlCmdBuilder.Append(" SELECT ");
+            sqlCmdBuilder.Append(" IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME, (SELECT COUNT(*) FROM LIB_AUTHOR_MASTER) AS FTOTAL ");
             sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER WHERE FAUTHOR_ID=@AUTHOR_ID ");
 
             DbCommand dbCmd = db.GetSqlStringCommand(sqlCmdBuilder.ToString());
@@ -201,24 +201,6 @@ namespace Library_System_Web_portal_Service_DAL
             return db.ExecuteDataSet(dbCmd).Tables[0];
             
         }
-
-        //public static DataTable CheckAuthorExistTables(MySqlConnection connection, string authorID)
-        //{
-        //    StringBuilder sqlCmdBuilder = new StringBuilder();
-        //    sqlCmdBuilder.Append(" SELECT COUNT(*) as FTOTAL, ");
-        //    sqlCmdBuilder.Append(" IFNULL(FAUTHOR_ID,'') AS FAUTHOR_ID, IFNULL(FAUTHOR_NAME,'') AS FAUTHOR_NAME ");
-        //    sqlCmdBuilder.Append(" FROM LIB_AUTHOR_MASTER WHERE FAUTHOR_ID=@AUTHOR_ID ");
-
-        //    MySqlCommand dbCmd = new MySqlCommand(sqlCmdBuilder.ToString(), connection);
-        //    dbCmd.CommandType = CommandType.Text;
-
-        //    dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
-        //    DataTable dataTable = new DataTable();
-        //    dataTable.Load(dbCmd.ExecuteReader());
-        //    dbCmd.ExecuteScalar();
-        //    //connection.execut
-        //    return dataTable;
-        //}
 
         public static bool InsertAuthor(MySqlConnection connection, string authorID, String authorName)
         {
@@ -329,7 +311,6 @@ namespace Library_System_Web_portal_Service_DAL
             //dbCmd.Parameters.AddWithValue("@AUTHOR_ID", authorID);
             db.AddInParameter(dbCmd, "@PUBLISHER_ID", DbType.AnsiString, publisherID);
             return db.ExecuteDataSet(dbCmd).Tables[0];
-
         }
 
         public static bool InsertPublisher(MySqlConnection connection, string publisherID, String publisherName)
@@ -373,6 +354,70 @@ namespace Library_System_Web_portal_Service_DAL
             dbCmd.Parameters.AddWithValue("@PUBLISHER_ID", publisherID);
             return dbCmd.ExecuteReader();
         }
+        #endregion
+
+        #region member management
+        //use below method for check whether memberid exists and also to fetch all details from db related to this table
+        public static IDataReader LoadMemberDetails(Database db, string memberID, int pageStart, int recordsPerPage)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" SET @ROW_NUMBER=0; ");
+            sqlCmdBuilder.Append(" SELECT IFNULL(FMEMBER_ID,'') AS FMEMBER_ID, IFNULL(FACCOUNT_STATUS,'') AS FACCOUNT_STATUS,IFNULL(FFULL_NAME,'') AS FFULL_NAME, ");
+            sqlCmdBuilder.Append(" IFNULL(FDOB,'') AS FDOB, IFNULL(FCONTACT_NO,'') AS FCONTACT_NO,IFNULL(FEMAIL,'') AS FEMAIL,IFNULL(FSTATE,'') AS FSTATE, ");
+            sqlCmdBuilder.Append(" IFNULL(FCITY,'') AS FCITY, IFNULL(FPINCODE,'') AS FPINCODE,IFNULL(FULL_ADDRESS,'') AS FULL_ADDRESS ");
+            sqlCmdBuilder.Append(" ,(@ROW_NUMBER := @ROW_NUMBER +1) as ROWNUM,(SELECT COUNT(*) FROM LIB_MEMBER_MASTER) AS FTOTAL ");
+            sqlCmdBuilder.Append(" FROM LIB_MEMBER_MASTER ");
+
+            if (memberID != "" && memberID != null)
+                sqlCmdBuilder.Append(" WHERE FMEMBER_ID=@MEMBER_ID ");
+
+            //below query ORDER BY LENGTH(FAUTHOR_ID) is very important because of that if l1,l10,l11,l2 displayed as l1,l2,l10,l11
+            //for more understanding you can run this query in database.
+            if (pageStart >= 0)
+            {
+                sqlCmdBuilder.Append(" ORDER BY LENGTH(FMEMBER_ID), ROWNUM  LIMIT @PAGE_START,@PAGE_END ");
+            }
+            System.Data.Common.DbCommand dbCmd = db.GetSqlStringCommand(sqlCmdBuilder.ToString());
+            dbCmd.CommandType = CommandType.Text;
+
+            db.AddInParameter(dbCmd, "@MEMBER_ID", DbType.AnsiString, memberID);
+            if (pageStart >= 0)
+            {
+                db.AddInParameter(dbCmd, "@PAGE_START", DbType.Int32, pageStart);
+                db.AddInParameter(dbCmd, "@PAGE_END", DbType.Int32, recordsPerPage);
+            }
+            return db.ExecuteReader(dbCmd);
+        }
+
+        public static bool UpdateAccountStatus(Database db, string memberID, string accoutnStatus)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" UPDATE LIB_MEMBER_MASTER SET FACCOUNT_STATUS=@ACCOUNT_STATUS WHERE FMEMBER_ID=@MEMBER_ID ");
+            
+            System.Data.Common.DbCommand dbCmd = db.GetSqlStringCommand(sqlCmdBuilder.ToString());
+            dbCmd.CommandType = CommandType.Text;
+
+            db.AddInParameter(dbCmd, "@MEMBER_ID", DbType.AnsiString, memberID);
+            db.AddInParameter(dbCmd, "@ACCOUNT_STATUS", DbType.AnsiString, accoutnStatus);
+            db.ExecuteReader(dbCmd);
+            return true;
+        }
+
+        public static bool DeleteMember(Database db, string memberID, string accoutnStatus)
+        {
+            StringBuilder sqlCmdBuilder = new StringBuilder();
+            sqlCmdBuilder.Append(" DELETE FROM LIB_MEMBER_MASTER  WHERE FMEMBER_ID=@MEMBER_ID ");
+            
+            System.Data.Common.DbCommand dbCmd = db.GetSqlStringCommand(sqlCmdBuilder.ToString());
+            dbCmd.CommandType = CommandType.Text;
+
+            db.AddInParameter(dbCmd, "@MEMBER_ID", DbType.AnsiString, memberID);
+            db.AddInParameter(dbCmd, "@ACCOUNT_STATUS", DbType.AnsiString, accoutnStatus);
+            db.ExecuteReader(dbCmd);
+            return true;
+        }
+
+
         #endregion
     }
 }

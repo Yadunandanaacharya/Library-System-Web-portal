@@ -63,7 +63,16 @@ namespace Library_System_Web_portal_Service
         [OperationContract]
         [WebInvoke(UriTemplate = "DeletePublisher?publisherID={publisherID}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
         bool DeletePublisher(string publisherID);
+        #endregion
 
+        #region Member management
+        [OperationContract]
+        [WebInvoke(UriTemplate = "CheckMemberExists?memberID={memberID}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
+        MemberManage LoadMemberDetails(BasicFilter basicFilter);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "CheckMemberExists?memberID={memberID}", Method = "POST", RequestFormat = WebMessageFormat.Xml)]
+        bool UpdateAccountStatus(BasicFilter basicFilter);
         #endregion
     }
 

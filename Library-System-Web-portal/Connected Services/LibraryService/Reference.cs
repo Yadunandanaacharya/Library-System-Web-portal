@@ -468,7 +468,13 @@ namespace Library_System_Web_portal.LibraryService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AccountStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AuthorIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MemberIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PageStartField;
@@ -490,6 +496,19 @@ namespace Library_System_Web_portal.LibraryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AccountStatus {
+            get {
+                return this.AccountStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccountStatusField, value) != true)) {
+                    this.AccountStatusField = value;
+                    this.RaisePropertyChanged("AccountStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string AuthorID {
             get {
                 return this.AuthorIDField;
@@ -498,6 +517,19 @@ namespace Library_System_Web_portal.LibraryService {
                 if ((object.ReferenceEquals(this.AuthorIDField, value) != true)) {
                     this.AuthorIDField = value;
                     this.RaisePropertyChanged("AuthorID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MemberID {
+            get {
+                return this.MemberIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MemberIDField, value) != true)) {
+                    this.MemberIDField = value;
+                    this.RaisePropertyChanged("MemberID");
                 }
             }
         }
@@ -755,6 +787,466 @@ namespace Library_System_Web_portal.LibraryService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MemberManage", Namespace="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class MemberManage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Library_System_Web_portal.LibraryService.MemberDetails[] MemberDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageStartField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalRecordsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Library_System_Web_portal.LibraryService.MemberDetails[] MemberDetails {
+            get {
+                return this.MemberDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MemberDetailsField, value) != true)) {
+                    this.MemberDetailsField = value;
+                    this.RaisePropertyChanged("MemberDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageStart {
+            get {
+                return this.PageStartField;
+            }
+            set {
+                if ((this.PageStartField.Equals(value) != true)) {
+                    this.PageStartField = value;
+                    this.RaisePropertyChanged("PageStart");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalRecords {
+            get {
+                return this.TotalRecordsField;
+            }
+            set {
+                if ((this.TotalRecordsField.Equals(value) != true)) {
+                    this.TotalRecordsField = value;
+                    this.RaisePropertyChanged("TotalRecords");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MemberDetails", Namespace="http://schemas.datacontract.org/2004/07/Library_System_Web_portal_Service.Library" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class MemberDetails : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AccountStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContactNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DOBField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FullAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FullNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MemberIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PincodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string _accountStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string _cityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string _contactNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string _dobField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string _emailIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string _fullAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string _fullNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string _memberIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string _passwordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string _pincodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string _stateField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AccountStatus {
+            get {
+                return this.AccountStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccountStatusField, value) != true)) {
+                    this.AccountStatusField = value;
+                    this.RaisePropertyChanged("AccountStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContactNo {
+            get {
+                return this.ContactNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContactNoField, value) != true)) {
+                    this.ContactNoField = value;
+                    this.RaisePropertyChanged("ContactNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DOB {
+            get {
+                return this.DOBField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DOBField, value) != true)) {
+                    this.DOBField = value;
+                    this.RaisePropertyChanged("DOB");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EmailID {
+            get {
+                return this.EmailIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailIDField, value) != true)) {
+                    this.EmailIDField = value;
+                    this.RaisePropertyChanged("EmailID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FullAddress {
+            get {
+                return this.FullAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FullAddressField, value) != true)) {
+                    this.FullAddressField = value;
+                    this.RaisePropertyChanged("FullAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FullName {
+            get {
+                return this.FullNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FullNameField, value) != true)) {
+                    this.FullNameField = value;
+                    this.RaisePropertyChanged("FullName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MemberID {
+            get {
+                return this.MemberIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MemberIDField, value) != true)) {
+                    this.MemberIDField = value;
+                    this.RaisePropertyChanged("MemberID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Pincode {
+            get {
+                return this.PincodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PincodeField, value) != true)) {
+                    this.PincodeField = value;
+                    this.RaisePropertyChanged("Pincode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string State {
+            get {
+                return this.StateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StateField, value) != true)) {
+                    this.StateField = value;
+                    this.RaisePropertyChanged("State");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string _accountStatus {
+            get {
+                return this._accountStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._accountStatusField, value) != true)) {
+                    this._accountStatusField = value;
+                    this.RaisePropertyChanged("_accountStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string _city {
+            get {
+                return this._cityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._cityField, value) != true)) {
+                    this._cityField = value;
+                    this.RaisePropertyChanged("_city");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string _contactNo {
+            get {
+                return this._contactNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._contactNoField, value) != true)) {
+                    this._contactNoField = value;
+                    this.RaisePropertyChanged("_contactNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string _dob {
+            get {
+                return this._dobField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._dobField, value) != true)) {
+                    this._dobField = value;
+                    this.RaisePropertyChanged("_dob");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string _emailID {
+            get {
+                return this._emailIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._emailIDField, value) != true)) {
+                    this._emailIDField = value;
+                    this.RaisePropertyChanged("_emailID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string _fullAddress {
+            get {
+                return this._fullAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._fullAddressField, value) != true)) {
+                    this._fullAddressField = value;
+                    this.RaisePropertyChanged("_fullAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string _fullName {
+            get {
+                return this._fullNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._fullNameField, value) != true)) {
+                    this._fullNameField = value;
+                    this.RaisePropertyChanged("_fullName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string _memberID {
+            get {
+                return this._memberIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._memberIDField, value) != true)) {
+                    this._memberIDField = value;
+                    this.RaisePropertyChanged("_memberID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string _password {
+            get {
+                return this._passwordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._passwordField, value) != true)) {
+                    this._passwordField = value;
+                    this.RaisePropertyChanged("_password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string _pincode {
+            get {
+                return this._pincodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._pincodeField, value) != true)) {
+                    this._pincodeField = value;
+                    this.RaisePropertyChanged("_pincode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string _state {
+            get {
+                return this._stateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._stateField, value) != true)) {
+                    this._stateField = value;
+                    this.RaisePropertyChanged("_state");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LibraryService.ILibraryService")]
     public interface ILibraryService {
@@ -830,6 +1322,18 @@ namespace Library_System_Web_portal.LibraryService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/DeletePublisher", ReplyAction="http://tempuri.org/ILibraryService/DeletePublisherResponse")]
         System.Threading.Tasks.Task<bool> DeletePublisherAsync(string publisherID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/LoadMemberDetails", ReplyAction="http://tempuri.org/ILibraryService/LoadMemberDetailsResponse")]
+        Library_System_Web_portal.LibraryService.MemberManage LoadMemberDetails(Library_System_Web_portal.LibraryService.BasicFilter basicFilter);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/LoadMemberDetails", ReplyAction="http://tempuri.org/ILibraryService/LoadMemberDetailsResponse")]
+        System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.MemberManage> LoadMemberDetailsAsync(Library_System_Web_portal.LibraryService.BasicFilter basicFilter);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/UpdateAccountStatus", ReplyAction="http://tempuri.org/ILibraryService/UpdateAccountStatusResponse")]
+        bool UpdateAccountStatus(Library_System_Web_portal.LibraryService.BasicFilter basicFilter);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILibraryService/UpdateAccountStatus", ReplyAction="http://tempuri.org/ILibraryService/UpdateAccountStatusResponse")]
+        System.Threading.Tasks.Task<bool> UpdateAccountStatusAsync(Library_System_Web_portal.LibraryService.BasicFilter basicFilter);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -953,6 +1457,22 @@ namespace Library_System_Web_portal.LibraryService {
         
         public System.Threading.Tasks.Task<bool> DeletePublisherAsync(string publisherID) {
             return base.Channel.DeletePublisherAsync(publisherID);
+        }
+        
+        public Library_System_Web_portal.LibraryService.MemberManage LoadMemberDetails(Library_System_Web_portal.LibraryService.BasicFilter basicFilter) {
+            return base.Channel.LoadMemberDetails(basicFilter);
+        }
+        
+        public System.Threading.Tasks.Task<Library_System_Web_portal.LibraryService.MemberManage> LoadMemberDetailsAsync(Library_System_Web_portal.LibraryService.BasicFilter basicFilter) {
+            return base.Channel.LoadMemberDetailsAsync(basicFilter);
+        }
+        
+        public bool UpdateAccountStatus(Library_System_Web_portal.LibraryService.BasicFilter basicFilter) {
+            return base.Channel.UpdateAccountStatus(basicFilter);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateAccountStatusAsync(Library_System_Web_portal.LibraryService.BasicFilter basicFilter) {
+            return base.Channel.UpdateAccountStatusAsync(basicFilter);
         }
     }
 }

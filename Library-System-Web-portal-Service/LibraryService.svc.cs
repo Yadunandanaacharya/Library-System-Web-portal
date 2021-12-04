@@ -177,29 +177,29 @@ namespace Library_System_Web_portal_Service
             try
             {
                 AuthorManage authorManage = new AuthorManage();
+
                 DatabaseProviderFactory factory = new DatabaseProviderFactory();
                 var db = factory.Create("ConnectionStringMySQL");
-                //Database db = DatabaseFactory.CreateDatabase("ConnectionStringMySQL");
 
                 bool authorAlreadyInserted = false;//here =false is needed if not throws error in !authorInserted if condition
                 //unassigned variables
 
                 string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringMySQL"].ConnectionString;
                 MySqlConnection connection = new MySqlConnection(connectionString);
-                connection.Open();
+                connection.Open();   
 
                 #region tried to use datatable but not returning any row
                 //In admin table check whether user exists or not
-                //DataTable dataTable = LibraryDAL.CheckAuthorExistTable(db, authorDetails.AuthorID);
-                //if (dataTable.Rows.Count > 0)
-                //{
-                //    authorAlreadyInserted = true;
-                //}
+                DataTable dataTable = LibraryDAL.CheckAuthorExistTable(db, authorDetails.AuthorID);
+                if (dataTable.Rows.Count > 0)
+                {
+                    authorAlreadyInserted = true;
+                }
 
-                //if (!authorAlreadyInserted)
-                //{
-                //    LibraryDAL.InsertAuthor(connection, authorDetails.AuthorID, authorDetails.AuthorName);
-                //}
+                if (!authorAlreadyInserted)
+                {
+                    LibraryDAL.InsertAuthor(connection, authorDetails.AuthorID, authorDetails.AuthorName);
+                }
                 #endregion
 
                 dataReader = LibraryDAL.CheckAuthorExist(connection, authorDetails.AuthorID);
@@ -321,7 +321,6 @@ namespace Library_System_Web_portal_Service
                     dataReader.Close();
             }
         }
-
         #endregion
 
         #region Publisher Management details, don't add author at front of publisher author is different publisher is different
@@ -540,7 +539,85 @@ namespace Library_System_Web_portal_Service
                     dataReader.Close();
             }
         }
+        #endregion
 
+        #region Member management page, using DatabaseProviderFactory from microsoft for db connection
+        public MemberManage LoadMemberDetails(BasicFilter basicFilter)
+        {
+            IDataReader dataReader = null;
+            try
+            {
+                MemberManage memberManage = new MemberManage();
+
+                DatabaseProviderFactory factory = new DatabaseProviderFactory();
+                var db = factory.Create("ConnectionStringMySQL");
+
+                //In admin table check whether user exists or not
+                dataReader = LibraryDAL.LoadMemberDetails(db, basicFilter.MemberID, basicFilter.PageStart, basicFilter.RecordsPerPage);
+                while (dataReader.Read())
+                {
+                    MemberDetails memberDetails = new MemberDetails();
+                    memberDetails.MemberID = dataReader.GetString(dataReader.GetOrdinal("FMEMBER_ID"));
+                    memberDetails.AccountStatus = dataReader.GetString(dataReader.GetOrdinal("FACCOUNT_STATUS"));
+                    memberDetails.FullName = dataReader.GetString(dataReader.GetOrdinal("FFULL_NAME"));
+                    memberDetails.DOB = dataReader.GetString(dataReader.GetOrdinal("FDOB"));
+                    memberDetails.ContactNo = dataReader.GetString(dataReader.GetOrdinal("FCONTACT_NO"));
+                    memberDetails.EmailID = dataReader.GetString(dataReader.GetOrdinal("FEMAIL"));
+                    memberDetails.State = dataReader.GetString(dataReader.GetOrdinal("FSTATE"));
+                    memberDetails.City = dataReader.GetString(dataReader.GetOrdinal("FCITY"));
+                    memberDetails.Pincode = dataReader.GetString(dataReader.GetOrdinal("FPINCODE"));
+                    memberDetails.FullAddress = dataReader.GetString(dataReader.GetOrdinal("FULL_ADDRESS"));
+                    memberManage.MemberDetails.Add(memberDetails);
+
+                    if (memberManage.TotalRecords == 0)
+                        memberManage.TotalRecords = dataReader.GetInt32(dataReader.GetOrdinal("FTOTAL"));
+                    memberManage.PageStart = basicFilter.PageStart;
+                }
+                dataReader.Close();
+                return memberManage;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (dataReader != null && !dataReader.IsClosed)
+                    dataReader.Close();
+            }
+        }
+
+        //if account status is pending then based on button press, activates, deactivates or deletes member
+        //getting value A-activate, I-Deactivate, D-delete from button click
+        public bool UpdateAccountStatus(BasicFilter basicFilter)
+        {
+            try
+            {
+                bool accountStatusUpdateOrDelete = false;
+
+                DatabaseProviderFactory factory = new DatabaseProviderFactory();
+                var db = factory.Create("ConnectionStringMySQL");
+
+                PublisherManage publisherManage = new PublisherManage();
+                if(basicFilter.AccountStatus=="A" || basicFilter.AccountStatus == "I")
+                {
+                    accountStatusUpdateOrDelete = LibraryDAL.UpdateAccountStatus(db, basicFilter.MemberID, basicFilter.AccountStatus);
+                }
+                else if(basicFilter.AccountStatus == "D")
+                {
+                    accountStatusUpdateOrDelete = LibraryDAL.DeleteMember(db, basicFilter.MemberID, basicFilter.AccountStatus);
+                }
+
+                return accountStatusUpdateOrDelete;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+            }
+        }
         #endregion
     }
 }

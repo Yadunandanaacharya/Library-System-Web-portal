@@ -1,5 +1,5 @@
-﻿jQuery.PublishManagement = jQuery.PublishManagement || {};
-jQuery.PublishManagement.PagerData = jQuery.PublishManagement.PagerData || {};
+﻿jQuery.PublishManagement =  {};
+jQuery.PublishManagement.PagerData =  {};
 jQuery.PublishManagement.BasicParam = {};
 jQuery.PublishManagement.TotalRecord = 0;
 jQuery.PublishManagement.PageStart = 0;
@@ -54,6 +54,21 @@ function GetPublisherDetails(basicFilter) {
         },
         beforeSend: function () {
             jQuery("#tBody").empty();
+        },
+        error: function (request, error) {
+            ShowWait('hide');
+            if (request.responseText != "") {
+                var errorMessage = jQuery.parseJSON(request.responseText);
+                if (errorMessage != undefined && errorMessage != null && errorMessage.Message != undefined && errorMessage.Message != null) {
+                    alert(errorMessage);
+                }
+                else {
+                    alert(errorMessage);
+                }
+            }
+            else {
+                alert(errorMessage);
+            }
         }
         //error handling is very very important in that reponsetext you can easily get errormessage which helps lot
 
@@ -89,6 +104,21 @@ function InsertPublisherDetails() {
 
             }
             //GetAuthorDetails();
+        },
+        error: function (request, error) {
+            ShowWait('hide');
+            if (request.responseText != "") {
+                var errorMessage = jQuery.parseJSON(request.responseText);
+                if (errorMessage != undefined && errorMessage != null && errorMessage.Message != undefined && errorMessage.Message != null) {
+                    alert(errorMessage);
+                }
+                else {
+                    alert(errorMessage);
+                }
+            }
+            else {
+                alert(errorMessage);
+            }
         }
     });
 }

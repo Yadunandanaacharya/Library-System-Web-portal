@@ -6,7 +6,6 @@ using System.Web;
 
 namespace Library_System_Web_portal_Service.Library
 {
-    
     [DataContract]
     public class SignUpDetails
     {
@@ -193,6 +192,8 @@ namespace Library_System_Web_portal_Service.Library
         }
 
         [DataMember] public string PublisherID { get; set; }
+        [DataMember] public string MemberID { get; set; }
+        [DataMember] public string AccountStatus { get; set; }
         [DataMember] public int PageStart { get; set; } = 0;
         [DataMember] public int RecordsPerPage { get; set; } = 0;
         #endregion

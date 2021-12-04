@@ -122,7 +122,6 @@
                                 </div>
                                 <div class="col-md-5">
                                     <button id="btnShowAll"  onclick="ShowAllData(); return false;" class="btn btn-primary" runat="server">Show All</button>
-
                                 </div>
                             </div>
 
