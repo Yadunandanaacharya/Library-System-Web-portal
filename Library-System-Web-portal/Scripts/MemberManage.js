@@ -4,6 +4,10 @@ jQuery.MemberManagement.BasicParam = {};
 jQuery.MemberManagement.TotalRecord = 0;
 jQuery.MemberManagement.PageStart = 0;
 
+//below method loads when page loads and gets pagerdata variable from code behind of aspx.cs
+//since in pagerdata we save web service path, I'm keeping all example adminmembermanage.aspx file inside
+//another folder so this time if you use web service path with hardcoding your asmx file doesn't get brekpoint
+//so to avoid that error we take web service path globally
 function InitialLoadMethod(pagerData) {
     jQuery.MemberManagement.PagerData = pagerData;
     var basicFilter = {};
@@ -13,6 +17,8 @@ function InitialLoadMethod(pagerData) {
     GetMemberDetails(basicFilter);
 }
 
+//with respect to member id entered in textbox that we will pass to asmx method that will go to service side
+//method this is how 3tier architecture works
 function SearchPublisher() {
     var memberID = jQuery("#txtSearch").val();
     var basicFilter = {};
@@ -32,6 +38,7 @@ function ShowAllData() {
     GetPublisherDetails(basicFilter);
 }
 
+//once I get all data from service side I'm redering it to textboxes you can also use data-bind with less code.
 function GetMemberDetails(basicFilter) {
     jQuery.ajax({
         type: "POST",

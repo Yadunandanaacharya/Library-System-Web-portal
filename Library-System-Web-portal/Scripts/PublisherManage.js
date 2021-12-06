@@ -103,7 +103,6 @@ function InsertPublisherDetails() {
                 }
 
             }
-            //GetAuthorDetails();
         },
         error: function (request, error) {
             ShowWait('hide');
@@ -224,7 +223,6 @@ function NextPageIs() {
 function PrevPageIs() {
     var basicParam = {};
 
-    //var totalRecords = jQuery.PublishManagement.TotalRecord;
     var pageStart = jQuery.PublishManagement.PageStart;
     var recordsPerPage = 4;
     if (pageStart > 0) {
